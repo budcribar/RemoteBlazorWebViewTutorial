@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "BlazorWebViewTutorial.WpfApp": {
+      "commandName": "Project"
+    }
+  }
+}
