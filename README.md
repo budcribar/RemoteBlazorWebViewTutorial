@@ -23,7 +23,7 @@ Open the project settings page for the BlazorWebViewTutorial.WpfApp using Visual
 
 Click on the debug tab and set the application arguments to https://localhost:443
 
-Click on the run button in Visual Studio
+Click on the run button in Visual Studio (make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project) 
 
 A main window will come up with a URL. Click on it
 
