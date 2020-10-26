@@ -1,6 +1,6 @@
 # RemoteBlazorWebViewTutorial
 
-This tutorial was forked from [BlazorWebViewTutorial](https://github.com/jspuij/BlazorWebViewTutorial). The difference is that the RemoteBlazorWebView allows you to interact with the user interface of a program developed with the BlazorWebView control using a web browser. This is accomplished by setting up a server (RemoteableWebService) in the cloud and pointing your browser to it. The server canm be downloaded at [RemoteBlazorWebView] (https://github.com/budcribar/RemoteBlazorWebView/releases)
+This tutorial was forked from [BlazorWebViewTutorial](https://github.com/jspuij/BlazorWebViewTutorial). The difference is that the RemoteBlazorWebView allows you to interact with the user interface of a program developed with the BlazorWebView control using a web browser. This is accomplished by setting up a server (RemoteableWebService) in the cloud and pointing your browser to it. The server canm be downloaded at [RemoteBlazorWebView](https://github.com/budcribar/RemoteBlazorWebView/releases)
 RemoteBlazorWebView is a drop in replacement for BlazorWebView and with a minimal change you will be able to remotely control your application.
 
 
