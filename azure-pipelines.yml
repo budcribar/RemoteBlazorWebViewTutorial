@@ -31,6 +31,12 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'RemoteBlazorWebViewTutorial'
+    projects: 'RemoteBlazorWebViewTutorial.WpfApp'
     arguments: '--runtime win-x64 -p:PublishSingleFile=true --self-contained true'
     modifyOutputPath: false
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'RemoteBlazorWebViewTutorial.WpfApp\bin\Debug\netcoreapp3.1\win-x64\publish.zip'
+    ArtifactName: 'dropApp'
+    publishLocation: 'Container'
