@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\favicon.ico" />
-    <Content Remove="wwwroot\index.html" />
+    <None Remove="wwwroot\favicon.ico" />
+    <None Remove="wwwroot\index.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,12 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\favicon.ico">
+    <Content Update="wwwroot\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="wwwroot\index.html">
+    </Content>
+    <Content Update="wwwroot\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
 </Project>
