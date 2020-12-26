@@ -31,7 +31,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IDisposable disposable;
+        private IDisposable? disposable;
         private bool initialized = false;
 
         public MainWindow()
@@ -39,20 +39,43 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             InitializeComponent();
         }
 
-        public Uri Uri { get; set; } = null;
+        private Uri? Uri { get; set; } = null;
+        private Guid Id { get; set; } = default(Guid);
+
+        private void ParseRunstring()
+        {
+            // -u=https://localhost:443 -i=9BFD9D43-0289-4A80-92D8-6E617729DA12
+            try
+            {
+                Uri = new Uri(Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-u")).Split("=")[1]);
+            }
+            catch (Exception) { }
+            try
+            {
+                Id = Guid.Parse(Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-i")).Split("=")[1]);
+            }
+            catch (Exception) { Id = Guid.NewGuid(); }
+        }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             if (!this.initialized)
             {
+                ParseRunstring();
                 this.initialized = true;
-                this.disposable = this.RemoteBlazorWebView.Run<Startup>("wwwroot/index.html", null, Uri);
-        
-                this.RemoteBlazorWebView.OnDisconnected += (s, e) =>  Application.Current.Dispatcher.Invoke(Close);
+                this.disposable = this.RemoteBlazorWebView.Run<Startup>("wwwroot/index.html", null, Uri, Id);
+
+                this.RemoteBlazorWebView.OnDisconnected += (s, e) => Restart();
                 // this.RemoteBlazorWebView.OnConnected += (s, e) => { this.RemoteBlazorWebView.ShowMessage("Title", "Hello World"); };
             }
         }
 
+        private void Restart()
+        {
+            // TODO
+            Process.Start(new ProcessStartInfo {  FileName= Process.GetCurrentProcess().MainModule.FileName, Arguments =$"-u={Uri} -i={Id}"});
+            Application.Current.Dispatcher.Invoke(Close);
+        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
