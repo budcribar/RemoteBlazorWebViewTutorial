@@ -14,10 +14,10 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorWebView.Wpf" Version="0.2.0" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="0.1.5-pre" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
   </ItemGroup>
 
