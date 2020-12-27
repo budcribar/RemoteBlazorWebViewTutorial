@@ -72,7 +72,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Restart()
         {
-            Process.Start(new ProcessStartInfo {  FileName= Process.GetCurrentProcess().MainModule.FileName, Arguments = string.Join(" ", Environment.GetCommandLineArgs()) });
+            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule.FileName, Arguments = $"-u={Uri} -i={Id}" });
             Application.Current.Dispatcher.Invoke(Close);
         }
 
