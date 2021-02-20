@@ -11,11 +11,15 @@ RemoteBlazorWebView has two modes of operation. In the first default mode, it wo
 
 # Quick Start
 
-Download the RemotableWebViewService.exe from [RemoteBlazorWebView](https://github.com/budcribar/RemoteBlazorWebView/releases)
+Install the RemotableWebViewService
+```console
+dotnet tool update -g PeakSWC.RemoteableWebViewService --version 0.*-*
+```
 
-Open a powershell window in your downloads directory
-
-Run the command .\RemoteableWebService.exe
+Start the server
+```console
+RemoteableWebViewService
+```
 
 Open the RemoteBlazorWebViewTutorial.sln with Visual Studio
 
