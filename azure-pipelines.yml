@@ -2,7 +2,7 @@ resources:
   repositories:
   - repository: RemoteBlazorWebView  # The name used to reference this repository in the checkout step
     type: github
-    endpoint: https://github.com
+    endpoint: RemoteBlazorWebView
     name: budcribar.RemoteBlazorWebView
 
 trigger:
