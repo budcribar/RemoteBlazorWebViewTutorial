@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>PeakSWC.RemoteBlazorWebViewTutorial.WpfApp</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorWebView.Wpf" Version="0.2.0" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="0.1.5-pre" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="*-*" />
   </ItemGroup>
 
   <ItemGroup>

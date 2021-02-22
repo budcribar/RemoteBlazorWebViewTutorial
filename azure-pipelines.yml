@@ -1,7 +1,9 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+resources:
+  repositories:
+  - repository: RemoteBlazorWebView  # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: https://github.com
+    name: budcribar.RemoteBlazorWebView
 
 trigger:
 - main
@@ -15,6 +17,9 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- checkout: self
+- checkout: RemoteBlazorWebView
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -27,16 +32,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
+  displayName: 'NuGet push packages'
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: 'RemoteBlazorWebViewTutorial.WpfApp'
-    arguments: '--runtime win-x64 -p:PublishSingleFile=true --self-contained true'
-    modifyOutputPath: false
-
+    command: push
+    publishVstsFeed: 'RemoteBlazorWebView/Nugets2'
+    allowPackageConflicts: false
+    packagesToPush: 'artifacts/*.nupkg'
+ 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'RemoteBlazorWebViewTutorial.WpfApp\bin\Debug\netcoreapp3.1\win-x64\publish.zip'
-    ArtifactName: 'dropApp'
+    PathtoPublish: 'artifacts'
+    ArtifactName: 'dropNugets'
     publishLocation: 'Container'
+    
