@@ -38,11 +38,11 @@ steps:
     command: push
     publishVstsFeed: 'RemoteBlazorWebView/Nugets2'
     allowPackageConflicts: false
-    packagesToPush: 'RemoteBlazorWebViewTutorial/artifacts/*.nupkg'
+    packagesToPush: 'RemoteBlazorWebView/artifacts/*.nupkg'
  
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'RemoteBlazorWebViewTutorial/artifacts'
+    PathtoPublish: 'RemoteBlazorWebView/artifacts'
     ArtifactName: 'dropNugets'
     publishLocation: 'Container'
     
