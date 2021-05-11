@@ -1,30 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using PeakSwc.RemoteableWebWindows;
+//using PeakSwc.RemoteableWebWindows;
 
 
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
+    //  <!--xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"-->
     // add usings here
-    using BlazorWebView.Wpf;
-    using BlazorWebView;
-    using System.Threading;
-    using Microsoft.JSInterop;
-    using System.Reflection;
+    //using BlazorWebView.Wpf;
+    //using BlazorWebView;
     using System.Diagnostics;
+    using Microsoft.Extensions.DependencyInjection;
+    using System.Net.Http;
+    using Microsoft.AspNetCore.Components.WebView.Wpf;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -36,7 +26,14 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         public MainWindow()
         {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddBlazorWebView();
+            serviceCollection.AddScoped<HttpClient>();
+            Resources.Add("services", serviceCollection.BuildServiceProvider());
+          
             InitializeComponent();
+            
+            //RemoteBlazorWebView.RootComponents.Add(new RootComponent { Selector = "#app", ComponentType = typeof(RemoteBlazorWebViewTutorial.WpfApp.Main) });
         }
 
         private Uri? Uri { get; set; } = null;
@@ -47,12 +44,16 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             // -u=https://localhost:443 -i=9BFD9D43-0289-4A80-92D8-6E617729DA12
             try
             {
-                Uri = new Uri(Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-u")).Split("=")[1]);
+                var u = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-u"));
+                if (u != null)
+                   Uri = new Uri(u.Split("=")[1]);
             }
             catch (Exception) { }
             try
             {
-                Id = Guid.Parse(Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-i")).Split("=")[1]);
+                var i = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-i"));
+                if (i != null)
+                    Id = Guid.Parse(i.Split("=")[1]);
             }
             catch (Exception) { Id = Guid.NewGuid(); }
         }
@@ -63,16 +64,16 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             {
                 ParseRunstring();
                 this.initialized = true;
-                this.disposable = this.RemoteBlazorWebView.Run<Startup>("wwwroot/index.html", null, Uri, Id);
+                //this.disposable = this.RemoteBlazorWebView.Run<Startup>("wwwroot/index.html", null, Uri, Id);
 
-                this.RemoteBlazorWebView.OnDisconnected += (s, e) => Restart();
+                //this.RemoteBlazorWebView.OnDisconnected += (s, e) => Restart();
                 // this.RemoteBlazorWebView.OnConnected += (s, e) => { this.RemoteBlazorWebView.ShowMessage("Title", "Hello World"); };
             }
         }
 
         private void Restart()
         {
-            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule.FileName, Arguments = $"-u={Uri} -i={Id}" });
+            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule?.FileName, Arguments = $"-u={Uri} -i={Id}" });
             Application.Current.Dispatcher.Invoke(Close);
         }
 
@@ -87,4 +88,5 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
        
     }
+    public partial class Main { }
 }

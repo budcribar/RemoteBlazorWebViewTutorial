@@ -1,36 +1,40 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
+    <TargetFramework>net6-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
-    <PackAsTool>true</PackAsTool>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsShippingPackage>false</IsShippingPackage>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <!--
+    <PackAsTool>false</PackAsTool>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>PeakSWC.RemoteBlazorWebViewTutorial.WpfApp</PackageId>
+    -->
   </PropertyGroup>
-
+    
   <ItemGroup>
-    <None Remove="wwwroot\favicon.ico" />
-    <None Remove="wwwroot\index.html" />
+    <Compile Remove="Startup.cs" />
   </ItemGroup>
-
+ 
   <ItemGroup>
-    <PackageReference Include="BlazorWebView.Wpf" Version="0.2.0" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="*-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="6.0.0-preview.3.21201.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.3.21201.13" />
+    <!--
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.3.21201.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.3.21201.13" />
+    -->
   </ItemGroup>
-
+ 
   <ItemGroup>
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\favicon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\index.html">
+    <Content Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+  
 </Project>

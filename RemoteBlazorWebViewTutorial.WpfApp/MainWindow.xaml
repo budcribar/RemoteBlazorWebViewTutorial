@@ -3,12 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RemoteBlazorWebViewTutorial.WpfApp"
-        xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
+        xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
+        xmlns:local="clr-namespace:RemoteBlazorWebViewTutorial.WpfApp;assembly=RemoteBlazorWebViewTutorial.WpfApp"
+       
+        xmlns:blazorwv="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf" mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
     
     <Grid>
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" />
+        <blazorwv:BlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
+            <blazorwv:BlazorWebView.RootComponents>
+                <blazorwv:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
+                <!--
+                <blazorwv:RootComponent Selector="#app" ComponentType="{x:Type local:Main}"/>
+                
+               <blazorwv:RootComponent Selector="#app" ComponentType="{x:Type local:Main}"/>
+                
+              -->
+               
+            </blazorwv:BlazorWebView.RootComponents>
+        </blazorwv:BlazorWebView>
     </Grid>
 </Window>
+<!--
+    xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
+    -->

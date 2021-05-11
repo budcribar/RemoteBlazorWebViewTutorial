@@ -4,15 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>RemoteBlazorWebViewTutorial.Client</title>
+    <title>RemoteBlazorWebViewTutorial</title>
     <base href="/" />
     <!-- Add _content/BlazorWebViewTutorial.Shared below -->
     <link href="_content/RemoteBlazorWebViewTutorial.Shared/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="_content/RemoteBlazorWebViewTutorial.Shared/css/site.css" rel="stylesheet" />
+    <link href="RemoteBlazorWebViewTutorial.WpfApp.styles.css" rel="stylesheet" />
 </head>
 
 <body>
-    <app>Loading...</app>
+    <div id="app">Loading...</div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -20,7 +21,7 @@
         <a class="dismiss">🗙</a>
     </div>
    
-    <script src="framework://blazor.desktop.js"></script>
+    <script src="_framework/blazor.webview.js"></script>
 
 </body>
 
