@@ -13,21 +13,14 @@
     <PackageId>PeakSWC.RemoteBlazorWebViewTutorial.WpfApp</PackageId>
     -->
   </PropertyGroup>
-    
-  <ItemGroup>
-    <Compile Remove="Startup.cs" />
-  </ItemGroup>
  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="6.0.0-preview.3.21201.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.3.21201.13" />
-    <!--
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.3.21201.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.3.21201.13" />
-    -->
   </ItemGroup>
  
   <ItemGroup>
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
   </ItemGroup>
 
