@@ -1,27 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-//using PeakSwc.RemoteableWebWindows;
-
-
+using RemoteBlazorWebView.Wpf;
+using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
-    //  <!--xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"-->
-    // add usings here
-    //using BlazorWebView.Wpf;
-    //using BlazorWebView;
-    using System.Diagnostics;
-    using Microsoft.Extensions.DependencyInjection;
-    using System.Net.Http;
-    using Microsoft.AspNetCore.Components.WebView.Wpf;
-
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private IDisposable? disposable;
         private bool initialized = false;
 
         public MainWindow()
@@ -32,8 +20,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             Resources.Add("services", serviceCollection.BuildServiceProvider());
           
             InitializeComponent();
-            
-            //RemoteBlazorWebView.RootComponents.Add(new RootComponent { Selector = "#app", ComponentType = typeof(RemoteBlazorWebViewTutorial.WpfApp.Main) });
         }
 
         private Uri? Uri { get; set; } = null;
@@ -64,10 +50,11 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             {
                 ParseRunstring();
                 this.initialized = true;
-                //this.disposable = this.RemoteBlazorWebView.Run<Startup>("wwwroot/index.html", null, Uri, Id);
 
-                //this.RemoteBlazorWebView.OnDisconnected += (s, e) => Restart();
-                // this.RemoteBlazorWebView.OnConnected += (s, e) => { this.RemoteBlazorWebView.ShowMessage("Title", "Hello World"); };
+                var rbwv = RemoteBlazorWebView as IBlazorWebView;
+                if (rbwv == null) return;
+                rbwv.Loaded += (x, y) => MessageBox.Show("Loaded");
+                rbwv.Unloaded += (x, y) => Restart();
             }
         }
 
@@ -76,17 +63,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule?.FileName, Arguments = $"-u={Uri} -i={Id}" });
             Application.Current.Dispatcher.Invoke(Close);
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (this.disposable != null)
-            {
-                this.disposable.Dispose();
-                this.disposable = null;
-            }
-        }
-
        
     }
-    public partial class Main { }
 }

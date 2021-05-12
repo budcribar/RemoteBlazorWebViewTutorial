@@ -6,11 +6,11 @@
         xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
         xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
         xmlns:blazorwv="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf" mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
+        Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
     
     <Grid>
         <!--
-          <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
         -->
         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
