@@ -9,7 +9,11 @@
         Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
     
     <Grid>
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
+        <!--
+          <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
+        -->
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
             <blazor:RemoteBlazorWebView.RootComponents>
                 <blazorwv:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>
