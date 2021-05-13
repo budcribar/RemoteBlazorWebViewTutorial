@@ -27,6 +27,7 @@
   </ItemGroup>
  
   <ItemGroup>
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\Platforms\Wpf\src\BlazorBase.WebView.Wpf.csproj" />
     <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
   </ItemGroup>
