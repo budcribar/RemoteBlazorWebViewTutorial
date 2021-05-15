@@ -14,7 +14,7 @@
         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
         -->
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="https://localhost:443" >
             <blazor:RemoteBlazorWebView.RootComponents>
             
                 <base:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
