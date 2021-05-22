@@ -1,8 +1,16 @@
 {
   "profiles": {
-    "RemoteBlazorWebViewTutorial.WpfApp": {
-      "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443"
+    "Remote": {
+      "commandName": "Executable",
+      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
+      "commandLineArgs": "-u=https://localhost:443",
+      "workingDirectory": "$(ProjectDir)\\publish",
+      "environmentVariables": {
+        "Remote": "True"
+      }
+    },
+    "Local": {
+      "commandName": "Project"
     }
   }
 }

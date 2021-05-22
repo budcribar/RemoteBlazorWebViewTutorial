@@ -5,6 +5,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;Remote</Configurations>
   </PropertyGroup>
   
   <ItemGroup>

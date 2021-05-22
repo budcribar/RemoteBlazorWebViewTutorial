@@ -6,27 +6,23 @@
         xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
         xmlns:root="clr-namespace:PeakSWC.RemoteableWebWindows;assembly=PeakSWC.RemoteableWebView"
         xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
-        Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
-    
-    <Grid>
-        <!--
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  >
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
-        -->
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="https://localhost:443" >
-            <blazor:RemoteBlazorWebView.RootComponents>
+        Name="TheMainWindow" Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--
+       
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="https://localhost"  >
+         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="{Binding ElementName=MainWindow, Path=TheHostPage}"  Services="{StaticResource services}" ServerUri="{Binding ElementName = MainWindow, Path=UrlOfServer}" Grid.ColumnSpan="2"  >
+        -->
+
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="{Binding ElementName=TheMainWindow, Path=TheHostPage}"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=UrlOfServer}" Grid.ColumnSpan="2"  >
+            <blazor:RemoteBlazorWebView.RootComponents>
                 <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>
         </blazor:RemoteBlazorWebView>
-
-
-        <!--
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}"  ServerUri="https://localhost:443" >
-            <blazor:RemoteBlazorWebView.RootComponents>
-                <blazor:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
-            </blazor:RemoteBlazorWebView.RootComponents>
-        </blazor:RemoteBlazorWebView>
-        -->
     </Grid>
 </Window>

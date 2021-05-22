@@ -18,12 +18,19 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
-          
+            TheHostPage= @"wwwroot\index.html";
+            this.DataContext = this;
             InitializeComponent();
+            //if (Uri != null)
+            //    RemoteBlazorWebView.ServerUri = Uri;
         }
+        private Uri uri;
+        public Uri UrlOfServer { get { ParseRunstring(); return uri; } set { uri = value; } }
 
-        private Uri? Uri { get; set; } = null;
-        private Guid Id { get; set; } = default(Guid);
+        private Guid id = default;
+        private Guid Id { get { ParseRunstring(); return id; } set { id = value; } }
+
+        public string TheHostPage { get; set; }= @"wwwroot\index.html";
 
         private void ParseRunstring()
         {
@@ -32,7 +39,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             {
                 var u = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-u"));
                 if (u != null)
-                   Uri = new Uri(u.Split("=")[1]);
+                   UrlOfServer = new Uri(u.Split("=")[1]);
             }
             catch (Exception) { }
             try
@@ -48,10 +55,9 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         {
             if (!this.initialized)
             {
-                ParseRunstring();
                 this.initialized = true;
 
-                var rbwv = RemoteBlazorWebView as IBlazorWebView;
+                var rbwv = RemoteBlazorWebView;// as IBlazorWebView;
                 if (rbwv == null) return;
                 rbwv.Loaded += (x, y) => MessageBox.Show("Loaded");
                 rbwv.Unloaded += (x, y) => Restart();
@@ -60,7 +66,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Restart()
         {
-            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule?.FileName, Arguments = $"-u={Uri} -i={Id}" });
+            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule?.FileName, Arguments = $"-u={UrlOfServer} -i={Id}" });
             Application.Current.Dispatcher.Invoke(Close);
         }
        
