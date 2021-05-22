@@ -4,9 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
+        xmlns:root="clr-namespace:PeakSWC.RemoteableWebWindows;assembly=PeakSWC.RemoteableWebView"
         xmlns:blazor="clr-namespace:RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
-        xmlns:base="clr-namespace:PeakSWC;assembly=BlazorWebViewBase"
-        xmlns:blazorwv="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf" mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
     
     <Grid>
@@ -16,8 +15,8 @@
         -->
         <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="https://localhost:443" >
             <blazor:RemoteBlazorWebView.RootComponents>
-            
-                <base:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
+
+                <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>
         </blazor:RemoteBlazorWebView>
 
