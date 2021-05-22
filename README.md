@@ -34,6 +34,11 @@ Run the Local Profile using the Run button
 
   make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project
   
+Next we will run the application remotely
+
+First, we need to publish the RemoteBlazorWebViewTutorial.WpfApp project
+  right click on the project -> Publish -> Click the Publish button
+
 Now Run the Remote Profile using the Run button
 
 A main window will come up with a URL. Click on it
