@@ -30,25 +30,16 @@ RemoteableWebViewService
 
 Open the RemoteBlazorWebViewTutorial.sln with Visual Studio
 
-Open the project settings page for the RemoteBlazorWebViewTutorial.WpfApp using Visual Studio
+Run the Local Profile using the Run button 
 
-Click on the debug tab and set the application arguments to https://localhost:443
-
-Click on the run button in Visual Studio (make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project) 
+  make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project
+  
+Now Run the Remote Profile using the Run button
 
 A main window will come up with a URL. Click on it
 
 At this point the sample blazor app will be running in a web browser!
 
-Next we will run the app locally.
-
-Stop RemoteBlazorWebViewTutorial.WpfApp if you still have it running in Visual Studio
-
-Open the project settings page for the RemoteBlazorWebViewTutorial.WpfApp using Visual Studio
-
-Click on the debug tab and clear the application arguments. i.e. Delete the "https://localhost:443"
-
-Now click on the run button in Visual Studio and the app will show the User Interface and run locally
 
 
 
