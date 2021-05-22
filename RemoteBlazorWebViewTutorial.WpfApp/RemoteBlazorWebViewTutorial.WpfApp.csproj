@@ -14,13 +14,6 @@
     <PackageId>PeakSWC.RemoteBlazorWebViewTutorial.WpfApp</PackageId>
     -->
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="publish\**" />
-    <Content Remove="publish\publish\**" />
-    <EmbeddedResource Remove="publish\**" />
-    <None Remove="publish\**" />
-    <Page Remove="publish\**" />
-  </ItemGroup>
  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="6.0.0-preview.3.21201.13" />
