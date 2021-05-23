@@ -18,19 +18,14 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
-            //TheHostPage= @"wwwroot\index.html";
-            this.DataContext = this;
+            DataContext = this;
             InitializeComponent();
-            //if (Uri != null)
-            //    RemoteBlazorWebView.ServerUri = Uri;
         }
         private Uri uri;
         public Uri Uri { get { ParseRunstring(); return uri; } set { uri = value; } }
 
         private Guid id = default;
         private Guid Id { get { ParseRunstring(); return id; } set { id = value; } }
-
-        public string TheHostPage { get; set; }= @"wwwroot\index.html";
 
         private void ParseRunstring()
         {
