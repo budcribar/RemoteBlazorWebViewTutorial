@@ -2,7 +2,7 @@
   "profiles": {
     "RemoteBlazorWebViewTutorial.WpfApp": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443"
+      "commandLineArgs": "-u=https://localhost:443 -i=9BFD9D43-0289-4A80-92D8-6E617729DA12"
     }
   }
 }

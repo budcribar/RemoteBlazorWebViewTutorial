@@ -44,6 +44,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void ParseRunstring()
         {
+            // https://localhost/app?guid=9bfd9d43-0289-4a80-92d8-6e617729da12
             // -u=https://localhost:443 -i=9BFD9D43-0289-4A80-92D8-6E617729DA12
             try
             {
