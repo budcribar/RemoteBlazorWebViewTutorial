@@ -54,7 +54,8 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
                 var rbwv = RemoteBlazorWebView;// as IBlazorWebView;
                 if (rbwv == null) return;
-                rbwv.Loaded += (x, y) => MessageBox.Show("Loaded");
+                rbwv.Loaded += (x, y) => 
+                    //MessageBox.Show("Loaded");
                 rbwv.Unloaded += (x, y) => Restart();
             }
         }

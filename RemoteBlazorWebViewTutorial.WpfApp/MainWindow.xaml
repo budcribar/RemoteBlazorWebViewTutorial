@@ -13,7 +13,7 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Uri}" Grid.ColumnSpan="2"  >
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Uri}" Id="d8d19338-3d66-4942-912b-5b3103efa177" Grid.ColumnSpan="2"  >
             <blazor:RemoteBlazorWebView.RootComponents>
                 <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>
