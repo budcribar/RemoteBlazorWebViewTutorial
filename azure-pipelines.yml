@@ -6,7 +6,7 @@ resources:
     name: budcribar/RemoteBlazorWebView
 
 trigger:
-- main
+- net31
 
 pool:
   vmImage: 'windows-latest'
