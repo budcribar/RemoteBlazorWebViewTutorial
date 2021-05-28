@@ -19,26 +19,28 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             DataContext = this;
+            ParseRunstring();
             InitializeComponent();
         }
-        private Uri uri;
-        public Uri Uri { get { ParseRunstring(); return uri; } set { uri = value; } }
 
-        private Guid id = default;
-        private Guid Id { get { ParseRunstring(); return id; } set { id = value; } }
-
+        public Uri ServerUri { get; set; }
+        public Guid Id { get; set; } = Guid.Parse("d8d19338-3d66-4942-912b-5b3103efa177");
+        public bool IsRestarting { get; set; } = false;
+   
         private void ParseRunstring()
         {
+            IsRestarting = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-r")) != null;
+
             // -u=https://localhost:443 -i=9BFD9D43-0289-4A80-92D8-6E617729DA12
             try
             {
                 var u = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-u"));
                 if (u != null)
-                   Uri = new Uri(u.Split("=")[1]);
+                   ServerUri = new Uri(u.Split("=")[1]);
             }
             catch (Exception) { }
             try
-            {
+            { 
                 var i = Environment.GetCommandLineArgs().FirstOrDefault(x => x.StartsWith("-i"));
                 if (i != null)
                     Id = Guid.Parse(i.Split("=")[1]);
@@ -62,7 +64,15 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Restart()
         {
-            Process.Start(new ProcessStartInfo { FileName = Process.GetCurrentProcess().MainModule?.FileName, Arguments = $"-u={Uri} -i={Id}" });
+            var psi = new ProcessStartInfo
+            {
+                FileName = Process.GetCurrentProcess().MainModule?.FileName
+            };
+            psi.ArgumentList.Add($"-u={ServerUri}");
+            psi.ArgumentList.Add($"-i={Id}");
+            psi.ArgumentList.Add($"-r=true");
+
+            Process.Start(psi);
             Application.Current.Dispatcher.Invoke(Close);
         }
        

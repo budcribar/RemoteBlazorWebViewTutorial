@@ -10,27 +10,33 @@
     <Configurations>Debug;Release;Remote</Configurations>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <Compile Remove="publish\**" />
+    <Content Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <Content Remove="publish\**" />
+    <EmbeddedResource Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <EmbeddedResource Remove="publish\**" />
+    <None Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <None Remove="publish\**" />
+    <Page Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <Page Remove="publish\**" />
   </ItemGroup>
  
   <ItemGroup>
+    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.5-preview4" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.5-preview4" />
+    <!--
+    
    
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="6.0.0-preview.4.21253.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.4.21253.5" />
-    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.3-preview4" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.3-preview4" />
+   -->
   
   </ItemGroup>
  
   <ItemGroup>
-    <!--
+  <!--
     <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj" />
     <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
-    -->
+  -->
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
   </ItemGroup>
 

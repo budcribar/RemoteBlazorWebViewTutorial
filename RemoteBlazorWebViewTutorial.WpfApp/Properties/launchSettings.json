@@ -10,7 +10,13 @@
       }
     },
     "Local": {
-      "commandName": "Project"
+      "commandName": "Executable",
+      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
+      "workingDirectory": "$(ProjectDir)\\publish"
+    },
+    "Debug": {
+      "commandName": "Project",
+     
     }
   }
 }
