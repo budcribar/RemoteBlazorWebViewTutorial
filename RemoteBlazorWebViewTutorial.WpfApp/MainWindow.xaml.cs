@@ -23,7 +23,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             InitializeComponent();
         }
 
-        public Uri ServerUri { get; set; }
+        public Uri? ServerUri { get; set; }
         public Guid Id { get; set; } = Guid.Parse("d8d19338-3d66-4942-912b-5b3103efa177");
         public bool IsRestarting { get; set; } = false;
    
