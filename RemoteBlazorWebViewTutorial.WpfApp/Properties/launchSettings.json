@@ -15,8 +15,13 @@
       "workingDirectory": "$(ProjectDir)\\publish"
     },
     "Debug": {
-      "commandName": "Project",
-     
+      "commandName": "Project"
+    },
+    "Cloud": {
+      "commandName": "Executable",
+      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
+      "commandLineArgs": "-u=https://webserverstransporter.com:443",
+      "workingDirectory": "$(ProjectDir)\\publish"
     }
   }
 }
