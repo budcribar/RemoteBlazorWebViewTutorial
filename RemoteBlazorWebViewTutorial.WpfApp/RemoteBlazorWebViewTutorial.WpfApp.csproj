@@ -23,8 +23,8 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.5-preview4" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.5-preview4" />
+    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.6-preview4" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.6-preview4" />
     <!--
     
    
