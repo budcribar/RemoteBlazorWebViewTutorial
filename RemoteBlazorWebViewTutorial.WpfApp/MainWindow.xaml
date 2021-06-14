@@ -14,7 +14,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=IsRestarting}" Grid.ColumnSpan="2"  >
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Command.Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}" Grid.ColumnSpan="2"  >
             <blazor:RemoteBlazorWebView.RootComponents>
                 <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>

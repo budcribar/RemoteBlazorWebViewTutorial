@@ -15,7 +15,8 @@
       "workingDirectory": "$(ProjectDir)\\publish"
     },
     "Debug": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://localhost:443"
     },
     "Cloud": {
       "commandName": "Executable",
