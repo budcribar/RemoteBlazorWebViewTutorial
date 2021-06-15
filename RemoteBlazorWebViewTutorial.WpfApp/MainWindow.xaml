@@ -9,12 +9,21 @@
         Name="TheMainWindow" Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="127*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Command.Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}" Grid.ColumnSpan="2"  >
+        <TextBlock Visibility="{Binding ElementName = TheMainWindow, Path=ShowHyperlink}">
+            
+            <Hyperlink x:Name="HyperLink"  RequestNavigate="Hyperlink_Click">
+               <TextBlock x:Name = "LinkText" />
+             </Hyperlink>
+        </TextBlock>
+
+        <blazor:RemoteBlazorWebView x:Name="RemoteBlazorWebView" Visibility="{Binding ElementName = TheMainWindow, Path=ShowWebView}" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Command.Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}"  >
             <blazor:RemoteBlazorWebView.RootComponents>
                 <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:RemoteBlazorWebView.RootComponents>
