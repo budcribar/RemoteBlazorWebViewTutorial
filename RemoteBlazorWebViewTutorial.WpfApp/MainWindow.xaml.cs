@@ -21,7 +21,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         public MainWindow()
         {
-            ShowHyperlink = Command.ServerUri == null ? Visibility.Hidden : Visibility.Visible;
+            ShowHyperlink = (Command.ServerUri == null || Command.IsRestarting) ? Visibility.Hidden : Visibility.Visible;
             ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden;       
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
