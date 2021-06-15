@@ -29,8 +29,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             DataContext = this;
             InitializeComponent();
-
-            
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -39,9 +37,8 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             {
                 this.initialized = true;
 
-                IBlazorWebView? rbwv = RemoteBlazorWebView as IBlazorWebView;
-                if (rbwv == null) return;
-                 
+                if (RemoteBlazorWebView is not IBlazorWebView rbwv) return;
+
                 if (rbwv.ServerUri != null)
                 {
                     HyperLink.NavigateUri = new Uri($"{rbwv.ServerUri}app/{rbwv.Id}");
@@ -62,8 +59,5 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             ShowHyperlink = Visibility.Hidden;
             RemotableWebWindow.StartBrowser(RemoteBlazorWebView);
         }
-
-
-
     }
 }
