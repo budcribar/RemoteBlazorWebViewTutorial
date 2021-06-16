@@ -1,28 +1,22 @@
 {
   "profiles": {
     "Remote": {
-      "commandName": "Executable",
-      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
+      "commandName": "Project",
       "commandLineArgs": "-u=https://localhost:443",
-      "workingDirectory": "$(ProjectDir)\\publish",
       "environmentVariables": {
         "Remote": "True"
       }
     },
     "Local": {
-      "commandName": "Executable",
-      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
-      "workingDirectory": "$(ProjectDir)\\publish"
+      "commandName": "Project"
     },
     "Debug": {
       "commandName": "Project",
       "commandLineArgs": "-u=https://localhost:443"
     },
     "Cloud": {
-      "commandName": "Executable",
-      "executablePath": "$(ProjectDir)\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
-      "commandLineArgs": "-u=https://webserverstransporter.com:443",
-      "workingDirectory": "$(ProjectDir)\\publish"
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://webserverstransporter.com:443"
     }
   }
 }

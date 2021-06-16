@@ -1,6 +1,6 @@
 # RemoteBlazorWebViewTutorial
 
-The RemoteBlazorWebView Wpf control allows you to interact with the user interface of a program developed with the BlazorWebView Wpf control using a web browser. This is accomplished by setting up a server (RemoteableWebService) in the cloud and pointing your browser to it. 
+The RemoteBlazorWebView Wpf control allows you to interact with the user interface of a program developed with the BlazorWebView Wpf control using a web browser. This is accomplished by setting up a server (RemoteableWebWindowService) in the cloud and pointing your browser to it. 
 
 Run the following command to install the RemoteableWebWindowService
 
@@ -8,7 +8,7 @@ Run the following command to install the RemoteableWebWindowService
 dotnet tool update -g PeakSWC.RemoteableWebViewService --version 6.*-*
 ```
 
-RemoteBlazorWebView is a drop in replacement for BlazorWebView and with a minimal change you will be able to either run your app locally or remotely control your application.
+RemoteBlazorWebView is a drop in replacement for the BlazorWebView Wpf control and with a minimal change you will be able to either run your app locally or remotely control your application.
 
 
 # How it works
@@ -36,10 +36,7 @@ Run the Local Profile using the Run button
   
 Next we will run the application remotely
 
-First, we need to publish the RemoteBlazorWebViewTutorial.WpfApp project
-  right click on the project -> Publish -> Click the Publish button
-
-Now Run the Remote Profile using the Run button
+Run the Remote Profile using the Run button
 
 A main window will come up with a URL. Click on it
 
