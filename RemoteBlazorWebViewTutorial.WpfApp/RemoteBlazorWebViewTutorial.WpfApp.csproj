@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
-    <TargetFramework>net6-windows</TargetFramework>
+    <TargetFramework>net6-windows10.0.19041</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
@@ -24,8 +25,7 @@
  
   <ItemGroup>
 
-    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.7-preview4" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.7-preview4" />
+   
     <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="1.0.0" />
     <!--
    
@@ -36,6 +36,8 @@
   </ItemGroup>
  
   <ItemGroup>
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj" />
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
    
   <!--
     <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj" />
