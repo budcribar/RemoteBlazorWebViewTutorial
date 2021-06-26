@@ -27,7 +27,7 @@
     <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.8-preview5" />
     <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.8-preview5" />
    
-    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="1.0.0" />
+    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.8-preview5" />
     <!--
    
   

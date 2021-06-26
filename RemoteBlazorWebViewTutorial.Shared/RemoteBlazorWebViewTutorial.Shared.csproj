@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
     <TargetFramework>net6</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
@@ -8,6 +8,7 @@
     <Configurations>Debug;Release;Remote</Configurations>
     
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

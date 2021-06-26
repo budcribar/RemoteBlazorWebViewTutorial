@@ -15,7 +15,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                 MessageBox.Show(error.ExceptionObject.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             };
 
-            MainWindow wnd = new MainWindow();
+            MainWindow wnd = new();
             wnd.Show();
         }
     }
