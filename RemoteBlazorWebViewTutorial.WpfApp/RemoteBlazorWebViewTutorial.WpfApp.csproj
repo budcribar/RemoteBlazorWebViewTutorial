@@ -24,10 +24,10 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.8-preview5" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.8-preview5" />
+    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.9-preview5" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.9-preview5" />
    
-    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.8-preview5" />
+    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
     <!--
    
   

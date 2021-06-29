@@ -18,9 +18,9 @@
 
   <ItemGroup>
     
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.8-preview5" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.9-preview5" />
     
-    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.8-preview5" />
+    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
     
     <!--
     <ProjectReference Include="..\RemoteBlazorWebView.Form\Remote.WebView.WindowsForms.csproj" />
