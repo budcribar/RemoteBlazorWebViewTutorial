@@ -1,15 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
+    <GenerateEmbeddedFilesManifest Condition="'$(Configuration)' == 'Embedded'">true</GenerateEmbeddedFilesManifest>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
+    <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6.0-windows10.0.19041</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <IsShippingPackage>false</IsShippingPackage>
     <Nullable>enable</Nullable>
+    <DeleteExistingFiles>True</DeleteExistingFiles>
+    <Configurations>Debug;Release;Embedded</Configurations>
+    
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Development</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
     <Compile Remove="publish\**" />
     <Content Remove="publish\**" />
     <EmbeddedResource Remove="publish\**" />
@@ -17,18 +29,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.9-preview5" />
-    
-    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
-    
-    <!--
-    <ProjectReference Include="..\RemoteBlazorWebView.Form\Remote.WebView.WindowsForms.csproj" />
-    -->
+    <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
+
+    <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Form\Remote.WebView.WindowsForms.csproj" />   
+    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.9-preview5" />
+   
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.5.21301.17" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\**">
+    <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

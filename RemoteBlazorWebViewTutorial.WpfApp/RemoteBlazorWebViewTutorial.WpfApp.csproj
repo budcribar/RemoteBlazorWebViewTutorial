@@ -1,53 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
+    <GenerateEmbeddedFilesManifest Condition="'$(Configuration)' == 'Embedded'">true</GenerateEmbeddedFilesManifest>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
+    <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6-windows10.0.19041</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
-    <Nullable>enable</Nullable>
     <IsShippingPackage>false</IsShippingPackage>
-    <RazorLangVersion>3.0</RazorLangVersion>
-    <Configurations>Debug;Release;Remote</Configurations>
+    <Nullable>enable</Nullable>
+    <DeleteExistingFiles>True</DeleteExistingFiles>
+    <Configurations>Debug;Release;Remote;Embedded</Configurations>
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Development</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
+    <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </EmbeddedResource>
     <Compile Remove="publish\**" />
-    <Content Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <Content Remove="publish\**" />
-    <EmbeddedResource Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <EmbeddedResource Remove="publish\**" />
-    <None Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
     <None Remove="publish\**" />
-    <Page Remove="bin\Debug\net6-windows\wwwroot\_content\**" />
-    <Page Remove="publish\**" />
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="PeakSWC.RemoteableWebView" Version="6.0.9-preview5" />
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.9-preview5" />
-   
-    <PackageReference Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
-    <!--
-   
-  
-   -->
-  
+    <None Include="embedded\wwwroot\_content\RemoteBlazorWebViewTutorial.Shared\sample-data\weather.json" />
   </ItemGroup>
  
   <ItemGroup>
-    
-   
-  <!--
-    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj" />
-    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
-     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
-  -->
-   
+    <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
+    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.9-preview5" />
+
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.5.21301.17" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\**">
+    <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
