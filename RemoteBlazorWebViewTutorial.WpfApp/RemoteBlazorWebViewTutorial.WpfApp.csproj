@@ -49,9 +49,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="publishEmbedded\" />
-  </ItemGroup>
   
 </Project>
