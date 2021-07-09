@@ -13,27 +13,31 @@
     <IsShippingPackage>false</IsShippingPackage>
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
+    <PublishSingleFile>True</PublishSingleFile>
     <Configurations>Debug;Release;Remote;Embedded</Configurations>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Development</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+  
   <ItemGroup>
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
     <Compile Remove="publish\**" />
+    <Content Remove="embedded\**" />
     <Content Remove="publish\**" />
     <EmbeddedResource Remove="publish\**" />
+    <None Remove="embedded\**" />
     <None Remove="publish\**" />
+    <Page Remove="embedded\**" />
   </ItemGroup>
  
   <ItemGroup>
-    <None Include="embedded\wwwroot\_content\RemoteBlazorWebViewTutorial.Shared\sample-data\weather.json" />
-  </ItemGroup>
- 
-  <ItemGroup>
+    <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.9-preview5" />
 
@@ -44,6 +48,10 @@
     <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="publishEmbedded\" />
   </ItemGroup>
   
 </Project>

@@ -12,10 +12,12 @@
     <IsShippingPackage>false</IsShippingPackage>
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
+    <PublishSingleFile>True</PublishSingleFile>
     <Configurations>Debug;Release;Embedded</Configurations>
     
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Development</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
