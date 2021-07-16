@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
         xmlns:blazor="clr-namespace:PeakSWC.RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
+        xmlns:root="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf"
         Name="TheMainWindow" Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
 
     <Grid>
@@ -23,9 +24,9 @@
         </TextBlock>
 
         <blazor:BlazorWebView x:Name="RemoteBlazorWebView" Visibility="{Binding ElementName = TheMainWindow, Path=ShowWebView}" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Command.Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}"  >
-            <blazor:BlazorWebView.RootComponents>
-                <blazor:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
-            </blazor:BlazorWebView.RootComponents>
+            <root:BlazorWebView.RootComponents>
+                <root:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
+            </root:BlazorWebView.RootComponents>
         </blazor:BlazorWebView>
     </Grid>
 </Window>

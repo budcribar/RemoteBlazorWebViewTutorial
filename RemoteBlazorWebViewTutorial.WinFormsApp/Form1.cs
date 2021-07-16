@@ -6,7 +6,7 @@ using RemoteBlazorWebViewTutorial.Shared;
 using System;
 using System.Net.Http;
 using System.Windows.Forms;
-using PeakSWC.RemoteBlazorWebView.WindowsForms;
+using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 
 namespace BlazorWinFormsApp
 {

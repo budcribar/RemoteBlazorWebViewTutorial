@@ -15,7 +15,7 @@
     <PublishSingleFile>True</PublishSingleFile>
     <Configurations>Debug;Release;Embedded</Configurations>
     
-    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Development</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
@@ -24,14 +24,19 @@
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
-    <Compile Remove="publish\**" />
-    <Content Remove="publish\**" />
-    <EmbeddedResource Remove="publish\**" />
-    <None Remove="publish\**" />
+   
+    <Compile Remove="publish*\**" />
+    <Content Remove="embedded\wwwroot\**" />
+    <Content Remove="publish*\**" />
+    
+    <EmbeddedResource Remove="publish*\**" />
+    
+    <None Remove="publish*\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.705.50" />
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.9-preview5" />
 
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Form\Remote.WebView.WindowsForms.csproj" />   
@@ -41,9 +46,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms">
+      <HintPath>..\..\RemoteBlazorWebView\src\microsoft\Microsoft.AspNetCore.Components.WebView.WindowsForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="embedded\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\budcr\.nuget\packages\microsoft.web.webview2\1.0.705.50\build\\..\runtimes\win-x64\native\WebView2Loader.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\budcr\.nuget\packages\microsoft.web.webview2\1.0.705.50\build\\..\runtimes\win-arm\native\WebView2Loader.dll" />
   </ItemGroup>
 
 </Project>
