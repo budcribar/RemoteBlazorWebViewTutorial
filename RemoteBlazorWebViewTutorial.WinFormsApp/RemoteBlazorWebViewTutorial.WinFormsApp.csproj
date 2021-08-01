@@ -37,6 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Condition="'$(BuildMode)' == 'Development'"  Include="..\..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj" />
+    
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.11-preview6" />
 

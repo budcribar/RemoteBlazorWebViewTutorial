@@ -37,18 +37,23 @@ namespace BlazorWinFormsApp
             // blazorWebView1
             // 
             this.blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blazorWebView1.Group = "test";
+           
+            this.blazorWebView1.IsRestarting = false;
             this.blazorWebView1.Location = new System.Drawing.Point(0, 0);
             this.blazorWebView1.Margin = new System.Windows.Forms.Padding(0);
             this.blazorWebView1.Name = "blazorWebView1";
-            this.blazorWebView1.Size = new System.Drawing.Size(1008, 729);
+            this.blazorWebView1.Size = new System.Drawing.Size(1872, 1555);
             this.blazorWebView1.TabIndex = 20;
+            this.blazorWebView1.WebViewManager = null;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(64, 28);
+            this.linkLabel1.Location = new System.Drawing.Point(119, 60);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(60, 15);
+            this.linkLabel1.Size = new System.Drawing.Size(121, 32);
             this.linkLabel1.TabIndex = 21;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "linkLabel1";
@@ -56,12 +61,12 @@ namespace BlazorWinFormsApp
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1872, 1555);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.blazorWebView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Form1";
             this.Text = "Blazor Web in Windows Forms";
             this.ResumeLayout(false);

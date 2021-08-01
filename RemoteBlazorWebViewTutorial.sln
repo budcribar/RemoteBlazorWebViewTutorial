@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remote.WebView.WindowsForms
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView.Wpf", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj", "{41C5E925-8324-4FC3-A1CF-85E251A4776B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteableWebView", "..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj", "{E44DB8C9-9C25-4201-8806-E05788B95FBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,18 @@ Global
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.ActiveCfg = Release|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.Build.0 = Release|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|x64.ActiveCfg = Debug|x64
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|x64.Build.0 = Debug|x64
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|Any CPU.ActiveCfg = Embedded|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|Any CPU.Build.0 = Embedded|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|x64.ActiveCfg = Embedded|x64
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|x64.Build.0 = Embedded|x64
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|x64.ActiveCfg = Release|x64
+		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

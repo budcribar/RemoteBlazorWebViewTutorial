@@ -19,13 +19,15 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         public MainWindow()
         {
             ShowHyperlink = (Command.ServerUri == null || Command.IsRestarting) ? Visibility.Hidden : Visibility.Visible;
-            ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden;
+            ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden; 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             DataContext = this;
             InitializeComponent();
+
+            RemoteBlazorWebView.Id = Command.Id;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -56,7 +58,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         private void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
         {
             ShowHyperlink = Visibility.Hidden;
-            RemotableWebWindow.StartBrowser(RemoteBlazorWebView);
+            RemoteableWebView.StartBrowser(RemoteBlazorWebView);
         }
     }
 }

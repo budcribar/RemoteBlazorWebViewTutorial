@@ -21,8 +21,8 @@
                <TextBlock x:Name = "LinkText" />
              </Hyperlink>
         </TextBlock>
-
-        <blazor:BlazorWebView x:Name="RemoteBlazorWebView" Visibility="{Binding ElementName = TheMainWindow, Path=ShowWebView}" HostPage="wwwroot\index.html"  Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Id="{Binding ElementName = TheMainWindow, Path=Command.Id}" IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}"  >
+       
+        <blazor:BlazorWebView x:Name="RemoteBlazorWebView" Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUri}" Visibility="{Binding ElementName = TheMainWindow, Path=ShowWebView}" HostPage="wwwroot\index.html"   IsRestarting="{Binding ElementName=TheMainWindow, Path=Command.IsRestarting}" Group="test"  >
             <blazor:BlazorWebView.RootComponents>
                 <blazor:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:BlazorWebView.RootComponents>
