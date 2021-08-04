@@ -7,7 +7,7 @@
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6-windows10.0.19041</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <IsShippingPackage>false</IsShippingPackage>
@@ -41,7 +41,7 @@
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.12-preview6" />
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.12-preview6" />
 
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.6.21355.2" />
+    <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.6.21355.2" />
   </ItemGroup>
 
   <ItemGroup>
