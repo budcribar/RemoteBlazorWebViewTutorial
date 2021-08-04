@@ -17,11 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial.WinFormsApp", "RemoteBlazorWebViewTutorial.WinFormsApp\RemoteBlazorWebViewTutorial.WinFormsApp.csproj", "{078430DA-FE42-4A12-BF4A-CE1B771F7271}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remote.WebView.WindowsForms", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.Form\Remote.WebView.WindowsForms.csproj", "{20C6EE79-49E6-49E5-AE98-30E6EBE81407}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView.Wpf", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj", "{41C5E925-8324-4FC3-A1CF-85E251A4776B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteableWebView", "..\RemoteBlazorWebView\src\RemoteableWebWindow\RemoteableWebView.csproj", "{E44DB8C9-9C25-4201-8806-E05788B95FBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,18 +65,6 @@ Global
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|Any CPU.Build.0 = Release|Any CPU
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|x64.ActiveCfg = Release|Any CPU
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|x64.Build.0 = Release|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Debug|x64.Build.0 = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Embedded|Any CPU.ActiveCfg = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Embedded|Any CPU.Build.0 = Debug|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Embedded|x64.ActiveCfg = Embedded|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Embedded|x64.Build.0 = Embedded|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Release|x64.ActiveCfg = Release|Any CPU
-		{20C6EE79-49E6-49E5-AE98-30E6EBE81407}.Release|x64.Build.0 = Release|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -93,18 +77,6 @@ Global
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.ActiveCfg = Release|Any CPU
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.Build.0 = Release|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|x64.ActiveCfg = Debug|x64
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Debug|x64.Build.0 = Debug|x64
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|Any CPU.ActiveCfg = Embedded|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|Any CPU.Build.0 = Embedded|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|x64.ActiveCfg = Embedded|x64
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Embedded|x64.Build.0 = Embedded|x64
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|x64.ActiveCfg = Release|x64
-		{E44DB8C9-9C25-4201-8806-E05788B95FBA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
