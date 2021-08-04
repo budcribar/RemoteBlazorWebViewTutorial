@@ -40,7 +40,7 @@
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteableWebView\RemoteableWebView.csproj" />
     
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
-    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.11-preview6" />
+    <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.12-preview6" />
 
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj" />   
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.12-preview6" />
