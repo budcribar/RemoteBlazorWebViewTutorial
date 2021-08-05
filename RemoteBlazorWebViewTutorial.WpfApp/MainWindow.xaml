@@ -7,6 +7,10 @@
         xmlns:blazor="clr-namespace:PeakSWC.RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
         Name="TheMainWindow" Title="MainWindow" Height="768" Width="1024" ContentRendered="Window_ContentRendered" >
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,9 +19,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Visibility="{Binding ElementName = TheMainWindow, Path=ShowHyperlink}">
-            
-            <Hyperlink x:Name="HyperLink"  RequestNavigate="Hyperlink_Click">
+        <TextBlock Visibility="{Binding Path=HyperLinkVisible, Converter={StaticResource BoolToVisConverter} }">
+           
+            <Hyperlink  x:Name="HyperLink"  RequestNavigate="Hyperlink_Click">
                <TextBlock x:Name = "LinkText" />
              </Hyperlink>
         </TextBlock>

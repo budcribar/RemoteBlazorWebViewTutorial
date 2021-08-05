@@ -12,21 +12,20 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
     {
         private bool initialized = false;
         public RunString Command { get; set; } = new RunString();
-        public Visibility ShowHyperlink { get; set; }
         public Visibility ShowWebView { get; set; }
-
+        public ViewModel ViewModel { get; set; } = new();
 
         public MainWindow()
         {
-            ShowHyperlink = (Command.ServerUri == null || Command.IsRestarting) ? Visibility.Hidden : Visibility.Visible;
+            ViewModel.HyperLinkVisible = (Command.ServerUri != null && !Command.IsRestarting);
             ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden; 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
-            DataContext = this;
+            DataContext = ViewModel;
             InitializeComponent();
-
+           
             RemoteBlazorWebView.Id = Command.Id;
         }
 
@@ -44,7 +43,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                     LinkText.Text = $"{rbwv.ServerUri}app/{rbwv.Id}";
                 }
 
-                rbwv.Unloaded += (x, y) =>
+                rbwv.Unloaded += (_, _) =>
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -55,10 +54,11 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             }
         }
 
-        private void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
+        private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
         {
-            ShowHyperlink = Visibility.Hidden;
-            RemoteableWebView.StartBrowser(RemoteBlazorWebView);
+            this.ViewModel.HyperLinkVisible = false;
+          
+            await RemoteableWebView.StartBrowser(RemoteBlazorWebView);
         }
     }
 }
