@@ -17,7 +17,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         public MainWindow()
         {
-            ViewModel.HyperLinkVisible = (Command.ServerUri != null && !Command.IsRestarting);
+            ViewModel.HyperLinkVisible = (Command.ServerUri != null && !Command.IsRestarting) ? Visibility.Visible : Visibility.Hidden;
             ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden; 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
@@ -56,7 +56,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
         {
-            this.ViewModel.HyperLinkVisible = false;
+            this.ViewModel.HyperLinkVisible = Visibility.Hidden;
           
             await RemoteableWebView.StartBrowser(RemoteBlazorWebView);
         }

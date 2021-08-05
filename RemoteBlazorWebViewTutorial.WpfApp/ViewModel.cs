@@ -4,14 +4,15 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        private bool hyperLinkVisible = false;
+        private Visibility hyperLinkVisible = Visibility.Hidden;
 
-        public bool HyperLinkVisible
+        public Visibility HyperLinkVisible
         {
             get
             {
