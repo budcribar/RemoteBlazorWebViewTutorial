@@ -50,10 +50,10 @@ namespace BlazorWinFormsApp
 
         }
 
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabel1.Visible = false;
-            blazorWebView1.StartBrowser();
+            await blazorWebView1.StartBrowser();
         }
 
     }

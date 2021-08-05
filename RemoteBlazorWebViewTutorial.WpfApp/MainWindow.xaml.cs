@@ -57,8 +57,8 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
         {
             this.ViewModel.HyperLinkVisible = Visibility.Hidden;
-          
-            await RemoteableWebView.StartBrowser(RemoteBlazorWebView);
+
+            await RemoteBlazorWebView.StartBrowser();
         }
     }
 }
