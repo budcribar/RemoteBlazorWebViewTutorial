@@ -46,6 +46,8 @@
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.12-preview6" />
    
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.6.21355.2" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-preview.6.21352.12" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0-preview.6.21352.12" />
   </ItemGroup>
 
   <ItemGroup>

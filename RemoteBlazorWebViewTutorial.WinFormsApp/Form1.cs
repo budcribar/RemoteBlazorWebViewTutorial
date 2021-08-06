@@ -7,6 +7,10 @@ using System;
 using System.Net.Http;
 using System.Windows.Forms;
 using PeakSWC.RemoteBlazorWebView.WindowsForms;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.IO;
+using Microsoft.Extensions.Options;
 
 namespace BlazorWinFormsApp
 {
@@ -15,19 +19,37 @@ namespace BlazorWinFormsApp
 
         public Form1()
         {
+            var switchMappings = new Dictionary<string, string>()
+           {
+               { "-u", "AppSettings:ServerUrl" },
+               { "-i", "AppSettings:Id" },
+               { "-r", "AppSettings:IsRestarting" },
+           };
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddCommandLine(Environment.GetCommandLineArgs(), switchMappings);
+
+            var Configuration = builder.Build();
+
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
+            serviceCollection.Configure<AppSettings>(Configuration!.GetSection(nameof(AppSettings)));
             InitializeComponent();
 
-            var runString = new RunString();
-            blazorWebView1.ServerUri = runString.ServerUri;
+            blazorWebView1.Services = serviceCollection.BuildServiceProvider();
+
+            var runString = blazorWebView1.Services.GetRequiredService<IOptions<AppSettings>>().Value;
+
+            blazorWebView1.ServerUri = runString.ServerUrl;
             blazorWebView1.Id = runString.Id;
             blazorWebView1.IsRestarting = runString.IsRestarting;
             blazorWebView1.HostPage = @"wwwroot\index.html";
-            blazorWebView1.Services = serviceCollection.BuildServiceProvider();
+            
             blazorWebView1.RootComponents.Add<App>("#app");
-            if (runString.ServerUri == null)
+            if (runString.ServerUrl == null)
             {
                 blazorWebView1.Visible = true;
                 linkLabel1.Visible = false;

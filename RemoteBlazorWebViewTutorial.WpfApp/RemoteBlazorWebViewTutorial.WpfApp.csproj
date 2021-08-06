@@ -33,15 +33,25 @@
     <None Remove="publish\**" />
     <Page Remove="embedded\**" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="appsettings.json.save" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="appsettings.json.save" />
+  </ItemGroup>
  
   <ItemGroup>
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0-preview.6.21352.12" />
     
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.12-preview6" />
     <PackageReference Condition="'$(BuildMode)' == 'Release'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.12-preview6" />
 
     <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.6.21355.2" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-preview.6.21352.12" />
   </ItemGroup>
 
   <ItemGroup>

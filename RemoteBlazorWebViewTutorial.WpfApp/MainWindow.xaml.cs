@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using PeakSWC.RemoteableWebView;
 using RemoteBlazorWebViewTutorial.Shared;
 using System;
@@ -11,14 +12,15 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
     public partial class MainWindow : Window
     {
         private bool initialized = false;
-        public RunString Command { get; set; } = new RunString();
+        public AppSettings Command { get; init; }
         public Visibility ShowWebView { get; set; }
         public ViewModel ViewModel { get; set; } = new();
 
-        public MainWindow()
+        public MainWindow(IOptions<AppSettings> settings)
         {
-            ViewModel.HyperLinkVisible = (Command.ServerUri != null && !Command.IsRestarting) ? Visibility.Visible : Visibility.Hidden;
-            ShowWebView = Command.ServerUri == null ? Visibility.Visible : Visibility.Hidden; 
+            Command = settings.Value;
+            ViewModel.HyperLinkVisible = (Command.ServerUrl != null && !Command.IsRestarting) ? Visibility.Visible : Visibility.Hidden;
+            ShowWebView = Command.ServerUrl == null ? Visibility.Visible : Visibility.Hidden; 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
