@@ -5,6 +5,7 @@ using RemoteBlazorWebViewTutorial.Shared;
 using System;
 using System.Net.Http;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
@@ -61,6 +62,12 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             this.ViewModel.HyperLinkVisible = Visibility.Hidden;
 
             await RemoteBlazorWebView.StartBrowser();
+        }
+
+        private void LinkText_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control)
+                Clipboard.SetText(HyperLink.NavigateUri.ToString());
         }
     }
 }
