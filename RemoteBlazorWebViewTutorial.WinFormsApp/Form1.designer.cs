@@ -70,7 +70,7 @@ namespace BlazorWinFormsApp
             this.Name = "Form1";
             this.Text = "Blazor Web in Windows Forms";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
+         
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -85,12 +85,5 @@ namespace BlazorWinFormsApp
             if (e.KeyCode == Keys.C && e.Control)
                 Clipboard.SetText(linkLabel1.Text);
         }
-
-        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.C && e.Control)
-                Clipboard.SetText(linkLabel1.Text);
-
-        }
     }
 }
