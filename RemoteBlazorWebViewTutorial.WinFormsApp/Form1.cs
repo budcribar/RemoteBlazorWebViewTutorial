@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
+using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace BlazorWinFormsApp
 {
@@ -78,5 +80,17 @@ namespace BlazorWinFormsApp
             await blazorWebView1.StartBrowser();
         }
 
+        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.C && e.Control)
+                Clipboard.SetText(linkLabel1.Text);
+        }
+
+        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.C && e.Control)
+                Clipboard.SetText(linkLabel1.Text);
+
+        }
     }
 }
