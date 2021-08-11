@@ -32,6 +32,5 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
     }
 }
