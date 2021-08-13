@@ -17,6 +17,11 @@
     "Cloud": {
       "commandName": "Project",
       "commandLineArgs": "-u=https://webserverstransporter.com:443"
+    },
+    "Publish": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WpfApp\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
+      "commandLineArgs": "-u=https://localhost"
     }
   }
 }
