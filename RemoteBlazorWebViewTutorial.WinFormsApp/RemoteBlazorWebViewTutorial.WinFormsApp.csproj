@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
     <PublishSingleFile>True</PublishSingleFile>
-    <Configurations>Debug;Release;Embedded</Configurations>
+    <Configurations>Debug;Release;Embedded;NoAuthorization</Configurations>
     
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>

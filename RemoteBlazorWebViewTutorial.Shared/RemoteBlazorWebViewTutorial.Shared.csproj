@@ -7,7 +7,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;Remote;Embedded</Configurations>
+    <Configurations>Debug;Release;Remote;Embedded;NoAuthorization</Configurations>
     
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
