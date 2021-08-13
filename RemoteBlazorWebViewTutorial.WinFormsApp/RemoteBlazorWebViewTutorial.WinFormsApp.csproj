@@ -7,6 +7,7 @@
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6.0-windows10.0.19041</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <IsShippingPackage>false</IsShippingPackage>
@@ -18,6 +19,7 @@
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <Platforms>AnyCPU;x64</Platforms>
+   
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|AnyCPU'">
     <Optimize>True</Optimize>

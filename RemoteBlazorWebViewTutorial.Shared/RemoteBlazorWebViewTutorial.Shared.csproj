@@ -4,6 +4,7 @@
     <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6.0-windows10.0.19041</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -12,6 +13,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
     <Platforms>AnyCPU;x64</Platforms>
+    <MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
+    <Authors>budcribar</Authors>
+    <Company>Peak Software Consulting, LLC</Company>
   </PropertyGroup>
 
   <ItemGroup>
