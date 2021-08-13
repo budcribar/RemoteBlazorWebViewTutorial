@@ -14,9 +14,10 @@
       "commandName": "Project",
       "commandLineArgs": "-u=https://webserverstransporter.com:443"
     },
-    "Temp": {
+    "Publish": {
       "commandName": "Executable",
-      "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WinFormsApp\\publish\\RemoteBlazorWebViewTutorial.WinFormsApp.exe"
+      "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WinFormsApp\\publish\\RemoteBlazorWebViewTutorial.WinFormsApp.exe",
+      "commandLineArgs": "-u=https://localhost"
     }
   }
 }
