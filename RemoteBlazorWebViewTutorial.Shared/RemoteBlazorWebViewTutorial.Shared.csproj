@@ -7,6 +7,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <Configurations>Debug;Release;Remote;Embedded;NoAuthorization</Configurations>
     <Platforms>x64</Platforms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
