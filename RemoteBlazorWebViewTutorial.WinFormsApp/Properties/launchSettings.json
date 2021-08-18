@@ -8,7 +8,7 @@
     },
     "Remote": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443"
+      "commandLineArgs": "-u=https://localhost:5001"
     },
     "Cloud": {
       "commandName": "Project",
@@ -17,7 +17,7 @@
     "Publish": {
       "commandName": "Executable",
       "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WinFormsApp\\publish\\RemoteBlazorWebViewTutorial.WinFormsApp.exe",
-      "commandLineArgs": "-u=https://localhost"
+      "commandLineArgs": "-u=https://localhost:5001"
     }
   }
 }
