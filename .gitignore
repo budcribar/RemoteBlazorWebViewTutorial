@@ -353,3 +353,4 @@ MigrationBackup/
 /RemoteBlazorWebViewTutorial.WinFormsApp/embedded
 /RemoteBlazorWebViewTutorial.WinFormsApp/publishEmbedded
 /RemoteBlazorWebViewTutorial.WpfApp/publishEmbedded
+/RemoteBlazorWebViewTutorial.WpfApp/MSBuild_Logs/MSBuild_pid-29684_82326b8cc1734cbf89fd523f68f1d826.failure.txt
