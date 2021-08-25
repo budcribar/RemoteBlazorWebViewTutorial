@@ -16,27 +16,14 @@
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
-    <Platforms>x64</Platforms>
-   
+    <Platforms>x64</Platforms> 
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|AnyCPU'">
-    <Optimize>True</Optimize>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|x64'">
-    <Optimize>True</Optimize>
-  </PropertyGroup>
-
+  
   <ItemGroup>
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
-    <Compile Remove="publish\**" />
-    <Content Remove="publish\**" />
-    <EmbeddedResource Remove="publish\**" />
-    <None Remove="publish\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteableWebView\RemoteableWebView.csproj" />
     
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
@@ -54,10 +41,6 @@
     <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="publishEmbedded\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

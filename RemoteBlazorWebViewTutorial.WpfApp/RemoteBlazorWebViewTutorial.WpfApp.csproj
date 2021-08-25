@@ -25,23 +25,11 @@
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
-    <Compile Remove="publish\**" />
-    <Content Remove="embedded\**" />
-    <Content Remove="publish\**" />
-    <EmbeddedResource Remove="publish\**" />
-    <None Remove="embedded\**" />
-    <None Remove="publish\**" />
-    <Page Remove="embedded\**" />
+  
+   
   </ItemGroup>
   
-  <ItemGroup>
-    <None Remove="appsettings.json.save" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Content Include="appsettings.json.save" />
-  </ItemGroup>
- 
+   
   <ItemGroup>
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Development'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
@@ -58,10 +46,6 @@
     <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="publishEmbedded\" />
   </ItemGroup>
   
 </Project>
