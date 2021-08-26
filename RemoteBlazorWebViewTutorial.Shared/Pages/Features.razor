@@ -1,0 +1,72 @@
+﻿@page "/features" 
+@using System.Diagnostics
+@using System.IO 
+
+@inject IJSRuntime jsRuntime
+
+<h3>Features</h3>
+
+<ul>
+    <li style="margin-bottom:10px">
+        <input type="text" @bind="message" />
+         <button @onclick="ShowAlert">Invoke JS Alert Method</button>
+	</li>
+    <li>
+        <button @onclick="ReadJSStream">Read from JS Stream</button>
+	</li>
+</ul>
+
+
+@if(Busy)
+{
+    <div class="spinner"></div>
+}
+@if (done)
+{
+    <div >Transfer rate is @mbps.ToString("F2") MB/sec</div>
+    <div >File transfer succeeded: @passed</div>
+}
+
+@code {
+    string message = string.Empty;
+    bool Busy { get; set; } = false;
+    bool done = false;
+    double mbps = 0.0;
+    bool passed = true;
+
+    private async void ReadJSStream()
+    {
+        Busy = true;
+        done = false;
+        StateHasChanged();
+
+        var outputPath = Path.Combine(Path.GetTempPath(), "file.txt");
+        using var outputFileStream = File.OpenWrite(outputPath);
+
+        Stopwatch sw = new();
+        sw.Start();
+        var dataReference = await jsRuntime.InvokeAsync<IJSStreamReference>("jsToDotNetStreamReturnValue");
+        using var dataReferenceStream = await dataReference.OpenReadStreamAsync(maxAllowedSize: 10_000_000);
+        // Write JS Stream to disk
+        await dataReferenceStream.CopyToAsync(outputFileStream);
+        outputFileStream.Close();
+
+        mbps = 10.0 / sw.Elapsed.TotalSeconds;
+        Busy = false;
+        done = true;
+        StateHasChanged();
+
+        var bytes = File.ReadAllBytes(outputPath);
+       
+        for (int i = 0; i < bytes.Length; i++)
+            if (bytes[i] != i % 256)
+                passed = false;
+
+        StateHasChanged();
+    }
+
+	private void ShowAlert()
+    {
+        jsRuntime.InvokeVoidAsync("alert", message);
+    }
+}

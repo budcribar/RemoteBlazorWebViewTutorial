@@ -5,10 +5,11 @@
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net6.0-windows</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <Configurations>Debug;Release;Remote;Embedded;NoAuthorization</Configurations>
-    
+    <Platforms>x64</Platforms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
     <Platforms>AnyCPU;x64</Platforms>

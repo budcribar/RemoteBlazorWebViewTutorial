@@ -6,17 +6,12 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-@inject IJSRuntime jsRuntime
 
-<input type="text" @bind="message" />
-<button @onclick="ShowAlert">Show Alert</button>
+
 
 @code {
 
-    string message = string.Empty;
+  
 
-    private void ShowAlert()
-    {
-        jsRuntime.InvokeVoidAsync("alert", message);
-    }
+    
 }
