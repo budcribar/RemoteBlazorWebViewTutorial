@@ -2,7 +2,7 @@
   "profiles": {
     "Remote": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443",
+      "commandLineArgs": "-u=https://localhost:5001",
       "environmentVariables": {
         "Remote": "True"
       }
@@ -12,7 +12,7 @@
     },
     "Debug": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443"
+      "commandLineArgs": "-u=https://localhost:5001"
     },
     "Cloud": {
       "commandName": "Project",
