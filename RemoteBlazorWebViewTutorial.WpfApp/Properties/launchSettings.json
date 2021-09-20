@@ -2,7 +2,7 @@
   "profiles": {
     "Remote": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443",
+      "commandLineArgs": "-u=https://localhost:5001",
       "environmentVariables": {
         "Remote": "True"
       }
@@ -12,7 +12,7 @@
     },
     "Debug": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://localhost:443"
+      "commandLineArgs": "-u=https://localhost:5001"
     },
     "Cloud": {
       "commandName": "Project",
@@ -21,7 +21,7 @@
     "Publish": {
       "commandName": "Executable",
       "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WpfApp\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
-      "commandLineArgs": "-u=https://localhost"
+      "commandLineArgs": "-u=https://localhost:5001"
     }
   }
 }
