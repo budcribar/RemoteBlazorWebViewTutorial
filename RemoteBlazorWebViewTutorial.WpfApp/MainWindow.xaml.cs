@@ -48,7 +48,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
                 rbwv.Unloaded += (_, _) =>
                 {
-                    Application.Current.Dispatcher.Invoke(() =>
+                    Application.Current?.Dispatcher.Invoke(() =>
                     {
                         rbwv.Restart();
                         Close();

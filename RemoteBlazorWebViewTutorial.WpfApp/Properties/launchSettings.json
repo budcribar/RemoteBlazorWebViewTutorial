@@ -21,7 +21,7 @@
     "Publish": {
       "commandName": "Executable",
       "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WpfApp\\publish\\RemoteBlazorWebViewTutorial.WpfApp.exe",
-      "commandLineArgs": "-u=https://localhost"
+      "commandLineArgs": "-u=https://localhost:5001"
     }
   }
 }
