@@ -13,6 +13,7 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using System.Windows.Documents;
 using System.Windows.Input;
+using PeakSWC.RemoteWebView;
 
 namespace BlazorWinFormsApp
 {
@@ -61,10 +62,10 @@ namespace BlazorWinFormsApp
                 linkLabel1.Visible = !blazorWebView1.IsRestarting;
                 linkLabel1.Text = $"{blazorWebView1.ServerUri}app/{blazorWebView1.Id}";
             }
-            blazorWebView1.Unloaded += BlazorWebView1_Unloaded;
+            blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
         }
 
-        private void BlazorWebView1_Unloaded(object? sender, string e)
+        private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
         {
             blazorWebView1.BeginInvoke((Action)(() =>
             {
