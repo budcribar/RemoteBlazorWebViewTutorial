@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using PeakSWC.RemoteableWebView;
+using PeakSWC.RemoteWebView;
 using RemoteBlazorWebViewTutorial.Shared;
 using System;
 using System.Net.Http;
