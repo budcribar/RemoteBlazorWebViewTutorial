@@ -20,7 +20,7 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 Install the RemotableWebViewService
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 6.*-* --ignore-failed-sources
+dotnet tool update -g PeakSWC.RemoteWebViewService --version 6.*-* 
 ```
 
 Start the server
