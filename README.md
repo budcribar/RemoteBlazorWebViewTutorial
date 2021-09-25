@@ -18,7 +18,9 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 # Demo Quick Start
 
-Install the RemotableWebViewService
+*** Note the name change to RemoteWebViewService
+
+Install the RemoteWebViewService
 ```console
 dotnet tool update -g PeakSWC.RemoteWebViewService --version 6.*-* 
 ```

@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView.Wpf", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj", "{41C5E925-8324-4FC3-A1CF-85E251A4776B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteableWebView", "..\RemoteBlazorWebView\src\RemoteableWebView\RemoteableWebView.csproj", "{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteWebView", "..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj", "{CE251DBA-74E0-4D0F-93D6-4969DA94A205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,19 +94,18 @@ Global
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|Any CPU.Build.0 = Release|x64
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.ActiveCfg = Release|x64
 		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.Build.0 = Release|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Debug|x64.ActiveCfg = Debug|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Debug|x64.Build.0 = Debug|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Embedded|Any CPU.ActiveCfg = Embedded|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Embedded|Any CPU.Build.0 = Embedded|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Embedded|x64.ActiveCfg = Embedded|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Embedded|x64.Build.0 = Embedded|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.NoAuthorization|Any CPU.ActiveCfg = NoAuthorization|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.NoAuthorization|x64.ActiveCfg = NoAuthorization|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.NoAuthorization|x64.Build.0 = NoAuthorization|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Release|Any CPU.ActiveCfg = Release|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Release|x64.ActiveCfg = Release|x64
-		{113D45F5-2DCB-42E6-B2D2-577BF6F438B1}.Release|x64.Build.0 = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|x64.ActiveCfg = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|x64.Build.0 = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|Any CPU.ActiveCfg = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|x64.ActiveCfg = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|x64.Build.0 = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|Any CPU.ActiveCfg = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|x64.ActiveCfg = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|x64.Build.0 = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|Any CPU.ActiveCfg = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|x64.ActiveCfg = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
