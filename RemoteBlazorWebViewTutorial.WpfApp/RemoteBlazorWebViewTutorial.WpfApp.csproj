@@ -31,6 +31,7 @@
   
    
   <ItemGroup>
+    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     
