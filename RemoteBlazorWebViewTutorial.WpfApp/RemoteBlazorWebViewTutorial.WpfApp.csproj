@@ -33,11 +33,11 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
 
-    <Content Condition="'$(Configuration)' != 'Embedded'"  Include="wwwroot\**">
+    <Content Condition="'$(Configuration)' != 'Embedded'" Include="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     
-    <Content Condition="'$(Configuration)' == 'Embedded'"  Include="wwwroot\**">
+    <Content Condition="'$(Configuration)' == 'Embedded'" Include="wwwroot\**">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
