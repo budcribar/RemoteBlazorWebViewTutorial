@@ -66,7 +66,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void LinkText_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control)
+            if (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control && HyperLink.NavigateUri != null)
                 Clipboard.SetText(HyperLink.NavigateUri.ToString());
         }
     }
