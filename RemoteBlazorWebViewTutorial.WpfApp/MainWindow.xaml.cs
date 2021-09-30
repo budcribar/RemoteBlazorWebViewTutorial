@@ -46,6 +46,11 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                     LinkText.Text = $"{rbwv.ServerUri}app/{rbwv.Id}";
                 }
 
+                rbwv.Disconnected += (_, args) =>
+                {
+                    throw (args.Exception);
+                };
+
                 rbwv.Refreshed += (_, _) =>
                 {
                     Application.Current?.Dispatcher.Invoke(() =>

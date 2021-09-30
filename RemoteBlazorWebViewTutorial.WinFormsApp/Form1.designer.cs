@@ -68,7 +68,7 @@ namespace BlazorWinFormsApp
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Form1";
-            this.Text = "Blazor Web in Windows Forms";
+            this.Text = "Blazor in Windows Forms";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
          
             this.ResumeLayout(false);

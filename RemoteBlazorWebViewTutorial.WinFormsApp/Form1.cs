@@ -59,14 +59,21 @@ namespace BlazorWinFormsApp
             }
             else
             {
-                blazorWebView1.Visible = false;
+                // Send to back so we can capture Ctrl-C
+                blazorWebView1.SendToBack();
                 linkLabel1.Visible = !blazorWebView1.IsRestarting;
                 linkLabel1.Text = $"{blazorWebView1.ServerUri}app/{blazorWebView1.Id}";
             }
             blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
+			blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
         }
 
-        private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
+		private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
+		{
+            throw e.Exception;
+		}
+
+		private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
         {
             blazorWebView1.BeginInvoke((Action)(() =>
             {
