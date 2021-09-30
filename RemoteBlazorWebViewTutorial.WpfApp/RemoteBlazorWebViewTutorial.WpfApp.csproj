@@ -19,17 +19,26 @@
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <NoWin32Manifest>true</NoWin32Manifest>
     <Platforms>x64</Platforms>
+     <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
   
   <ItemGroup>
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
-  
-   
+
+    <None Remove="RunInCloud.ps1" />
+    <Content Include="RunInCloud.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+
+    <Content Condition="'$(Configuration)' != 'Embedded'"  Include="wwwroot\**"/>
+    <Content Condition="'$(Configuration)' == 'Embedded'"  Include="wwwroot\**">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
-  
-   
+ 
   <ItemGroup>
     <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
@@ -45,12 +54,6 @@
 
     <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Condition="'$(Configuration)' != 'Embedded'" Update="wwwroot\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   
 </Project>
