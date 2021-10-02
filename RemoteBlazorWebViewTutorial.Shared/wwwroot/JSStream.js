@@ -6,3 +6,8 @@
 
     return data;
 }
+
+
+function increment() {
+    DotNet.invokeMethodAsync('RemoteBlazorWebViewTutorial.Shared', 'Increment');
+}
