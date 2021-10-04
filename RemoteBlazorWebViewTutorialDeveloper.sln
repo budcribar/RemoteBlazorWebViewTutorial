@@ -17,6 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial.WinFormsApp", "RemoteBlazorWebViewTutorial.WinFormsApp\RemoteBlazorWebViewTutorial.WinFormsApp.csproj", "{078430DA-FE42-4A12-BF4A-CE1B771F7271}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView.Wpf", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj", "{41C5E925-8324-4FC3-A1CF-85E251A4776B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteWebView", "..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj", "{CE251DBA-74E0-4D0F-93D6-4969DA94A205}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView.WindowsForms", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj", "{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +81,45 @@ Global
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|Any CPU.Build.0 = Release|x64
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|x64.ActiveCfg = Release|x64
 		{078430DA-FE42-4A12-BF4A-CE1B771F7271}.Release|x64.Build.0 = Release|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|Any CPU.Build.0 = Debug|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|x64.ActiveCfg = Debug|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Debug|x64.Build.0 = Debug|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Embedded|Any CPU.ActiveCfg = Embedded|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Embedded|Any CPU.Build.0 = Embedded|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Embedded|x64.ActiveCfg = Embedded|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Embedded|x64.Build.0 = Embedded|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.NoAuthorization|Any CPU.ActiveCfg = NoAuthorization|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.NoAuthorization|x64.ActiveCfg = NoAuthorization|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.NoAuthorization|x64.Build.0 = NoAuthorization|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|Any CPU.ActiveCfg = Release|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|Any CPU.Build.0 = Release|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.ActiveCfg = Release|x64
+		{41C5E925-8324-4FC3-A1CF-85E251A4776B}.Release|x64.Build.0 = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|x64.ActiveCfg = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Debug|x64.Build.0 = Debug|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|Any CPU.ActiveCfg = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|x64.ActiveCfg = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Embedded|x64.Build.0 = Embedded|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|Any CPU.ActiveCfg = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|x64.ActiveCfg = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.NoAuthorization|x64.Build.0 = NoAuthorization|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|Any CPU.ActiveCfg = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|x64.ActiveCfg = Release|x64
+		{CE251DBA-74E0-4D0F-93D6-4969DA94A205}.Release|x64.Build.0 = Release|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Debug|x64.ActiveCfg = Debug|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Debug|x64.Build.0 = Debug|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Embedded|Any CPU.ActiveCfg = Embedded|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Embedded|x64.ActiveCfg = Embedded|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Embedded|x64.Build.0 = Embedded|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.NoAuthorization|Any CPU.ActiveCfg = NoAuthorization|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.NoAuthorization|x64.ActiveCfg = NoAuthorization|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.NoAuthorization|x64.Build.0 = NoAuthorization|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Release|Any CPU.ActiveCfg = Release|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Release|x64.ActiveCfg = Release|x64
+		{33C8930D-0836-4DB4-B6AD-B9D6C2A62D4A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
