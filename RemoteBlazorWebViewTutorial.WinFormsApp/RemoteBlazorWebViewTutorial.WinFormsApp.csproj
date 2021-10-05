@@ -45,6 +45,7 @@
     
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
     
     <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.25-rc1" />
     <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.25-rc1" />
@@ -53,8 +54,6 @@
     <PackageReference Condition="'$(BuildMode)' != 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.25-rc1" />
 
     <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21451.13" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
-   
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
