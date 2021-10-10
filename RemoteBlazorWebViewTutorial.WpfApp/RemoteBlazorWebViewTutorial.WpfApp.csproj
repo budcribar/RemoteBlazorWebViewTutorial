@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
     <PublishSingleFile>True</PublishSingleFile>
-    <Configurations>Debug;Release;Remote;Embedded;NoAuthorization</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <LangVersion>latest</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>
@@ -23,7 +23,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
+    <EmbeddedResource Condition="'$(BuildMode)' == 'Embedded'" Include="embedded\**\*">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
 
@@ -33,31 +33,26 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
 
-    <Content Condition="'$(Configuration)' != 'Embedded'" Include="wwwroot\**">
+    <Content Condition="'$(BuildMode)' != 'Embedded'" Include="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     
-    <Content Condition="'$(Configuration)' == 'Embedded'" Include="wwwroot\**">
+    <Content Condition="'$(BuildMode)' == 'Embedded'" Include="wwwroot\**">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
  
   <ItemGroup>
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21452.15" />
      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
     
-    <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
-    <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.26-rc1" />
-    <PackageReference Condition="'$(BuildMode)' != 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
-    <PackageReference Condition="'$(BuildMode)' != 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.26-rc1" />
-
-    <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21451.13" />
-   
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.26-rc1" />
   </ItemGroup>
   
 </Project>

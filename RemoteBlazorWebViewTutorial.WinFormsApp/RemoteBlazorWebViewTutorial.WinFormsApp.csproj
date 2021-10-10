@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
     <PublishSingleFile>True</PublishSingleFile>
-    <Configurations>Debug;Release;Embedded;NoAuthorization</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
@@ -35,25 +35,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
-      <Content Condition="'$(Configuration)' == 'Embedded'" Include="wwwroot\**">
+      <Content Condition="'$(BuildMode)' == 'Embedded'" Include="wwwroot\**">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
     
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/') " Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj" />
-    <ProjectReference Condition="'$(BuildMode)' == 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj" />
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21452.15" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
     
-    <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
-    <PackageReference Condition="!Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.26-rc1" />
-
-    <PackageReference Condition="'$(BuildMode)' != 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
-    <PackageReference Condition="'$(BuildMode)' != 'Debug' And Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.26-rc1" />
-
-    <PackageReference Condition="'$(Configuration)' == 'Embedded'" Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21451.13" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.26-rc1" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
