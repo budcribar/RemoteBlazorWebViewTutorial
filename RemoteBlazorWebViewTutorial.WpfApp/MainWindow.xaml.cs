@@ -46,20 +46,23 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                     LinkText.Text = $"{rbwv.ServerUri}app/{rbwv.Id}";
                 }
 
-                rbwv.Disconnected += (_, args) =>
-                {
-                    throw (args.Exception);
-                };
+                rbwv.Disconnected += Rbwv_Disconnected;
 
                 rbwv.Refreshed += (_, _) =>
                 {
                     Application.Current?.Dispatcher.Invoke(() =>
                     {
+                        rbwv.Disconnected -= Rbwv_Disconnected;
                         rbwv.Restart();
                         Close();
                     });
                 };
             }
+        }
+
+        private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e)
+        {
+            throw (e.Exception);
         }
 
         private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)

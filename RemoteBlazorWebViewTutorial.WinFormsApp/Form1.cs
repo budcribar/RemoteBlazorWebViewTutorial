@@ -77,6 +77,7 @@ namespace BlazorWinFormsApp
         {
             blazorWebView1.BeginInvoke((Action)(() =>
             {
+                blazorWebView1.Disconnected -= BlazorWebView1_Disconnected;
                 blazorWebView1.Restart();
                 Close();
             }));
