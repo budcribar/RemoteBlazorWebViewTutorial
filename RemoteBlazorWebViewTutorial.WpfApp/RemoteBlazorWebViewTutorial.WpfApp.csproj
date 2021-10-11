@@ -51,8 +51,8 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-rc.1.21452.15" />
      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0-rc.1.21451.13" />
     
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.26-rc1" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.27-rc1" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.27-rc1" />
   </ItemGroup>
   
 </Project>
