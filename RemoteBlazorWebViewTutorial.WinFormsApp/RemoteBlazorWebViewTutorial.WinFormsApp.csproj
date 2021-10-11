@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
     <PublishSingleFile>True</PublishSingleFile>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Release;Embedded</Configurations>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
@@ -25,7 +25,6 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>
     
-    <None Remove="RunInCloud.ps1" />
     <Content Include="RunInCloud.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -35,7 +34,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
-      <Content Condition="'$(BuildMode)' == 'Embedded'" Include="wwwroot\**">
+    <Content Condition="'$(Configuration)' == 'Embedded'" Include="wwwroot\**" >
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
     
@@ -50,7 +49,4 @@
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="RemoteBlazorWebViewTutorial.Shared" Version="6.0.26-rc1" />
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.0.26-rc1" />
   </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
-
 </Project>
