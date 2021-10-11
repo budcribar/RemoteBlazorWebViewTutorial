@@ -32,19 +32,27 @@ RemoteWebViewService
 
 Open the RemoteBlazorWebViewTutorial.sln with Visual Studio
 
-Run the Local Profile using the Run button 
+Select the Local Profile from the dropdown next to the Run button and click on run
 
 Make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project
   
 Next we will run the application remotely
 
-Run the Remote Profile using the Run button
+Select the Remote Profile from the dropdown next to the Run button and click on run
 
 A main window will come up with a URL. Click on it
 
-At this point the sample blazor app will be running in a web browser!
+At this point the sample blazor app will be running in a web browser served from RemoteWebViewService!
 
+Finally, we will run the application from a cloud server (https://server.remoteblazorwebview.org/)
 
+Select the Cloud Profile from the dropdown next to the Run button and click on run
+
+A main window will come up with a URL. Click on it
+
+At this point the sample blazor app will be running in a web browser served from https://server.remoteblazorwebview.org. 
+Accessing the server will require that you set up a login. The server is setup for demo purposes only. Contact me at budcribar@msn.com if you would like
+help setting up a production server.
 
 
 
