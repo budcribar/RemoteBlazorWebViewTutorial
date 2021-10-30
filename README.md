@@ -16,9 +16,6 @@ Another use case is to be able to monitor data that is behind a firewall or on a
 RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, it works just like the Microsoft BlazorWebView Controls (see [BlazorDesktopWPF](https://github.com/jorgearteiro/BlazorDesktopWPF)). In the second mode, a url is specified on the control's properties. In this mode, all GUI interactions are sent to a server which can be accessed with a browser. Hosting the server (RemotableWebViewService.exe) in the cloud allows you to remotely control an application which is behind a firewall or does not have a static IP address.
 
 
-# Demo Video
-![RemoteBlazorWebView](https://github.com/budcribar/RemoteBlazorWebView/blob/net6/RemoteBlazorWebView.gif)
-
 # Demo Quick Start
 
 *** Note the name change to RemoteWebViewService
