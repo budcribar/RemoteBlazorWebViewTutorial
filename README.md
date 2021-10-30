@@ -78,4 +78,11 @@ RemoteWebViewService
 Accessing the server will require that you set up a login. The server is setup for demo purposes only. Contact me at budcribar@msn.com if you would like
 help setting up a production server.
 
+# Security
 
+Each time a client application starts it attaches to the server with a unique Guid. This Guid needs to be specified on the Url in order to access the application and provides the first layer of security.
+The application is locked once a browser attaches to the server at a given Guid and no other browser instance has access.
+
+The demo version of the RemoteWebViewService does not include authentication but it can be built and configured with Azure AD B2C. 
+When built with Azure AD B2C authentication, the server requires that users are authenticated in order to access the endpoints which serve up the demo application user interface. 
+The server code is hosted in the RemoteBlazorWebView github repository and includes a Visual Studio project to build the server. This added layer of security should be sufficient for most use cases but the server can be further locked down with firewall rules if needed.
