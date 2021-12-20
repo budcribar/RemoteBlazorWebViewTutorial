@@ -70,18 +70,16 @@ namespace BlazorWinFormsApp
 
 		private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
 		{
-            throw e.Exception;
+            //Application.Exit();
 		}
 
 		private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
         {
             blazorWebView1.BeginInvoke((Action)(() =>
             {
-                blazorWebView1.Disconnected -= BlazorWebView1_Disconnected;
                 blazorWebView1.Restart();
                 Close();
             }));
-
         }
 
         private async void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

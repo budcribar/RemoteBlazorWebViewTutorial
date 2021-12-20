@@ -44,7 +44,6 @@ namespace BlazorWinFormsApp
             this.blazorWebView1.Name = "blazorWebView1";
             this.blazorWebView1.Size = new System.Drawing.Size(1872, 1555);
             this.blazorWebView1.TabIndex = 20;
-            this.blazorWebView1.WebViewManager = null;
             // 
             // linkLabel1
             // 
