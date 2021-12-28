@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <DeleteExistingFiles>True</DeleteExistingFiles>
     <PublishSingleFile>True</PublishSingleFile>
-    <Configurations>Debug;Release;Embedded</Configurations>
+    <Configurations>Debug;Release;Embedded;Developer</Configurations>
     <LangVersion>latest</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>

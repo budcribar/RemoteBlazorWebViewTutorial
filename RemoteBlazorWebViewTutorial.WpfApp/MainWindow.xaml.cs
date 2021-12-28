@@ -61,7 +61,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e)
         {
-            //Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)

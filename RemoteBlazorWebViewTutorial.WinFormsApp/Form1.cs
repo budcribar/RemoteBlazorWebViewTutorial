@@ -70,7 +70,7 @@ namespace BlazorWinFormsApp
 
 		private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
 		{
-            //Application.Exit();
+            Application.Exit();
 		}
 
 		private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
