@@ -1,0 +1,1 @@
+﻿& ./RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://localhost:5001
