@@ -18,6 +18,7 @@
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <Platforms>x64</Platforms>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   
   <ItemGroup>

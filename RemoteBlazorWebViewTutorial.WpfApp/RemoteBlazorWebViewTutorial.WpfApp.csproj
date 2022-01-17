@@ -20,6 +20,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
     <Platforms>x64</Platforms>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   
   <ItemGroup>
