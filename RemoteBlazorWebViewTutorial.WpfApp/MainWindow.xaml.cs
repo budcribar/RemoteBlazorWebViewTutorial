@@ -1,12 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using PeakSWC.RemoteWebView;
+using PeakSWC.RemoteBlazorWebView.Wpf;
 using RemoteBlazorWebViewTutorial.Shared;
 using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Microsoft.AspNetCore.Components.WebView.Wpf;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
@@ -30,6 +33,8 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             InitializeComponent();
            
             RemoteBlazorWebView.Id = Command.Id;
+            RemoteBlazorWebView.RootComponents.Add<HeadOutlet>("head::after");
+
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)

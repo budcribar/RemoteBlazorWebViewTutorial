@@ -11,9 +11,9 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
-using System.Windows.Documents;
 using System.Windows.Input;
 using PeakSWC.RemoteWebView;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorWinFormsApp
 {
@@ -52,6 +52,7 @@ namespace BlazorWinFormsApp
             blazorWebView1.HostPage = @"wwwroot\index.html";
             
             blazorWebView1.RootComponents.Add<App>("#app");
+            blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
             if (runString.ServerUrl == null)
             {
                 blazorWebView1.Visible = true;

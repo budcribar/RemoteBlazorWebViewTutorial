@@ -1,7 +1,7 @@
 ﻿@page "/features" 
 @using System.Diagnostics
 @using System.IO 
-
+@implements IAsyncDisposable
 @inject IJSRuntime jsRuntime
 
 <h3>Features</h3>
@@ -38,6 +38,7 @@
     double mbps = 0.0;
     bool passed = true;
     static int counter = 0;
+    private Task<IJSObjectReference>? _module;
 
     [JSInvokable]
     public static Task Increment()
@@ -47,7 +48,7 @@
     }
 
     private void InvokeDotNet() {
-       jsRuntime.InvokeVoidAsync("increment");
+        jsRuntime.InvokeVoidAsync("increment");
         //await Task.Delay(1000);
         StateHasChanged();
     }
@@ -76,7 +77,7 @@
         StateHasChanged();
 
         var bytes = File.ReadAllBytes(outputPath);
-       
+
         for (int i = 0; i < bytes.Length; i++)
             if (bytes[i] != i % 256)
                 passed = false;
@@ -84,8 +85,32 @@
         StateHasChanged();
     }
 
-	private void ShowAlert()
+    private async void ShowAlert()
     {
-        jsRuntime.InvokeVoidAsync("alert", message);
+
+        if(_module != null)
+        {
+            (await _module)?.InvokeVoidAsync("sayHi", message);
+        }    
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        var type = this.GetType();
+        var path = $"./_content/{type.FullName?.Substring(0, type.Module.Name.Length - 4) + type.FullName?.Replace('.', '/').Substring(type.Module.Name.Length - 4)}.razor.js";
+
+        if (firstRender)
+            _module = jsRuntime.InvokeAsync<IJSObjectReference>("import", path).AsTask();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_module != null)
+        {
+            var module = await _module;
+            await module.DisposeAsync();
+        }
     }
 }

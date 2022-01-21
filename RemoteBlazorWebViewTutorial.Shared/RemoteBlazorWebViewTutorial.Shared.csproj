@@ -22,7 +22,7 @@
     <Content Remove="wwwroot\css\open-iconic\FONT-LICENSE" />
     <Content Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
