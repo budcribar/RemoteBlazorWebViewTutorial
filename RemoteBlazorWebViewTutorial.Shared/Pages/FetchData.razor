@@ -39,8 +39,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://raw.githack.com/jspuij/BlazorWebViewTutorial/master/BlazorWebViewTutorial.Shared/wwwroot/sample-data/weather.json") ?? Array.Empty<WeatherForecast>();
-
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://raw.githack.com/budcribar/RemoteBlazorWebView/master/samples/BlazorDesktopApp/wwwroot/sample-data/weather.json") ?? Array.Empty<WeatherForecast>();
     }
 
