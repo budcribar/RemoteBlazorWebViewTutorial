@@ -3,6 +3,7 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using PeakSWC.RemoteWebView;
 using RemoteBlazorWebViewTutorial.Shared;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Photino.Blazor.Sample
 {
@@ -23,6 +24,8 @@ namespace Photino.Blazor.Sample
 
             // customize window
             app.MainWindow.SetTitle("Remote Photino Blazor Sample");
+            app.MainWindow.Disconnected += MainWindow_Disconnected;
+            app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
@@ -31,6 +34,17 @@ namespace Photino.Blazor.Sample
 
             app.Run();
 
+        }
+
+        private static void MainWindow_Refreshed(RemotePhotinoWindow w)
+        {
+            w.Restart();
+            Environment.Exit(0);
+        }
+
+        private static void MainWindow_Disconnected(object sender, DisconnectedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

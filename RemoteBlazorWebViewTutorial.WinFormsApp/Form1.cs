@@ -74,13 +74,10 @@ namespace BlazorWinFormsApp
             Application.Exit();
 		}
 
-		private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
+        private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
         {
-            blazorWebView1.BeginInvoke((Action)(() =>
-            {
-                blazorWebView1.Restart();
-                Close();
-            }));
+            blazorWebView1.Restart();
+            Close();
         }
 
         private async void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
