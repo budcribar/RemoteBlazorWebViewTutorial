@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RemotePhotinoBlazor": {
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://localhost:5001"
+    }
+  }
+}
