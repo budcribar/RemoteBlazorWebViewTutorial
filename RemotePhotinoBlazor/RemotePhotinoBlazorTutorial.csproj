@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-	
+	<Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
@@ -12,8 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
 	  <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
-	  <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
 	  <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 	</ItemGroup>
 
