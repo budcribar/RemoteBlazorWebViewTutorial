@@ -4,13 +4,11 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using PeakSWC.RemoteWebView;
 using RemoteBlazorWebViewTutorial.Shared;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.Extensions.Options;
 
-
-namespace Photino.Blazor.Sample
+namespace BlazorWebView
 {
     class Program
     {
@@ -30,12 +28,11 @@ namespace Photino.Blazor.Sample
 
             var Configuration = builder.Build();
 
-            var appBuilder = RemotePhotinoBlazorAppBuilder.CreateDefault(args);
+            var appBuilder = RemoteBlazorWebViewAppBuilder.CreateDefault(args);
 
             appBuilder.Services.AddLogging();
             appBuilder.Services.AddScoped<HttpClient>();
             appBuilder.Services.Configure<AppSettings>(Configuration!.GetSection(nameof(AppSettings)));
-
 
             // register root component and selector
             appBuilder.RootComponents.Add<App>("#app");
@@ -52,8 +49,7 @@ namespace Photino.Blazor.Sample
             app.MainWindow.SetTitle("Remote Photino Blazor Sample");
             app.MainWindow.Disconnected += MainWindow_Disconnected;
             app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);
-           
-            
+                
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
@@ -64,7 +60,7 @@ namespace Photino.Blazor.Sample
 
         }
 
-        private static void MainWindow_Refreshed(RemotePhotinoWindow w)
+        private static void MainWindow_Refreshed(RemoteBlazorWebViewWindow w)
         {
             w.Restart();
             Environment.Exit(0);
