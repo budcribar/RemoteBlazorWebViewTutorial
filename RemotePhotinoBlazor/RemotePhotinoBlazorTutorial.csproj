@@ -3,24 +3,30 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
+		<EnableDefaultContentItems>false</EnableDefaultContentItems>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.2-mauipre.1.22054.8" />
-	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
-	  <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
-	  <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
-	</ItemGroup>
+		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
+		<ProjectReference Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
+		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
-	<ItemGroup>
-		<Content Update="wwwroot\**">
+		<EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</EmbeddedResource>
+
+		<Content Condition="'$(Configuration)' != 'Embedded'" Include="wwwroot\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
 
+		<Content Condition="'$(Configuration)' == 'Embedded'" Include="wwwroot\**">
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+
+		<None Remove="embedded\wwwroot\_content\RemoteBlazorWebViewTutorial.Shared\Pages\Features.razor.js" />
+	</ItemGroup>
 </Project>

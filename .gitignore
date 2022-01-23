@@ -354,3 +354,4 @@ MigrationBackup/
 /RemoteBlazorWebViewTutorial.WinFormsApp/publishEmbedded
 /RemoteBlazorWebViewTutorial.WpfApp/publishEmbedded
 /RemoteBlazorWebViewTutorial.WpfApp/MSBuild_Logs
+/RemotePhotinoBlazor/embedded/wwwroot
