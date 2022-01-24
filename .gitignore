@@ -355,3 +355,4 @@ MigrationBackup/
 /RemoteBlazorWebViewTutorial.WpfApp/publishEmbedded
 /RemoteBlazorWebViewTutorial.WpfApp/MSBuild_Logs
 /RemotePhotinoBlazor/embedded/wwwroot
+/RemoteBlazorWebViewTutorial/embedded/wwwroot
