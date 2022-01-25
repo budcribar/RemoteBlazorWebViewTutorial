@@ -6,6 +6,7 @@ the other (Microsoft.AspNetCore.Components.WebView.WindowsForms) targets Windows
 The Remote versions of the Blazor WebView Controls (PeakSWC.RemoteBlazorWebView.Wpf and PeakSWC.RemoteBlazorWebView.WindowsForms) act as a drop-in replacement for the Microsoft controls along with the ability to access the user interface over a secure connection to a public server using a web browser. This is accomplished by setting up a secure server (RemoteWebWindowService) in the cloud and pointing your browser to it. 
 With a couple of minimal changes you will be able to either run your app locally or remotely control your application.
 
+The RemoteBlazorWebView package allows developers to create a Blazor UI on Windows, Mac, and Linux. RemoteBlazorWebView is based on Microsoft's WebView control and photino.Blazor. It shares the same server with the WinForms and Wpf controls (RemoteWebWindowService). 
 # Use Cases
 The primary use case is to be able to share a desktop application controlling hardware with an external service technician. Typically, the application is behind a corporate firewall and is not easily accessed by the technician. The Remote Blazor controls allow the desktop application to be started in "Remote" mode which generates a unique Url for the technician to access the user interface.
 
