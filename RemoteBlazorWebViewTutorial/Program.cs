@@ -43,11 +43,11 @@ namespace BlazorWebView
             var sp = sc.BuildServiceProvider();
             var runString = sp.GetRequiredService<IOptions<AppSettings>>().Value;
 
-            var app = appBuilder.Build(runString.ServerUrl, runString.Id, runString.IsRestarting);
+            var app = appBuilder.Build(runString!.ServerUrl!, runString.Id, runString.IsRestarting);
 
             // customize window
-            app.MainWindow.SetTitle("Remote Photino Blazor Sample");
-            app.MainWindow.Disconnected += MainWindow_Disconnected;
+            app.MainWindow!.SetTitle("Remote Photino Blazor Sample");
+            app.MainWindow!.Disconnected += MainWindow_Disconnected;
             app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);
                 
 
@@ -66,7 +66,7 @@ namespace BlazorWebView
             Environment.Exit(0);
         }
 
-        private static void MainWindow_Disconnected(object sender, DisconnectedEventArgs e)
+        private static void MainWindow_Disconnected(object? sender, DisconnectedEventArgs e)
         {
             Environment.Exit(0);
         }

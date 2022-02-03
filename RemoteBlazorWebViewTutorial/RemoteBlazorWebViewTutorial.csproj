@@ -2,19 +2,20 @@
 	<Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
 	<PropertyGroup>
 		<GenerateEmbeddedFilesManifest Condition="'$(Configuration)' == 'Embedded'">true</GenerateEmbeddedFilesManifest>
-		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
-		<EnableDefaultContentItems>false</EnableDefaultContentItems>
-		<Configurations>Debug;Release;Embedded</Configurations>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>
-		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
-		<EnableDefaultContentItems>false</EnableDefaultContentItems>
-		<PublishSingleFile>True</PublishSingleFile>
-		<Platforms>x64</Platforms>
 		<DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
 		<DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
+		<TargetFramework>net6.0</TargetFramework>  <!--Not windows-->
+		<OutputType>WinExe</OutputType>
+		<UseWindowsForms>false</UseWindowsForms>
+		<IsShippingPackage>false</IsShippingPackage>
+		<Nullable>enable</Nullable>
+		<PublishSingleFile>true</PublishSingleFile>
+		<Configurations>Debug;Release;Embedded;Developer</Configurations>
+		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
+		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
+		<Platforms>x64</Platforms>
+		<EnableDefaultContentItems>false</EnableDefaultContentItems>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,8 +24,6 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
 		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="6.0.38-pre" />
-
-		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemotePhotino.Blazor\RemotePhotino.Blazor.csproj" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
