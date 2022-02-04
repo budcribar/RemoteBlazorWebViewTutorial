@@ -1,0 +1,1 @@
+﻿& ./RemoteBlazorWebViewTutorial.exe -u=https://localhost:5001

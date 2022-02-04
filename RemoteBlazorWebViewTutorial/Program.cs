@@ -46,10 +46,9 @@ namespace BlazorWebView
             var app = appBuilder.Build(runString!.ServerUrl!, runString.Id, runString.IsRestarting);
 
             // customize window
-            app.MainWindow!.SetTitle("Remote Photino Blazor Sample");
+            app.MainWindow!.SetTitle("Remote Blazor WebWindow Sample");
             app.MainWindow!.Disconnected += MainWindow_Disconnected;
-            app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);
-                
+            app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);          
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
