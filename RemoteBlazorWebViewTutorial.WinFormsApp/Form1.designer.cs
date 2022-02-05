@@ -31,9 +31,7 @@ namespace BlazorWinFormsApp
         private void InitializeComponent()
         {
             this.blazorWebView1 = new PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
-            // 
             // blazorWebView1
             // 
             this.blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -44,32 +42,17 @@ namespace BlazorWinFormsApp
             this.blazorWebView1.Name = "blazorWebView1";
             this.blazorWebView1.Size = new System.Drawing.Size(1872, 1555);
             this.blazorWebView1.TabIndex = 20;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(119, 60);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(121, 32);
-            this.linkLabel1.TabIndex = 21;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1872, 1555);
-            this.Controls.Add(this.linkLabel1);
+          
             this.Controls.Add(this.blazorWebView1);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Form1";
             this.Text = "Blazor in Windows Forms";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-         
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,9 +61,5 @@ namespace BlazorWinFormsApp
        
         #endregion
         private PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView blazorWebView1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-
-        //  this.blazorWebView1.ServerUri = new System.Uri("https://localhost:443", System.UriKind.Absolute);
-        //   this.blazorWebView1.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
     }
 }

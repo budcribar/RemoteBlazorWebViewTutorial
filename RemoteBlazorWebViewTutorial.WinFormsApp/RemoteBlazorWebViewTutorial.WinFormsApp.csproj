@@ -20,6 +20,12 @@
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <DebugType>full</DebugType>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|x64'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Developer|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
   
   <ItemGroup>
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
@@ -54,5 +60,20 @@
   
   <ItemGroup>
     <Folder Include="embedded\wwwroot\_content\RemoteBlazorWebViewTutorial.Shared\Pages\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

@@ -17,24 +17,17 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
     {
         private bool initialized = false;
         public AppSettings Command { get; init; }
-        public Visibility ShowWebView { get; set; }
-        public ViewModel ViewModel { get; set; } = new();
-
         public MainWindow(IOptions<AppSettings> settings)
         {
             Command = settings.Value;
-            ViewModel.HyperLinkVisible = (Command.ServerUrl != null && !Command.IsRestarting) ? Visibility.Visible : Visibility.Hidden;
-            ShowWebView = Command.ServerUrl == null ? Visibility.Visible : Visibility.Hidden; 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
-            DataContext = ViewModel;
             InitializeComponent();
            
             RemoteBlazorWebView.Id = Command.Id;
             RemoteBlazorWebView.RootComponents.Add<HeadOutlet>("head::after");
-
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -44,15 +37,8 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                 this.initialized = true;
 
                 if (RemoteBlazorWebView is not IBlazorWebView rbwv) return;
-
-                if (rbwv.ServerUri != null)
-                {
-                    HyperLink.NavigateUri = new Uri($"{rbwv.ServerUri}app/{rbwv.Id}");
-                    LinkText.Text = $"{rbwv.ServerUri}app/{rbwv.Id}";
-                }
-
                 rbwv.Disconnected += Rbwv_Disconnected;
-
+                rbwv.Connected += Rbwv_Connected;
                 rbwv.Refreshed += (_, _) =>
                 {
                     rbwv.Restart();
@@ -61,22 +47,14 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             }
         }
 
+        private void Rbwv_Connected(object? sender, ConnectedEventArgs e)
+        {
+            (sender as IBlazorWebView)?.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
+        }
+
         private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private async void Hyperlink_Click(object sender, RequestNavigateEventArgs e)
-        {
-            this.ViewModel.HyperLinkVisible = Visibility.Hidden;
-
-            await RemoteBlazorWebView.StartBrowser();
-        }
-
-        private void LinkText_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control && HyperLink.NavigateUri != null)
-                Clipboard.SetText(HyperLink.NavigateUri.ToString());
         }
     }
 }

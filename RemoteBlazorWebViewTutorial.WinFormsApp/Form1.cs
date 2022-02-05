@@ -49,27 +49,21 @@ namespace BlazorWinFormsApp
             blazorWebView1.ServerUri = runString.ServerUrl;
             blazorWebView1.Id = runString.Id;
             blazorWebView1.IsRestarting = runString.IsRestarting;
-            blazorWebView1.HostPage = @"wwwroot\index.html";
-            
+            blazorWebView1.HostPage = @"wwwroot\index.html";            
             blazorWebView1.RootComponents.Add<App>("#app");
             blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
-            if (runString.ServerUrl == null)
-            {
-                blazorWebView1.Visible = true;
-                linkLabel1.Visible = false;
-            }
-            else
-            {
-                // Send to back so we can capture Ctrl-C
-                blazorWebView1.SendToBack();
-                linkLabel1.Visible = !blazorWebView1.IsRestarting;
-                linkLabel1.Text = $"{blazorWebView1.ServerUri}app/{blazorWebView1.Id}";
-            }
+
             blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
 			blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
+            blazorWebView1.Connected += BlazorWebView1_Connected;
         }
 
-		private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
+        private void BlazorWebView1_Connected(object? sender, ConnectedEventArgs e)
+        {
+            blazorWebView1.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
+        }
+
+        private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
 		{
             Application.Exit();
 		}
@@ -78,18 +72,6 @@ namespace BlazorWinFormsApp
         {
             blazorWebView1.Restart();
             Close();
-        }
-
-        private async void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            linkLabel1.Visible = false;
-            await blazorWebView1.StartBrowser();
-        }
-
-        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.C && e.Control)
-                Clipboard.SetText(linkLabel1.Text);
         }
     }
 }

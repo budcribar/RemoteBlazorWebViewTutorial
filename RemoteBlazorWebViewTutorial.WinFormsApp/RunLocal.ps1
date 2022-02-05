@@ -1,0 +1,1 @@
+﻿& ./RemoteBlazorWebViewTutorial.WinFormsApp.exe -u=https://localhost:5001
