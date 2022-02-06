@@ -26,7 +26,6 @@ namespace BlazorWinFormsApp
            {
                { "-u", "AppSettings:ServerUrl" },
                { "-i", "AppSettings:Id" },
-               { "-r", "AppSettings:IsRestarting" },
            };
 
             var builder = new ConfigurationBuilder()
@@ -48,7 +47,6 @@ namespace BlazorWinFormsApp
 
             blazorWebView1.ServerUri = runString.ServerUrl;
             blazorWebView1.Id = runString.Id;
-            blazorWebView1.IsRestarting = runString.IsRestarting;
             blazorWebView1.HostPage = @"wwwroot\index.html";            
             blazorWebView1.RootComponents.Add<App>("#app");
             blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
@@ -56,6 +54,12 @@ namespace BlazorWinFormsApp
             blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
 			blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
             blazorWebView1.Connected += BlazorWebView1_Connected;
+            blazorWebView1.ReadyToConnect += BlazorWebView1_ReadyToConnect;
+        }
+
+        private void BlazorWebView1_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
+        {
+            blazorWebView1.NavigateToString($"<a href='{e.Url}app/{e.Id}' target='_blank'> {e.Url}app/{e.Id}</a>");
         }
 
         private void BlazorWebView1_Connected(object? sender, ConnectedEventArgs e)

@@ -35,8 +35,7 @@ namespace BlazorWinFormsApp
             // blazorWebView1
             // 
             this.blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blazorWebView1.Id = new System.Guid("0cb6cf80-0160-4b96-8f9c-d3f91d722dcf");
-            this.blazorWebView1.IsRestarting = false;
+            this.blazorWebView1.Id = Guid.Empty;
             this.blazorWebView1.Location = new System.Drawing.Point(0, 0);
             this.blazorWebView1.Margin = new System.Windows.Forms.Padding(0);
             this.blazorWebView1.Name = "blazorWebView1";

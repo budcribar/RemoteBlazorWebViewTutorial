@@ -7,9 +7,6 @@ using RemoteBlazorWebViewTutorial.Shared;
 using System;
 using System.Net.Http;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using Microsoft.AspNetCore.Components.WebView.Wpf;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
@@ -29,7 +26,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             RemoteBlazorWebView.Id = Command.Id;
             RemoteBlazorWebView.RootComponents.Add<HeadOutlet>("head::after");
         }
-
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             if (!this.initialized)
@@ -39,6 +35,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                 if (RemoteBlazorWebView is not IBlazorWebView rbwv) return;
                 rbwv.Disconnected += Rbwv_Disconnected;
                 rbwv.Connected += Rbwv_Connected;
+                rbwv.ReadyToConnect += Rbwv_ReadyToConnect;
                 rbwv.Refreshed += (_, _) =>
                 {
                     rbwv.Restart();
@@ -47,14 +44,16 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             }
         }
 
+        private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
+        {
+            (sender as IBlazorWebView)?.NavigateToString($"<a href='{e.Url}app/{e.Id}' target='_blank'> {e.Url}app/{e.Id}</a>");
+        }
+
         private void Rbwv_Connected(object? sender, ConnectedEventArgs e)
         {
             (sender as IBlazorWebView)?.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
         }
 
-        private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => Application.Current.Shutdown();
     }
 }

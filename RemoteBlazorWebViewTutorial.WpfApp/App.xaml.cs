@@ -20,7 +20,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
            {
                { "-u", "AppSettings:ServerUrl" },
                { "-i", "AppSettings:Id" },
-               { "-r", "AppSettings:IsRestarting" },
            };
 
             var builder = new ConfigurationBuilder()

@@ -7,6 +7,5 @@ namespace RemoteBlazorWebViewTutorial.Shared
     {
         public Uri? ServerUrl { get; set; }
         public Guid Id { get; set; } = Guid.Empty;
-        public bool IsRestarting { get; set; } = false;
     }
 }

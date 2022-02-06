@@ -1,7 +1,6 @@
 {
   "AppSettings": {
     "ServerUrl": "https://webserverstransporter.com",
-    "Id": "90D441A2-F0B8-49FC-831E-1B8ABEA61BFD",
-    "IsRestarting": false
+    "Id": "90D441A2-F0B8-49FC-831E-1B8ABEA61BFD"
   }
 }

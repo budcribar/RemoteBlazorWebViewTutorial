@@ -19,7 +19,6 @@ namespace BlazorWebView
            {
                { "-u", "AppSettings:ServerUrl" },
                { "-i", "AppSettings:Id" },
-               { "-r", "AppSettings:IsRestarting" },
            };
             var builder = new ConfigurationBuilder()
                  .SetBasePath(Directory.GetCurrentDirectory())
@@ -43,13 +42,15 @@ namespace BlazorWebView
             var sp = sc.BuildServiceProvider();
             var runString = sp.GetRequiredService<IOptions<AppSettings>>().Value;
 
-            var app = appBuilder.Build(runString!.ServerUrl!, runString.Id, runString.IsRestarting);
+            var app = appBuilder.Build(runString!.ServerUrl!, runString.Id);
 
             // customize window
             app.MainWindow!.SetTitle("Remote Blazor WebWindow Sample");
             app.MainWindow!.Disconnected += MainWindow_Disconnected;
+            app.MainWindow!.ReadyToConnect += Program_ReadyToConnect;
+            app.MainWindow!.Connected += Program_Connected;
             app.MainWindow.Refreshed += (s, e) => MainWindow_Refreshed(app.MainWindow);          
-
+            
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
                 app.MainWindow.OpenAlertWindow("Fatal exception", error.ExceptionObject.ToString());
@@ -57,6 +58,16 @@ namespace BlazorWebView
 
             app.Run();
 
+        }
+
+        private static void Program_Connected(object? sender, ConnectedEventArgs e)
+        {
+            (sender as IBlazorWebView)?.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
+        }
+
+        private static void Program_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
+        {
+            (sender as IBlazorWebView)?.NavigateToString($"<a href='{e.Url}app/{e.Id}' target='_blank'> {e.Url}app/{e.Id}</a>");
         }
 
         private static void MainWindow_Refreshed(RemoteBlazorWebViewWindow w)
