@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using PeakSWC.RemoteWebView;
 using PeakSWC.RemoteBlazorWebView.Wpf;
 using RemoteBlazorWebViewTutorial.Shared;
-using System;
 using System.Net.Http;
 using System.Windows;
 
@@ -25,23 +24,14 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
            
             RemoteBlazorWebView.Id = Command.Id;
             RemoteBlazorWebView.RootComponents.Add<HeadOutlet>("head::after");
-        }
-        private void Window_ContentRendered(object sender, EventArgs e)
-        {
-            if (!this.initialized)
+            RemoteBlazorWebView.Disconnected += Rbwv_Disconnected;
+            RemoteBlazorWebView.Connected += Rbwv_Connected;
+            RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
+            RemoteBlazorWebView.Refreshed += (_, _) =>
             {
-                this.initialized = true;
-
-                if (RemoteBlazorWebView is not IBlazorWebView rbwv) return;
-                rbwv.Disconnected += Rbwv_Disconnected;
-                rbwv.Connected += Rbwv_Connected;
-                rbwv.ReadyToConnect += Rbwv_ReadyToConnect;
-                rbwv.Refreshed += (_, _) =>
-                {
-                    rbwv.Restart();
-                    Close();
-                };
-            }
+                RemoteBlazorWebView.Restart();
+                Close();
+            };
         }
 
         private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
