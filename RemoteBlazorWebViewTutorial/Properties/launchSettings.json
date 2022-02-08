@@ -1,11 +1,18 @@
 {
   "profiles": {
-    "RemotePhotinoBlazor": {
+    "Local": {
       "commandName": "Project"
     },
-    "Local": {
+    "Remote": {
       "commandName": "Project",
       "commandLineArgs": "-u=https://localhost:5001"
+    },
+    "RemoteBlazorWebViewTutorial": {
+      "commandName": "Project"
+    },
+    "Cloud": {
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://server.remoteblazorwebview.org:443"
     }
   }
 }
