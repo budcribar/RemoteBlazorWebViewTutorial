@@ -12,7 +12,7 @@
 		<Nullable>enable</Nullable>
 		<PublishSingleFile>true</PublishSingleFile>
 		<Configurations>Debug;Release;Embedded;Developer</Configurations>
-		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
+		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
 		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
 		<Platforms>x64</Platforms>
 		<EnableDefaultContentItems>false</EnableDefaultContentItems>
@@ -23,7 +23,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
-		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="6.0.38-pre" />
+		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="6.1.0-pre" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 

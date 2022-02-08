@@ -53,7 +53,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.2-mauipre.1.22054.8" />
    
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.0.38-pre" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.1.0-pre" />
   </ItemGroup>
  
   <ItemGroup>
