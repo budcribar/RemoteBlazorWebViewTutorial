@@ -14,17 +14,24 @@
     <PublishSingleFile>True</PublishSingleFile>
     <Configurations>Debug;Release;Embedded;Developer</Configurations>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">$(Configuration)</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <Platforms>x64</Platforms>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|x64'">
-    <Optimize>True</Optimize>
+    <Optimize>False</Optimize>
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Developer|x64'">
-    <DefineConstants>$(DefineConstants)TRACE;DEBUG</DefineConstants>
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
   
   <ItemGroup>
@@ -51,11 +58,11 @@
     <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.2-mauipre.1.22054.8" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.2-mauipre.1.22102.15" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.2-mauipre.1.22102.15" />
     
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.1.0-pre" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="6.1.1-pre" />
   </ItemGroup>
   
   <ItemGroup>
