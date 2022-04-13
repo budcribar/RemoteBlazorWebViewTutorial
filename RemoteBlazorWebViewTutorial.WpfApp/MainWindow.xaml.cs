@@ -16,7 +16,9 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         {
             Command = settings.Value;
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddWpfBlazorWebView();
+           
+            PeakSWC.RemoteBlazorWebView.BlazorWebViewServiceCollectionExtensions.AddWpfBlazorWebView(serviceCollection);
+            
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             InitializeComponent();

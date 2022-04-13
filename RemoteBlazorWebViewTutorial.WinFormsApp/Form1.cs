@@ -1,6 +1,7 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using PeakSWC.RemoteWebView;
 using Microsoft.Extensions.DependencyInjection;
 using RemoteBlazorWebViewTutorial.Shared;
 using System;
@@ -12,7 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
 using System.Windows.Input;
-using PeakSWC.RemoteWebView;
+
 using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorWinFormsApp
@@ -36,7 +37,7 @@ namespace BlazorWinFormsApp
             var Configuration = builder.Build();
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddWindowsFormsBlazorWebView();
+            PeakSWC.RemoteBlazorWebView.BlazorWebViewServiceCollectionExtensions.AddWindowsFormsBlazorWebView(serviceCollection);
             serviceCollection.AddScoped<HttpClient>();
             serviceCollection.Configure<AppSettings>(Configuration!.GetSection(nameof(AppSettings)));
             InitializeComponent();
