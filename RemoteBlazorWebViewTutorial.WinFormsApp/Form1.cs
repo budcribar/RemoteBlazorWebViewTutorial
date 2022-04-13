@@ -36,7 +36,7 @@ namespace BlazorWinFormsApp
             var Configuration = builder.Build();
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddBlazorWebView();
+            serviceCollection.AddWindowsFormsBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             serviceCollection.Configure<AppSettings>(Configuration!.GetSection(nameof(AppSettings)));
             InitializeComponent();

@@ -11,13 +11,12 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 {
     public partial class MainWindow : Window
     {
-        private bool initialized = false;
         public AppSettings Command { get; init; }
         public MainWindow(IOptions<AppSettings> settings)
         {
             Command = settings.Value;
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddBlazorWebView();
+            serviceCollection.AddWpfBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             InitializeComponent();
