@@ -12,9 +12,8 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
-using System.Windows.Input;
-
 using Microsoft.AspNetCore.Components.Web;
+using PeakSWC.RemoteBlazorWebView;
 
 namespace BlazorWinFormsApp
 {
@@ -37,7 +36,7 @@ namespace BlazorWinFormsApp
             var Configuration = builder.Build();
 
             var serviceCollection = new ServiceCollection();
-            PeakSWC.RemoteBlazorWebView.BlazorWebViewServiceCollectionExtensions.AddWindowsFormsBlazorWebView(serviceCollection);
+            serviceCollection.AddRemoteWindowsFormsBlazorWebView();
             serviceCollection.AddScoped<HttpClient>();
             serviceCollection.Configure<AppSettings>(Configuration!.GetSection(nameof(AppSettings)));
             InitializeComponent();

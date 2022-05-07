@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using PeakSWC.RemoteWebView;
 using PeakSWC.RemoteBlazorWebView.Wpf;
 using RemoteBlazorWebViewTutorial.Shared;
 using System.Net.Http;
 using System.Windows;
+using PeakSWC.RemoteBlazorWebView;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
@@ -17,14 +17,14 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             Command = settings.Value;
             var serviceCollection = new ServiceCollection();
            
-            PeakSWC.RemoteBlazorWebView.BlazorWebViewServiceCollectionExtensions.AddWpfBlazorWebView(serviceCollection);
-            
+            serviceCollection.AddRemoteWpfBlazorWebView();
+           
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             InitializeComponent();
            
             RemoteBlazorWebView.Id = Command.Id;
-            RemoteBlazorWebView.RootComponents.Add<HeadOutlet>("head::after");
+            RemoteBlazorWebView.RootComponents.Add<Microsoft.AspNetCore.Components.Web.HeadOutlet>("head::after");
             RemoteBlazorWebView.Disconnected += Rbwv_Disconnected;
             RemoteBlazorWebView.Connected += Rbwv_Connected;
             RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
