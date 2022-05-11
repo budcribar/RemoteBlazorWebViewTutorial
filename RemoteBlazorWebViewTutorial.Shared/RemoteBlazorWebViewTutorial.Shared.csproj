@@ -3,7 +3,7 @@
   <PropertyGroup>
     <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
@@ -24,9 +24,9 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.2-mauipre.1.22102.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.0-preview.4.22251.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0-preview.4.22251.1" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0-preview.4.22229.4" />
   </ItemGroup>
 
 </Project>

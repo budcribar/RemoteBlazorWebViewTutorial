@@ -1,7 +1,7 @@
 # RemoteBlazorWebViewTutorial
 
-Microsoft has recently introduced two Blazor WebView Controls in .NET 6. One control (Microsoft.AspNetCore.Components.WebView.Wpf) targets Windows Presentation Foundation (WPF) apps and
-the other (Microsoft.AspNetCore.Components.WebView.WindowsForms) targets Windows Form (WinForms) apps. The Microsoft controls allow developers to create user interfaces for desktop apps using Blazor web technology. The desktop apps using Blazor have the full feature set and performance of .NET 6 and are not contrained like a Blazor WebAssembly app.
+Microsoft has recently introduced two Blazor WebView Controls in .NET 7. One control (Microsoft.AspNetCore.Components.WebView.Wpf) targets Windows Presentation Foundation (WPF) apps and
+the other (Microsoft.AspNetCore.Components.WebView.WindowsForms) targets Windows Form (WinForms) apps. The Microsoft controls allow developers to create user interfaces for desktop apps using Blazor web technology. The desktop apps using Blazor have the full feature set and performance of .NET 7 and are not contrained like a Blazor WebAssembly app.
 
 The Remote versions of the Blazor WebView Controls (PeakSWC.RemoteBlazorWebView.Wpf and PeakSWC.RemoteBlazorWebView.WindowsForms) act as a drop-in replacement for the Microsoft controls along with the ability to access the user interface over a secure connection to a public server using a web browser. This is accomplished by setting up a secure server (RemoteWebWindowService) in the cloud and pointing your browser to it. 
 With a couple of minimal changes you will be able to either run your app locally or remotely control your application.
@@ -47,7 +47,7 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 - Install the RemoteWebViewService
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 6.*-* 
+dotnet tool update -g PeakSWC.RemoteWebViewService --version 7.*-* 
 ```
 
 - Start the server
