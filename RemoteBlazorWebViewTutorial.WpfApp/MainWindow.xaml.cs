@@ -13,26 +13,32 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
     {
         public AppSettings Command { get; init; }
         public MainWindow(IOptions<AppSettings> settings)
-        {
+        {       
             Command = settings.Value;
             var serviceCollection = new ServiceCollection();
            
             serviceCollection.AddRemoteWpfBlazorWebView();
-           
+            serviceCollection.AddSingleton<IBlazorWebView>(s => RemoteBlazorWebView);
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             InitializeComponent();
-           
             RemoteBlazorWebView.Id = Command.Id;
             RemoteBlazorWebView.RootComponents.Add<Microsoft.AspNetCore.Components.Web.HeadOutlet>("head::after");
             RemoteBlazorWebView.Disconnected += Rbwv_Disconnected;
             RemoteBlazorWebView.Connected += Rbwv_Connected;
             RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
+         
+            RemoteBlazorWebView.UrlLoading += UrlLoading;
             RemoteBlazorWebView.Refreshed += (_, _) =>
             {
                 RemoteBlazorWebView.Restart();
                 Close();
             };
+        }
+
+        private void UrlLoading (object? sender, UrlLoadingEventArgs e)
+        {
+            e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
         }
 
         private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
@@ -42,7 +48,9 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Rbwv_Connected(object? sender, ConnectedEventArgs e)
         {
-            (sender as IBlazorWebView)?.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
+            RemoteBlazorWebView.WebView.CoreWebView2.Navigate($"{e.Url}app/{e.Id}");
+            var user = e.User.Length > 0 ? $"by user {e.User.Length}" : "";
+            Title = Title + $" Controlled remotely {user}from ip address {e.IpAddress}";
         }
 
         private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => Application.Current.Shutdown();
