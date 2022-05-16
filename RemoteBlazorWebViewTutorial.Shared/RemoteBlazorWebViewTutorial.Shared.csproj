@@ -1,32 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-  <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
-  <PropertyGroup>
-    <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
-    <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
-    <TargetFramework>net6.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
-    <LangVersion>9</LangVersion>
-    <Nullable>enable</Nullable>
-    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <Configurations>Debug;Release;Embedded;Developer</Configurations>
-    <Platforms>x64</Platforms>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
-    <Platforms>AnyCPU;x64</Platforms>
-    <MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
-    <Authors>budcribar</Authors>
-    <Company>Peak Software Consulting, LLC</Company>
-  </PropertyGroup>
+	<Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
+	<PropertyGroup>
+		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
+		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
+		<DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
+		<DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
+		<TargetFramework>net6.0</TargetFramework>
+		<RazorLangVersion>3.0</RazorLangVersion>
+		<LangVersion>9</LangVersion>
+		<Nullable>enable</Nullable>
+		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+		<Configurations>Debug;Release;Embedded;Developer</Configurations>
+		<Platforms>x64</Platforms>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
+		<Platforms>AnyCPU;x64</Platforms>
+		<MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
+		<Authors>budcribar</Authors>
+		<Company>Peak Software Consulting, LLC</Company>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\css\open-iconic\FONT-LICENSE" />
-    <Content Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.2-mauipre.1.22102.15" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="wwwroot\css\open-iconic\FONT-LICENSE" />
+		<Content Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
+		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
+		<PackageReference Condition="'$(BuildMode)' != 'Developer'"  Include="PeakSWC.RemoteWebView" Version="6.2.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="6.0.2-mauipre.1.22102.15" />
+	</ItemGroup>
 
 </Project>
