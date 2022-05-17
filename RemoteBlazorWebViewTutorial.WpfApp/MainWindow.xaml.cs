@@ -28,17 +28,11 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             RemoteBlazorWebView.Connected += Rbwv_Connected;
             RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
          
-            RemoteBlazorWebView.UrlLoading += UrlLoading;
             RemoteBlazorWebView.Refreshed += (_, _) =>
             {
                 RemoteBlazorWebView.Restart();
                 Close();
             };
-        }
-
-        private void UrlLoading (object? sender, UrlLoadingEventArgs e)
-        {
-            e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
         }
 
         private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
@@ -48,7 +42,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Rbwv_Connected(object? sender, ConnectedEventArgs e)
         {
-            RemoteBlazorWebView.WebView.CoreWebView2.Navigate($"{e.Url}app/{e.Id}");
+            RemoteBlazorWebView.WebView.CoreWebView2.Navigate($"{e.Url}mirror/{e.Id}");
             var user = e.User.Length > 0 ? $"by user {e.User.Length}" : "";
             Title = Title + $" Controlled remotely {user}from ip address {e.IpAddress}";
         }

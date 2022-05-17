@@ -14,6 +14,7 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Components.Web;
 using PeakSWC.RemoteBlazorWebView;
+using System.Threading.Tasks;
 
 namespace BlazorWinFormsApp
 {
@@ -64,7 +65,9 @@ namespace BlazorWinFormsApp
 
         private void BlazorWebView1_Connected(object? sender, ConnectedEventArgs e)
         {
-            blazorWebView1.NavigateToString($"User {e.User} is connected remotely from ip address {e.IpAddress}");
+            blazorWebView1.WebView.CoreWebView2.Navigate($"{e.Url}mirror/{e.Id}");
+            var user = e.User.Length > 0 ? $"by user {e.User.Length}" : "";
+            Text = Text + $" Controlled remotely {user}from ip address {e.IpAddress}";
         }
 
         private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)

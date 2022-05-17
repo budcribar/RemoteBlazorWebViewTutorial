@@ -32,28 +32,28 @@ namespace BlazorWinFormsApp
         {
             this.blazorWebView1 = new PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView();
             this.SuspendLayout();
+            // 
             // blazorWebView1
             // 
             this.blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blazorWebView1.Id = Guid.Empty;
+            this.blazorWebView1.EnableMirrors = true;
             this.blazorWebView1.Location = new System.Drawing.Point(0, 0);
             this.blazorWebView1.Margin = new System.Windows.Forms.Padding(0);
             this.blazorWebView1.Name = "blazorWebView1";
-            this.blazorWebView1.Size = new System.Drawing.Size(1872, 1555);
+            this.blazorWebView1.Size = new System.Drawing.Size(1440, 1215);
             this.blazorWebView1.TabIndex = 20;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1872, 1555);
-          
+            this.ClientSize = new System.Drawing.Size(1440, 1215);
             this.Controls.Add(this.blazorWebView1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Blazor in Windows Forms";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
