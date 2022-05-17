@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <blazor:BlazorWebView x:Name="RemoteBlazorWebView" Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUrl}" HostPage="wwwroot\index.html" Group="test"  >
+        <blazor:BlazorWebView x:Name="RemoteBlazorWebView" Services="{StaticResource services}" ServerUri="{Binding ElementName = TheMainWindow, Path=Command.ServerUrl}" HostPage="wwwroot\index.html" Group="test" EnableMirrors="True" >
             <blazor:BlazorWebView.RootComponents>
                 <blazor:RootComponent Selector="#app" ComponentType="{x:Type shared:App}"/>
             </blazor:BlazorWebView.RootComponents>
