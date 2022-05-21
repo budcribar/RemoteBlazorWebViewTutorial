@@ -44,7 +44,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
         {
             RemoteBlazorWebView.WebView.CoreWebView2.Navigate($"{e.Url}mirror/{e.Id}");
             var user = e.User.Length > 0 ? $"by user {e.User.Length}" : "";
-            Title = Title + $" Controlled remotely {user}from ip address {e.IpAddress}";
+            Title += $" Controlled remotely {user}from ip address {e.IpAddress}";
         }
 
         private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => Application.Current.Shutdown();
