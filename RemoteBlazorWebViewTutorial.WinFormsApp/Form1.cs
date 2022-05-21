@@ -67,7 +67,7 @@ namespace BlazorWinFormsApp
         {
             blazorWebView1.WebView.CoreWebView2.Navigate($"{e.Url}mirror/{e.Id}");
             var user = e.User.Length > 0 ? $"by user {e.User.Length}" : "";
-            Text = Text + $" Controlled remotely {user}from ip address {e.IpAddress}";
+            Text += $" Controlled remotely {user}from ip address {e.IpAddress}";
         }
 
         private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
