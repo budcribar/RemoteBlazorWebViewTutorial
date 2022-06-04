@@ -5,17 +5,14 @@
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
     <TargetFramework>net7.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
-    <LangVersion>9</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <Configurations>Debug;Release;Embedded;Developer</Configurations>
-    <Platforms>x64</Platforms>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)../packages</PackageOutputPath>
-    <Platforms>AnyCPU;x64</Platforms>
-    <MinimumPlatformVersion>10.0.17763.0</MinimumPlatformVersion>
+	<SupportedPlatform>browser</SupportedPlatform>
     <Authors>budcribar</Authors>
     <Company>Peak Software Consulting, LLC</Company>
+	<SelfContained>True</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
