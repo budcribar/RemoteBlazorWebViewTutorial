@@ -14,7 +14,7 @@
     <PublishSingleFile>True</PublishSingleFile>
     <Configurations>Debug;Release;Embedded;Developer</Configurations>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
     <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
     <Platforms>x64</Platforms>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
@@ -62,7 +62,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.0-preview.5.22303.8" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0-preview.5.22301.12" />
     
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="7.0.0-pre4" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="7.0.0-pre5" />
   </ItemGroup>
   
   <ItemGroup>
