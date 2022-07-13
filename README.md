@@ -18,7 +18,7 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 
 # Demo Video
-![RemoteBlazorWebView](https://github.com/budcribar/RemoteBlazorWebView/blob/net6/RemoteBlazorWebView.gif)
+![RemoteBlazorWebView](https://admin.remoteblazorwebview.org/RemoteBlazorWebView.gif)
 
 # Download and Run Demo
 - Download the latest Release.zip under the Assets folder from https://github.com/budcribar/RemoteBlazorWebViewTutorial/releases
