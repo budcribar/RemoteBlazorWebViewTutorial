@@ -18,7 +18,7 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 
 # Demo Video
-![RemoteBlazorWebView](https://admin.remoteblazorwebview.org/RemoteBlazorWebView.gif)
+![RemoteBlazorWebView](https://admin.remoteblazorwebview.com/RemoteBlazorWebView.gif)
 
 # Download and Run Demo
 - Download the latest Release.zip under the Assets folder from https://github.com/budcribar/RemoteBlazorWebViewTutorial/releases
@@ -37,7 +37,7 @@ RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, i
 
 - Finally, Run the sample program and use the secured cloud server 
     ```console
-    .\RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.org:443
+    .\RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.com:443
     ```
     - Click the link in the sample program
     - Create a new user and sign in
@@ -69,13 +69,13 @@ RemoteWebViewService
 
 - At this point the sample blazor app will be running in a web browser served from RemoteWebViewService!
 
-- Finally, we will run the application from a cloud server (https://server.remoteblazorwebview.org/)
+- Finally, we will run the application from a cloud server (https://server.remoteblazorwebview.com/)
 
 - Select the Cloud Profile from the dropdown next to the Run button and click on run
 
 - A main window will come up with a URL. Click on it
 
-- At this point the sample blazor app will be running in a web browser served from https://server.remoteblazorwebview.org. 
+- At this point the sample blazor app will be running in a web browser served from https://server.remoteblazorwebview.com. 
 Accessing the server will require that you set up a login. The server is setup for demo purposes only. Contact me at budcribar@msn.com if you would like
 help setting up a production server.
 
