@@ -1,1 +1,1 @@
-﻿& ./RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.org:443
+﻿& ./RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.com:443

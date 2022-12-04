@@ -1,1 +1,1 @@
-﻿& ./RemoteBlazorWebViewTutorial.WinFormsApp.exe -u=https://server.remoteblazorwebview.org:443
+﻿& ./RemoteBlazorWebViewTutorial.WinFormsApp.exe -u=https://server.remoteblazorwebview.com:443
