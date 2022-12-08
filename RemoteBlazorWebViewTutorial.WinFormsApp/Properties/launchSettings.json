@@ -12,7 +12,7 @@
     },
     "Cloud": {
       "commandName": "Project",
-      "commandLineArgs": "-u=https://server.remoteblazorwebview.org:443"
+      "commandLineArgs": "-u=https://server.remoteblazorwebview.com:443"
     },
     "Publish": {
       "commandName": "Executable",
