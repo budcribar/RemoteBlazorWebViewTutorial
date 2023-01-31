@@ -59,7 +59,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
    
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.3.6" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.3.7" />
   </ItemGroup>
  
   <ItemGroup>
