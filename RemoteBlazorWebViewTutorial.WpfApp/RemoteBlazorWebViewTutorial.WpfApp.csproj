@@ -22,6 +22,12 @@
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <DebugType>full</DebugType>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Embedded|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;RELEASE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Developer|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
   
   <ItemGroup>
     <EmbeddedResource Condition="'$(Configuration)' == 'Embedded'" Include="embedded\**\*">
@@ -50,7 +56,7 @@
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
     
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.8" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
    
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="6.3.6" />
