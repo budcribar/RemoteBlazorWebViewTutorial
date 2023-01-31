@@ -13,6 +13,7 @@
     <Authors>budcribar</Authors>
     <Company>Peak Software Consulting, LLC</Company>
 	<SelfContained>True</SelfContained>
+	  <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

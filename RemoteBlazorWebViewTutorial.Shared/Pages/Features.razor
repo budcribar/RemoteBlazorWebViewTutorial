@@ -18,6 +18,11 @@
         <button @onclick="InvokeDotNet">Increment From DotNet</button>
         @counter
 	</li>
+
+    <li>
+        <button @onclick="DynamicJavascriptImport">DynamicJavascriptImport</button>
+        @counter
+    </li>
 </ul>
 
 
@@ -39,12 +44,30 @@
     bool passed = true;
     static int counter = 0;
     private Task<IJSObjectReference>? _module;
+    private IJSObjectReference? module = default!;
+    static Features features = default!;
 
     [JSInvokable]
     public static Task Increment()
     {
         counter++;
+        features.StateHasChanged();
         return Task.CompletedTask;
+    }
+
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    features = this;
+    //    if (firstRender)
+    //    {
+    //        module = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "/_content/DynamicLoad.js");
+    //    }
+    //}
+
+    private async Task DynamicJavascriptImport()
+    {
+        counter  = await module!.InvokeAsync<int>("decrementNumber", new object[] { counter });
+        StateHasChanged();
     }
 
     private void InvokeDotNet() {
@@ -96,13 +119,19 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        features = this;
         await base.OnAfterRenderAsync(firstRender);
 
         var type = this.GetType();
         var path = $"./_content/{type.FullName?.Substring(0, type.Module.Name.Length - 4) + type.FullName?.Replace('.', '/').Substring(type.Module.Name.Length - 4)}.razor.js";
 
+        var moduleName = type.Module.Name.Substring(0, type.Module.Name.Length - 4);
         if (firstRender)
+        {
             _module = jsRuntime.InvokeAsync<IJSObjectReference>("import", path).AsTask();
+            module = await jsRuntime.InvokeAsync<IJSObjectReference>("import", $"./_content/{moduleName}/DynamicLoad.js");
+        }
+        
     }
 
     public async ValueTask DisposeAsync()
