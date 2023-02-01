@@ -61,8 +61,8 @@ Global
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Debug|x64.Build.0 = Debug|x64
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|Any CPU.ActiveCfg = Developer|Any CPU
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|Any CPU.Build.0 = Developer|Any CPU
-		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|x64.ActiveCfg = Developer|x64
-		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|x64.Build.0 = Developer|x64
+		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|x64.ActiveCfg = Developer|Any CPU
+		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Developer|x64.Build.0 = Developer|Any CPU
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Embedded|Any CPU.ActiveCfg = Embedded|Any CPU
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Embedded|Any CPU.Build.0 = Embedded|Any CPU
 		{B73B160D-CC95-4E11-A01D-9AFB9AF4BFBA}.Embedded|x64.ActiveCfg = Embedded|x64
