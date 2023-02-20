@@ -15,6 +15,9 @@
 	<SelfContained>True</SelfContained>
 	<Platforms>x64</Platforms>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Developer|x64'">
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+  </PropertyGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\css\open-iconic\FONT-LICENSE" />

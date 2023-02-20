@@ -1,0 +1,57 @@
+﻿@page "/nav-handler"
+@inject NavigationManager Navigation
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<NavigationLock ConfirmExternalNavigation="true" 
+                OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<p>
+    <button @onclick="@(() => Navigation.NavigateTo("/"))">
+        Home (Allowed)
+    </button>
+    <button @onclick="@(() => Navigation.NavigateTo("/counter"))">
+        Counter (Prevented)
+    </button>
+    <button @onclick="Navigate">Confirm Navigate</button>
+    <a href="https://www.microsoft.com" target="_blank">Microsoft homepage</a>
+</p>
+
+@code {
+    private void Navigate()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    private IDisposable? registration;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            registration =
+                Navigation.RegisterLocationChangingHandler(OnLocationChanging);
+        }
+    }
+
+    private ValueTask OnLocationChanging(LocationChangingContext context)
+    {
+        if (context.TargetLocation == "/counter")
+        {
+            context.PreventNavigation();
+        }
+
+        return ValueTask.CompletedTask;
+    }
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var isConfirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to navigate to the Index page?");
+        if (!isConfirmed)
+        {
+            context.PreventNavigation();
+        }
+    }
+
+    public void Dispose() => registration?.Dispose();
+}
