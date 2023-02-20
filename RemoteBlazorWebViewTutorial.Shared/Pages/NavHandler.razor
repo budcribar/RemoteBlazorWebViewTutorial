@@ -3,8 +3,8 @@
 @implements IDisposable
 @inject IJSRuntime JSRuntime
 
-<NavigationLock ConfirmExternalNavigation="true" 
-                OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+<NavigationLock ConfirmExternalNavigation="true"
+               OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
 
 <p>
     <button @onclick="@(() => Navigation.NavigateTo("/"))">
@@ -13,16 +13,11 @@
     <button @onclick="@(() => Navigation.NavigateTo("/counter"))">
         Counter (Prevented)
     </button>
-    <button @onclick="Navigate">Confirm Navigate</button>
     <a href="https://www.microsoft.com" target="_blank">Microsoft homepage</a>
 </p>
 
 @code {
-    private void Navigate()
-    {
-        Navigation.NavigateTo("/");
-    }
-
+  
     private IDisposable? registration;
 
     protected override void OnAfterRender(bool firstRender)
