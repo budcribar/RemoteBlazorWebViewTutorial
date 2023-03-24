@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <blazor:BlazorWebView HostPage="wwwroot\index.html" Services="{DynamicResource services}">
-            <blazor:BlazorWebView.RootComponents>
+        <blazor:BlazorWebView x:Name="MicrosoftBlazorWebView" HostPage="wwwroot\index.html" Services="{DynamicResource services}">
+                <blazor:BlazorWebView.RootComponents>
                 <blazor:RootComponent Selector="#app" ComponentType="{x:Type local:Counter}" />
             </blazor:BlazorWebView.RootComponents>
         </blazor:BlazorWebView>
