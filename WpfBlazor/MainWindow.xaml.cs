@@ -21,8 +21,8 @@ namespace WpfBlazor
         {
             InitializeComponent();
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddWpfBlazorWebView();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
+            serviceCollection.AddWpfBlazorWebView();     
         }
     }
 }
