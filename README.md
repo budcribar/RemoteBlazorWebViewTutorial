@@ -1,20 +1,32 @@
 # RemoteBlazorWebViewTutorial
 
-Microsoft has recently introduced two Blazor WebView Controls in .NET 7. One control (Microsoft.AspNetCore.Components.WebView.Wpf) targets Windows Presentation Foundation (WPF) apps and
-the other (Microsoft.AspNetCore.Components.WebView.WindowsForms) targets Windows Form (WinForms) apps. The Microsoft controls allow developers to create user interfaces for desktop apps using Blazor web technology. The desktop apps using Blazor have the full feature set and performance of .NET 7 and are not contrained like a Blazor WebAssembly app.
+Microsoft is currently supporting two Blazor WebView Controls in .NET 7. One control (`Microsoft.AspNetCore.Components.WebView.Wpf`) targets Windows Presentation Foundation (WPF) apps and
+the other (`Microsoft.AspNetCore.Components.WebView.WindowsForms`) targets Windows Form (WinForms) apps. 
+These Microsoft controls enable developers to create user interfaces for desktop apps using Blazor web technology. 
+Desktop apps using Blazor have the full feature set and performance of .NET 7 and are not constrained like a Blazor WebAssembly app.
 
-The Remote versions of the Blazor WebView Controls (PeakSWC.RemoteBlazorWebView.Wpf and PeakSWC.RemoteBlazorWebView.WindowsForms) act as a drop-in replacement for the Microsoft controls along with the ability to access the user interface over a secure connection to a public server using a web browser. This is accomplished by setting up a secure server (RemoteWebWindowService) in the cloud and pointing your browser to it. 
-With a couple of minimal changes you will be able to either run your app locally or remotely control your application.
+The Remote versions of the Blazor WebView Controls (`PeakSWC.RemoteBlazorWebView.Wpf` and `PeakSWC.RemoteBlazorWebView.WindowsForms`) serve as a drop-in replacements for the Microsoft controls, 
+with the added ability to access the user interface over a secure connection to a public server using a web browser. 
+This is achieved by setting up a secure server (`RemoteWebWindowService`) in the cloud and pointing your browser to it. 
+With a few minor changes, you can run your app locally or remotely control your application.
 
-The RemoteBlazorWebView package allows developers to create a Blazor UI on Windows, Mac, and Linux. RemoteBlazorWebView is based on Microsoft's WebView control and photino.Blazor. It shares the same server with the WinForms and Wpf controls (RemoteWebWindowService). 
+The RemoteBlazorWebView package allows developers to create a Blazor UI on Windows, Mac, and Linux. 
+RemoteBlazorWebView is based on Microsoft's WebView control and `Photino.Blazor`. 
+It shares the same server with the WinForms and Wpf controls (`RemoteWebWindowService`). 
 # Use Cases
-The primary use case is to be able to share a desktop application controlling hardware with an external service technician. Typically, the application is behind a corporate firewall and is not easily accessed by the technician. The Remote Blazor controls allow the desktop application to be started in "Remote" mode which generates a unique Url for the technician to access the user interface.
+The primary use case is to be able to share a desktop application controlling hardware with an external service technician.
+Typically, the application is behind a corporate firewall and is not easily accessed by the technician. 
+The Remote Blazor controls enables the desktop application to be started in "Remote" mode which generates a unique Url for the technician to access the user interface.
 
-Another use case is to be able to monitor data that is behind a firewall or on a private network without the cost and complexity to store the data externally. For example, if a brewer wanted to monitor fermentation data such as PH, Gravity, and Pressure they could build an app showing real-time graphical data using Blazor components and, with only a couple of changes, be able to view the user interface with a web browser from outside of the firewall. 
+Another use case is to be able to monitor data that is behind a firewall or on a private network without the cost and complexity to store the data externally. 
+For example, if a brewer wanted to monitor fermentation data such as PH, Gravity, and Pressure they could build an app showing real-time graphical data using Blazor components and, with only a couple of changes, be able to view the user interface with a web browser from outside of the firewall. 
 
 # How it works
 
-RemoteBlazorWebView.Wpf has two modes of operation. In the first default mode, it works just like the Microsoft BlazorWebView Controls (see [BlazorDesktopWPF](https://github.com/jorgearteiro/BlazorDesktopWPF)). In the second mode, a url is specified on the control's properties. In this mode, all GUI interactions are sent to a server which can be accessed with a browser. Hosting the server (RemotableWebViewService.exe) in the cloud allows you to remotely control an application which is behind a firewall or does not have a static IP address.
+`RemoteBlazorWebView.Wpf` has two modes of operation. In the first default mode, it works just like the Microsoft BlazorWebView Controls (see [BlazorDesktopWPF](https://github.com/jorgearteiro/BlazorDesktopWPF)). 
+In the second mode, a url is specified on the control's properties. 
+In this mode, all GUI interactions are sent to a server that can be accessed with a browser. 
+Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to remotely control an application which is behind a firewall or does not have a static IP address.
 
 
 # Demo Video
@@ -87,3 +99,8 @@ The application is locked once a browser attaches to the server at a given Guid 
 The demo version of the RemoteWebViewService does not include authentication but it can be built and configured with Azure AD B2C. 
 When built with Azure AD B2C authentication, the server requires that users are authenticated in order to access the endpoints which serve up the demo application user interface. 
 The server code is hosted in the RemoteBlazorWebView github repository and includes a Visual Studio project to build the server. This added layer of security should be sufficient for most use cases but the server can be further locked down with firewall rules if needed.
+
+
+# Convert To Remote
+[Converting a WPF Blazor Application to a Remote WPF Blazor Application](WpfBlazor/ConvertToRemoteBlazor.md)
+
