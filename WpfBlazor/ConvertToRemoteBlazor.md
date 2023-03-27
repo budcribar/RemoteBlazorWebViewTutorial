@@ -157,4 +157,23 @@ public partial class MainWindow : Window
     
 ```
 
+<h3>Handling Browser Refresh</h3>
 
+A browser refresh typically resets a web server and re-loads the home page. To achieve equivalent functionality when refreshing an application with an embedded web browser control, you can restart the application. To do this, add the following event handler:
+
+```
+RemoteBlazorWebView.Refreshed += (_, _) =>
+{
+    RemoteBlazorWebView.Restart();
+    Close();
+};
+```
+
+<h3>Handling Browser Disconnect</h3>
+
+When a user disconnects from the application, a Disconnect event is triggered. Various circumstances can cause a disconnect, such as closing the browser or tab, or navigating away from the application. To gracefully shut down the application upon user disconnection, add the following event handler:
+```
+ RemoteBlazorWebView.Disconnected += (_,_) => Application.Current.Shutdown();
+```
+
+This event handler ensures that the application is properly closed when the user disconnects, maintaining a smooth user experience.
