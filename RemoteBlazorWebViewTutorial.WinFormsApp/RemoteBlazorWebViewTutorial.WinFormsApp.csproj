@@ -62,7 +62,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.4" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     
-    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="7.0.3" />
+    <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="7.0.4" />
   </ItemGroup>
   
   <ItemGroup>
