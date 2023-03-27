@@ -1,6 +1,6 @@
-The steps to convert a WPF Blazor application to a Remote WPF Blazor application
+<h1>Converting a WPF Blazor Application to a Remote WPF Blazor Application</h1>
 
-- Change the Microsoft.AspNetCore.Components.WebView.Wpf package reference to PeakSWC.RemoteBlazorWebView.Wpf in the WpfBlazor.csproj.
+- Modify the `WpfBlazor.csproj` file.
    
    Change the reference from Microsoft
    ```
@@ -10,7 +10,7 @@ The steps to convert a WPF Blazor application to a Remote WPF Blazor application
    ```
    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />
    ```
-- Modify the MainWindow.xaml file
+- Modify the `MainWindow.xaml` file
 
   Change 
   ```
@@ -31,7 +31,7 @@ The steps to convert a WPF Blazor application to a Remote WPF Blazor application
   <blazor:BlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html" Services="{DynamicResource services}">
   ```
 
-- Modify the MainWindow.xaml.cs file. Set the Id to Empty so a new Id is generated each time,  and finally set the Server Uri
+- Modify the `MainWindow.xaml.cs` file. Add the AddRemoteWpfBlazorWebView service, Set the Id to Empty so a new Id is generated each time, add the ReadyToConnect handler,  and finally set the Server Uri
 
    Change:
    ```
@@ -72,15 +72,13 @@ dotnet tool update -g PeakSWC.RemoteWebViewService --version 7.*-*
 RemoteWebViewService &
 ```
 
-- Run the WPF Application. There will be a hyperlink showing that when clicked, will show the UI
+- Run the WPF Application. A hyperlink will be displayed, and when clicked, it will reveal the user interface.
 
 <h2>Advanced Features</h2>
 
 <h3>Mirroring</h3>
 
-A read-only version of the User Interface can be "mirrored" in the WPF Application. This would allow a user to monitor the application while someone else is running it remotely.
-It is set up by handling the Connected event and navigating to a mirror url within the BlazorWebView control. 
-
+A read-only version of the user interface can be "mirrored" in the WPF Application, enabling a user to monitor the application while another person operates it remotely. To set this up, handle the Connected event and navigate to a mirror URL within the BlazorWebView control.
 
 - Insert the following in the MainWindow.xaml.cs after the ReadyToConnect handler is set up.
 
@@ -102,7 +100,7 @@ It is set up by handling the Connected event and navigating to a mirror url with
 
 <h3>Reversing The Mirror</h3>
 
-This example shows the readonly mirror available through the web browser and the application is controlled locally. This scenario allows remote monitoring without the ability to interact with the application.
+This example demonstrates a read-only mirror accessible through a web browser, with the application being controlled locally. This scenario enables remote monitoring without the capacity for interaction with the application.
 
 - Modify MainWindow.xaml add the namespace and the WebView2 control. It should look like:
 
@@ -172,7 +170,7 @@ RemoteBlazorWebView.Refreshed += (_, _) =>
 <h3>Handling Browser Disconnect</h3>
 
 When a user disconnects from the application, a Disconnect event is triggered. Various circumstances can cause a disconnect, such as closing the browser or tab, or navigating away from the application. To gracefully shut down the application upon user disconnection, add the following event handler:
-```
+```csharp
  RemoteBlazorWebView.Disconnected += (_,_) => Application.Current.Shutdown();
 ```
 
