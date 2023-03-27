@@ -30,7 +30,7 @@ Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to re
 
 
 # Demo Video
-![RemoteBlazorWebView](https://admin.remoteblazorwebview.com/RemoteBlazorWebView.gif)
+![RemoteBlazorWebView](https://raw.githubusercontent.com/budcribar/RemoteBlazorWebView/net7/RemoteBlazorWebView.gif)
 
 # Download and Run Demo
 - Download the latest Release.zip under the Assets folder from https://github.com/budcribar/RemoteBlazorWebViewTutorial/releases
