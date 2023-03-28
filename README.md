@@ -100,6 +100,30 @@ The demo version of the RemoteWebViewService does not include authentication but
 When built with Azure AD B2C authentication, the server requires that users are authenticated in order to access the endpoints which serve up the demo application user interface. 
 The server code is hosted in the RemoteBlazorWebView github repository and includes a Visual Studio project to build the server. This added layer of security should be sufficient for most use cases but the server can be further locked down with firewall rules if needed.
 
+# Changing the default server port
+
+
+Create an appsettings.json file with the contents: (Replace 5002 with the desired port)
+
+```
+{
+  "Kestrel": {
+    "Endpoints": {
+      "Https": {
+        "Url": "https://localhost:5002"
+      }
+    }
+  }
+}
+
+```
+
+- Copy the appsettings.json into the directory
+
+```
+cd %USERPROFILE%\.dotnet\tools
+```
+
 
 # Convert To Remote
 [Converting a WPF Blazor Application to a Remote WPF Blazor Application](WpfBlazor/ConvertToRemoteBlazor.md)
