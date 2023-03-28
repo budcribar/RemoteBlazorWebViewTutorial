@@ -41,6 +41,8 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "RemoteWebViewService", "..\
 		IORedirection = Auto
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBlazor", "WpfBlazor\WpfBlazor.csproj", "{F077A819-06F3-4042-94A9-8FD6F1F37E7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,26 @@ Global
 		{BBB31728-3C2A-4351-AC7E-FFD3A7B72869}.NoAuthorization|x64.ActiveCfg = Release|x64
 		{BBB31728-3C2A-4351-AC7E-FFD3A7B72869}.Release|Any CPU.ActiveCfg = Release|x64
 		{BBB31728-3C2A-4351-AC7E-FFD3A7B72869}.Release|x64.ActiveCfg = Release|x64
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Debug|x64.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Developer|Any CPU.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Developer|Any CPU.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Developer|x64.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Developer|x64.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Embedded|Any CPU.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Embedded|Any CPU.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Embedded|x64.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Embedded|x64.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.NoAuthorization|Any CPU.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.NoAuthorization|Any CPU.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.NoAuthorization|x64.ActiveCfg = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.NoAuthorization|x64.Build.0 = Debug|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|x64.ActiveCfg = Release|Any CPU
+		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
