@@ -59,7 +59,7 @@ Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to re
 
 - Install the RemoteWebViewService
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 7.*-* 
+dotnet tool update -g PeakSWC.RemoteWebViewService --version 8.*-* 
 ```
 
 - Start the server
