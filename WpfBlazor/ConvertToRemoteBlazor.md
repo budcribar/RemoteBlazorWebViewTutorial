@@ -175,3 +175,13 @@ When a user disconnects from the application, a Disconnect event is triggered. V
 ```
 
 This event handler ensures that the application is properly closed when the user disconnects, maintaining a smooth user experience.
+
+
+<h3>Enabling Developer Tools</h3>
+
+Add the BlazorWebViewDeveloperTools class to the serviceCollection in order to enable the developer tools.
+```
+serviceCollection.AddSingleton(new PeakSWC.RemoteBlazorWebView.Wpf.BlazorWebViewDeveloperTools { Enabled = true });
+```
+
+After enabling developer tools, you can access them in your Blazor WebView app by right-clicking on the WebView and selecting "Inspect" from the context menu, or by pressing Ctrl + Shift + I or F12 on your keyboard.
