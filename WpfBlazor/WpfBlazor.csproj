@@ -8,20 +8,12 @@
 		<UseWPF>true</UseWPF>
 		<RootNamespace>WpfBlazor</RootNamespace>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		<!--<PublishDir>bin\Release\net7.0-windows\publish\win-x64</PublishDir>-->
-		<!--<PublishDir>C:\Users\Arti_BlizzardPV3\source\repos\RemoteBlazorWebViewTutorial\WpfBlazor\bin\Release\net7.0-windows\publish\win-x64</PublishDir>-->
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />-->	
+		<!--<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />-->
+		<ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
 	</ItemGroup>
-	
-	
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 		<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
@@ -31,10 +23,9 @@
 			<Visible>true</Visible>
 		</EmbeddedResource>
 	</ItemGroup>
-	
-	
-	<!--<Target Name="PrepareEmbeddedResources" Condition="'$(ExecutedTarget)' == 'true'">-->
-		<Target Name="PrepareEmbeddedResources" >
+
+
+		<Target Name="PrepareEmbeddedResources" Condition="'$(ExecutedTarget)' == 'true'">
 	
 		<Message Text="BeforeTargets ExecutedTarget:" Importance="high" />
 		<Message Text="'$(ExecutedTarget)'" Importance="high" />
