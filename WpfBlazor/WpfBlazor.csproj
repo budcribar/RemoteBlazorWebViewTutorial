@@ -1,16 +1,111 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-	<RootNamespace>WpfBlazor</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>WpfBlazor</RootNamespace>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<!--<PublishDir>bin\Release\net7.0-windows\publish\win-x64</PublishDir>-->
+		<!--<PublishDir>C:\Users\Arti_BlizzardPV3\source\repos\RemoteBlazorWebViewTutorial\WpfBlazor\bin\Release\net7.0-windows\publish\win-x64</PublishDir>-->
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.59" />
-  </ItemGroup>
+	<ItemGroup>
+		<!--<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />-->	
+	</ItemGroup>
+	
+	
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
+		<EmbeddedResource Include="@(Parent)">
+			<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
+			<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<Visible>true</Visible>
+		</EmbeddedResource>
+	</ItemGroup>
+	
+	
+	<!--<Target Name="PrepareEmbeddedResources" Condition="'$(ExecutedTarget)' == 'true'">-->
+		<Target Name="PrepareEmbeddedResources" >
+	
+		<Message Text="BeforeTargets ExecutedTarget:" Importance="high" />
+		<Message Text="'$(ExecutedTarget)'" Importance="high" />
+		
+		<Message Text="*** PrepareEmbeddedResources" Importance="high" />
+		<ItemGroup>
+			
+				<FilesToDelete1 Include="$(OutputPath)\**\*.*" Exclude="$(OutputPath)\wwwroot\**\*.*" />
+		
+			<Delete Files="@(FilesToDelete1)" />
+			<FilesToDelete2 Include="$(PublishDir)\**\*.*" Exclude="$(PublishDir)\wwwroot\**\*.*" />
+			<Delete Files="@(FilesToDelete2)" />
+			<Message Text="FilesToDelete1: @(FilesToDelete1 -> '%(Identity)')" Importance="high" />
+			<Message Text="FilesToDelete2: @(FilesToDelete2 -> '%(Identity)')" Importance="high" />
+
+			<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
+			<EmbeddedResource Include="@(Parent)">
+				<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
+				<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+				<Visible>true</Visible>
+			</EmbeddedResource>
+			
+		</ItemGroup>
+			<!--<Delete Files="@(FilesToDelete1)" />
+			<Delete Files="@(FilesToDelete2)" />-->
+			<Message Text="FilesToDelete1: @(FilesToDelete1 -> '%(Identity)')" Importance="high" />
+			<Message Text="FilesToDelete2: @(FilesToDelete2 -> '%(Identity)')" Importance="high" />
+
+			<Message Text="Parent files:" Importance="high" />
+		<Message Text="%(Parent.Identity)" Importance="high" />
+
+		<Message Text="EmbeddedResource files:" Importance="high" />
+		<Message Text="%(EmbeddedResource.Identity)" Importance="high" />
+
+		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
+		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
+
+	</Target>
+
+	<Target Name="EmbeddedResources" BeforeTargets="Publish" >
+	
+
+		<Message Text="*** EmbeddedResources" Importance="high" />
+		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
+		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
+
+	</Target>
+	<Target Name="CustomPublish" AfterTargets="Publish" Condition="'$(ExecutedTarget)' != 'true'">
+		<Message Text="AfterTargets ExecutedTarget:" Importance="high" />
+		<Message Text="'$(ExecutedTarget)'" Importance="high" />
+		<Message Text="*** Second PublishDir is [$(PublishDir)]" Importance="high" />
+
+		<PropertyGroup>
+			<ExecutedTarget>true</ExecutedTarget>
+			
+		</PropertyGroup>
+		
+		<CallTarget Targets="PrepareEmbeddedResources"  />
+		<!--<Exec Command="dotnet build -no-incremental $(MSBuildProjectFullPath) -c Release" EnvironmentVariables="ExecutedTarget=true;PublishDir=$(PublishDir)" />
+		<Exec Command="dotnet publish  -no-build $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
+		<!--<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Rebuild" />
+		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Publish" />-->
+		<!--<CallTarget Targets="Publish"  />-->
+		<!--<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Publish" />-->
+		<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
+		<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -p:PublishProfile=Properties\PublishProfiles\FolderProfile.pubxml -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
+		
+		<Message Text="*** Second Publish Finished" Importance="high" />
+	</Target>
+
+	<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
+	<!--<Exec Command="dotnet build -no-incremental $(MSBuildProjectFullPath) -c Release" EnvironmentVariables="ExecutedTarget=true;PublishDir=$(PublishDir)" />-->
+	<!--<Exec Command="dotnet publish -p:PublishProfile=Properties\PublishProfiles\FolderProfile.pubxml -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
 </Project>
