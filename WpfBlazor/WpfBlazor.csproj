@@ -45,14 +45,7 @@
 		</ItemGroup>
 			
 
-			<Message Text="Parent files:" Importance="high" />
-		<Message Text="%(Parent.Identity)" Importance="high" />
-
-		<Message Text="EmbeddedResource files:" Importance="high" />
-		<Message Text="%(EmbeddedResource.Identity)" Importance="high" />
-
-		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
-		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
+			
 
 	</Target>
 
@@ -75,19 +68,9 @@
 		</PropertyGroup>
 		
 		<CallTarget Targets="PrepareEmbeddedResources"  />
-		<!--<Exec Command="dotnet build -no-incremental $(MSBuildProjectFullPath) -c Release" EnvironmentVariables="ExecutedTarget=true;PublishDir=$(PublishDir)" />
-		<Exec Command="dotnet publish  -no-build $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
-		<!--<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Rebuild" />
-		<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Publish" />-->
-		<!--<CallTarget Targets="Publish"  />-->
-		<!--<MSBuild Projects="$(MSBuildProjectFile)" Properties="Configuration=Release;PublishDir=$(PublishDir)" Targets="Publish" />-->
-		<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
-		<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -p:PublishProfile=Properties\PublishProfiles\FolderProfile.pubxml -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
 		
 		<Message Text="*** Second Publish Finished" Importance="high" />
 	</Target>
 
-	<!--<Exec Command="dotnet publish $(MSBuildProjectFullPath) -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
-	<!--<Exec Command="dotnet build -no-incremental $(MSBuildProjectFullPath) -c Release" EnvironmentVariables="ExecutedTarget=true;PublishDir=$(PublishDir)" />-->
-	<!--<Exec Command="dotnet publish -p:PublishProfile=Properties\PublishProfiles\FolderProfile.pubxml -c Release -o $(PublishDir)"  EnvironmentVariables="ExecutedTarget=true" />-->
+	
 </Project>
