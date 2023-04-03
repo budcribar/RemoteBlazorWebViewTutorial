@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
+		<AccelerateBuildsInVisualStudio>false</AccelerateBuildsInVisualStudio>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net7.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -8,10 +9,6 @@
 		<UseWPF>true</UseWPF>
 		<RootNamespace>WpfBlazor</RootNamespace>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-
-		<AfterTargets>Publish</AfterTargets>
-
-
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -28,16 +25,10 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-	<Target Name="CustomPublish" AfterTargets="Publish">
-		<ItemGroup>
-			<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
-			<EmbeddedResource Include="@(Parent)">
-				<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
-				<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
-				<Visible>true</Visible>
-			</EmbeddedResource>
-		</ItemGroup>
-
+	<Target Name="CustomPublish" BeforeTargets="Publish">
+		<Exec Command="SETX PublishDir $(PublishDir)"/>	
+		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
+		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
 	</Target>
-
+	
 </Project>
