@@ -33,13 +33,7 @@
 		<Message Text="*** PrepareEmbeddedResources" Importance="high" />
 		<ItemGroup>
 			
-				<FilesToDelete1 Include="$(OutputPath)\**\*.*" Exclude="$(OutputPath)\wwwroot\**\*.*" />
-		
-			<Delete Files="@(FilesToDelete1)" />
-			<FilesToDelete2 Include="$(PublishDir)\**\*.*" Exclude="$(PublishDir)\wwwroot\**\*.*" />
-			<Delete Files="@(FilesToDelete2)" />
-			<Message Text="FilesToDelete1: @(FilesToDelete1 -> '%(Identity)')" Importance="high" />
-			<Message Text="FilesToDelete2: @(FilesToDelete2 -> '%(Identity)')" Importance="high" />
+				
 
 			<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
 			<EmbeddedResource Include="@(Parent)">
@@ -49,10 +43,7 @@
 			</EmbeddedResource>
 			
 		</ItemGroup>
-			<!--<Delete Files="@(FilesToDelete1)" />
-			<Delete Files="@(FilesToDelete2)" />-->
-			<Message Text="FilesToDelete1: @(FilesToDelete1 -> '%(Identity)')" Importance="high" />
-			<Message Text="FilesToDelete2: @(FilesToDelete2 -> '%(Identity)')" Importance="high" />
+			
 
 			<Message Text="Parent files:" Importance="high" />
 		<Message Text="%(Parent.Identity)" Importance="high" />
