@@ -24,28 +24,11 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-
-	<Target Name="PrepareEmbeddedResources" Condition="'$(ExecutedTarget)' == 'true'">
-		<Message Text="BeforeTargets ExecutedTarget:" Importance="high" />
-		<Message Text="'$(ExecutedTarget)'" Importance="high" />
-		<Message Text="*** PrepareEmbeddedResources" Importance="high" />
-		<ItemGroup>
-			<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
-			<EmbeddedResource Include="@(Parent)">
-				<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
-				<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
-				<Visible>true</Visible>
-			</EmbeddedResource>
-		</ItemGroup>
-	</Target>
-
 	<Target Name="CustomPublish" AfterTargets="Publish" Condition="'$(ExecutedTarget)' != 'true'">
 		
 		<PropertyGroup>
 			<ExecutedTarget>true</ExecutedTarget>
 		</PropertyGroup>
-
-		<CallTarget Targets="PrepareEmbeddedResources"  />
 
 	</Target>
 
