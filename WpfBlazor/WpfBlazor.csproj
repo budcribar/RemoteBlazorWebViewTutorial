@@ -39,24 +39,14 @@
 		</ItemGroup>
 	</Target>
 
-	<Target Name="EmbeddedResources" BeforeTargets="Publish" >
-		<Message Text="*** EmbeddedResources" Importance="high" />
-		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
-		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
-
-	</Target>
 	<Target Name="CustomPublish" AfterTargets="Publish" Condition="'$(ExecutedTarget)' != 'true'">
-		<Message Text="AfterTargets ExecutedTarget:" Importance="high" />
-		<Message Text="'$(ExecutedTarget)'" Importance="high" />
-		<Message Text="*** Second PublishDir is [$(PublishDir)]" Importance="high" />
-
+		
 		<PropertyGroup>
 			<ExecutedTarget>true</ExecutedTarget>
 		</PropertyGroup>
 
 		<CallTarget Targets="PrepareEmbeddedResources"  />
 
-		<Message Text="*** Second Publish Finished" Importance="high" />
 	</Target>
 
 </Project>
