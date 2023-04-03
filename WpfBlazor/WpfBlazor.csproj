@@ -8,9 +8,9 @@
 		<UseWPF>true</UseWPF>
 		<RootNamespace>WpfBlazor</RootNamespace>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-	
-			<AfterTargets>Publish</AfterTargets>
-		
+
+		<AfterTargets>Publish</AfterTargets>
+
 
 	</PropertyGroup>
 
@@ -28,35 +28,15 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-	<Target Name="CustomPublish" AfterTargets="Publish" Condition="'$(ExecutedTarget)' != 'true'">
+	<Target Name="CustomPublish" AfterTargets="Publish">
 		<ItemGroup>
-		<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
-		<EmbeddedResource Include="@(Parent)">
-			<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
-			<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<Visible>true</Visible>
-		</EmbeddedResource>
-			</ItemGroup>
-		<PropertyGroup>
-			<ExecutedTarget>true</ExecutedTarget>
-		</PropertyGroup>
-
-	</Target>
-
-	<Target Name="AfterPublish">
-		<ItemGroup>
-			<!-- Delete all files and directories in the publish directory except for wwwroot -->
-			<FilesToDelete Include="$(PublishDir)\**\*.*" Exclude="$(PublishDir)\wwwroot\**\*.*" />
-			<!-- Delete all files and directories in the wwwroot directory -->
-			<DirectoriesToDelete Include="$(PublishDir)\wwwroot\**\*" />
+			<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
+			<EmbeddedResource Include="@(Parent)">
+				<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
+				<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+				<Visible>true</Visible>
+			</EmbeddedResource>
 		</ItemGroup>
-
-		<Message Text="********************************************************* PostBuild" Importance="high" />
-		<!-- Delete the files -->
-		<Delete Files="@(FilesToDelete)" />
-
-		<!-- Delete the directories -->
-		<RemoveDir Directories="@(DirectoriesToDelete)" />
 
 	</Target>
 
