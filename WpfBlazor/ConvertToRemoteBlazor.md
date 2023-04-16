@@ -185,3 +185,28 @@ serviceCollection.AddSingleton(new PeakSWC.RemoteBlazorWebView.Wpf.BlazorWebView
 ```
 
 After enabling developer tools, you can access them in your Blazor WebView app by right-clicking on the WebView and selecting "Inspect" from the context menu, or by pressing Ctrl + Shift + I or F12 on your keyboard.
+<h3>Building a Single File Executable</h3>
+
+Follow the following steps to embed the wwwroot directory and it's contents in order to create a single file executable
+
+Insert the following statement within the first PropertyGroup of the .csproj file. This variable needs to be set at build time so we cannot rely on the variable being set when publishing.
+
+```
+<PublishDir>bin\release\net7.0-windows\publish\win-x64</PublishDir>
+```
+
+Next add the following ItemGroup which will map all of the contents of the wwwroot directory into the Embedded Resources
+
+```
+<ItemGroup>
+	<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
+	<EmbeddedResource Include="@(Parent)">
+		<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
+		<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+		<Visible>true</Visible>
+	</EmbeddedResource>
+</ItemGroup>
+```
+
+Now you must publish your project twice. The first time you publish the wwwroot files will be collected and placed in the publish directory. However, they will not be embedded as resources since they have not been built before the project has been compiled.
+After the second publish, the wwwroot files will be embedded and you can deploy your application without needing to deploy the wwwroot directory. 
