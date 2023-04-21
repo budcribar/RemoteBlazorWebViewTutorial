@@ -12,23 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />-->
-		<ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
+		<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<Parent Include="$(PublishDir)\wwwroot\**\*.*" />
-		<EmbeddedResource Include="@(Parent)">
-			<LogicalName>WpfBlazor.$([System.String]::Copy('%(RecursiveDir)').Replace('\', '.').Replace('/','.'))%(Filename)%(Extension)</LogicalName>
-			<Link>$(PublishDir)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<Visible>true</Visible>
-		</EmbeddedResource>
-	</ItemGroup>
-
-	<Target Name="CustomPublish" BeforeTargets="Publish">
-		<Exec Command="SETX PublishDir $(PublishDir)"/>	
-		<Message Text="EmbeddedResource LogicalName:" Importance="high" />
-		<Message Text="%(EmbeddedResource.LogicalName)" Importance="high" />
-	</Target>
 	
 </Project>
