@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />
+		<PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.5" />
 	</ItemGroup>
 	
 </Project>
