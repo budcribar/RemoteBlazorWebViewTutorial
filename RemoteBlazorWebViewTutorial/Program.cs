@@ -53,7 +53,7 @@ namespace BlazorWebView
             
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
-                app.MainWindow.OpenAlertWindow("Fatal exception", error.ExceptionObject.ToString());
+                app.MainWindow.ShowMessage("Fatal exception", error.ExceptionObject.ToString());
             };
 
             app.Run();
