@@ -21,6 +21,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             serviceCollection.AddRemoteWpfBlazorWebView();
             serviceCollection.AddSingleton<IBlazorWebView>(s => RemoteBlazorWebView);
             serviceCollection.AddScoped<HttpClient>();
+            serviceCollection.AddRemoteBlazorWebViewDeveloperTools();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
             InitializeComponent();
             RemoteBlazorWebView.Id = Command.Id;
