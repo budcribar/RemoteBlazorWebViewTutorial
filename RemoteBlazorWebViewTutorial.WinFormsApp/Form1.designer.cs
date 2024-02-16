@@ -30,34 +30,35 @@ namespace BlazorWinFormsApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.blazorWebView1 = new PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView();
-            this.SuspendLayout();
+            blazorWebView1 = new PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView();
+            SuspendLayout();
             // 
             // blazorWebView1
             // 
-            this.blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blazorWebView1.EnableMirrors = true;
-            this.blazorWebView1.Location = new System.Drawing.Point(0, 0);
-            this.blazorWebView1.Margin = new System.Windows.Forms.Padding(0);
-            this.blazorWebView1.Name = "blazorWebView1";
-            this.blazorWebView1.Size = new System.Drawing.Size(1440, 1215);
-            this.blazorWebView1.TabIndex = 20;
+            blazorWebView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            blazorWebView1.EnableMirrors = true;
+            blazorWebView1.Location = new System.Drawing.Point(0, 0);
+            blazorWebView1.Margin = new System.Windows.Forms.Padding(0);
+            blazorWebView1.Name = "blazorWebView1";
+            blazorWebView1.Size = new System.Drawing.Size(1440, 1215);
+            blazorWebView1.StartPath = "/";
+            blazorWebView1.TabIndex = 20;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 1215);
-            this.Controls.Add(this.blazorWebView1);
-            this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Blazor in Windows Forms";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1440, 1215);
+            Controls.Add(blazorWebView1);
+            KeyPreview = true;
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            Name = "Form1";
+            Text = "Blazor in Windows Forms";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
-       
+
         #endregion
         private PeakSWC.RemoteBlazorWebView.WindowsForms.BlazorWebView blazorWebView1;
     }

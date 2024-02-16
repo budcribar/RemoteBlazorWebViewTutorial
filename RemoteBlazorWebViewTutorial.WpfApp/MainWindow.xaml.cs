@@ -20,21 +20,13 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
            
             serviceCollection.AddRemoteWpfBlazorWebView();
             serviceCollection.AddRemoteBlazorWebViewDeveloperTools();
-            serviceCollection.AddSingleton<IBlazorWebView>(s => RemoteBlazorWebView);
+            //serviceCollection.AddSingleton<IBlazorWebView>(s => RemoteBlazorWebView);
             serviceCollection.AddScoped<HttpClient>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
+           
             InitializeComponent();
             RemoteBlazorWebView.Id = Command.Id;
-            RemoteBlazorWebView.RootComponents.Add<Microsoft.AspNetCore.Components.Web.HeadOutlet>("head::after");
-            RemoteBlazorWebView.Disconnected += Rbwv_Disconnected;
-            RemoteBlazorWebView.Connected += Rbwv_Connected;
-            RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
-         
-            RemoteBlazorWebView.Refreshed += (_, _) =>
-            {
-                RemoteBlazorWebView.Restart();
-                Close();
-            };
+
         }
 
         private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
@@ -51,5 +43,25 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => 
             Application.Current.Shutdown();
+
+        private async void Window_Initialized(object sender, System.EventArgs e)
+        {
+            var gppcUri = await RemoteBlazorWebView.GetGrpcBaseUriAsync(Command.ServerUrl);
+
+            RemoteBlazorWebView.GrpcBaseUri = gppcUri;
+        
+            RemoteBlazorWebView.RootComponents.Add<Microsoft.AspNetCore.Components.Web.HeadOutlet>("head::after");
+            RemoteBlazorWebView.Disconnected += Rbwv_Disconnected;
+            RemoteBlazorWebView.Connected += Rbwv_Connected;
+            RemoteBlazorWebView.ReadyToConnect += Rbwv_ReadyToConnect;
+
+            RemoteBlazorWebView.Refreshed += (_, _) =>
+            {
+                RemoteBlazorWebView.Restart();
+                Close();
+            };
+            RemoteBlazorWebView.HostPage = @"wwwroot\index.html";
+
+        }
     }
 }

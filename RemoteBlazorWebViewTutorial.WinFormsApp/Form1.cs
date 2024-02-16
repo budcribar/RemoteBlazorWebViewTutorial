@@ -44,18 +44,9 @@ namespace BlazorWinFormsApp
 
             blazorWebView1.Services = serviceCollection.BuildServiceProvider();
 
-            var runString = blazorWebView1.Services.GetRequiredService<IOptions<AppSettings>>().Value;
+         
 
-            blazorWebView1.ServerUri = runString.ServerUrl;
-            blazorWebView1.Id = runString.Id;
-            blazorWebView1.HostPage = @"wwwroot\index.html";            
-            blazorWebView1.RootComponents.Add<App>("#app");
-            blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
-
-            blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
-			blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
-            blazorWebView1.Connected += BlazorWebView1_Connected;
-            blazorWebView1.ReadyToConnect += BlazorWebView1_ReadyToConnect;
+          
         }
 
         private void BlazorWebView1_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
@@ -71,14 +62,33 @@ namespace BlazorWinFormsApp
         }
 
         private void BlazorWebView1_Disconnected(object? sender, DisconnectedEventArgs e)
-		{
+        {
             Application.Exit();
-		}
+        }
 
         private void BlazorWebView1_Refreshed(object? sender, RefreshedEventArgs e)
         {
             blazorWebView1.Restart();
             Close();
+        }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            var runString = blazorWebView1.Services.GetRequiredService<IOptions<AppSettings>>().Value;
+            var gppcUri = await blazorWebView1.GetGrpcBaseUriAsync(runString.ServerUrl);
+
+            blazorWebView1.GrpcBaseUri = gppcUri;
+
+            blazorWebView1.ServerUri = runString.ServerUrl;
+            blazorWebView1.Id = runString.Id;
+            blazorWebView1.HostPage = @"wwwroot\index.html";
+            blazorWebView1.RootComponents.Add<App>("#app");
+            blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
+
+            blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
+            blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
+            blazorWebView1.Connected += BlazorWebView1_Connected;
+            blazorWebView1.ReadyToConnect += BlazorWebView1_ReadyToConnect;
         }
     }
 }

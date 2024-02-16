@@ -39,6 +39,8 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "RemoteWebViewService", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfBlazor", "WpfBlazor\WpfBlazor.csproj", "{F077A819-06F3-4042-94A9-8FD6F1F37E7A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial", "RemoteBlazorWebViewTutorial\RemoteBlazorWebViewTutorial.csproj", "{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -203,6 +205,26 @@ Global
 		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|x64.ActiveCfg = Release|Any CPU
 		{F077A819-06F3-4042-94A9-8FD6F1F37E7A}.Release|x64.Build.0 = Release|Any CPU
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Debug|Any CPU.Build.0 = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Debug|x64.ActiveCfg = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Debug|x64.Build.0 = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Developer|Any CPU.ActiveCfg = Developer|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Developer|Any CPU.Build.0 = Developer|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Developer|x64.ActiveCfg = Developer|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Developer|x64.Build.0 = Developer|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Embedded|Any CPU.ActiveCfg = Embedded|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Embedded|Any CPU.Build.0 = Embedded|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Embedded|x64.ActiveCfg = Embedded|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Embedded|x64.Build.0 = Embedded|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.NoAuthorization|Any CPU.ActiveCfg = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.NoAuthorization|Any CPU.Build.0 = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.NoAuthorization|x64.ActiveCfg = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.NoAuthorization|x64.Build.0 = Debug|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|Any CPU.ActiveCfg = Release|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|Any CPU.Build.0 = Release|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|x64.ActiveCfg = Release|x64
+		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
