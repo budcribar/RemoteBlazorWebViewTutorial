@@ -71,7 +71,7 @@ RemoteWebViewService
 
 - Select the Local Profile from the dropdown next to the Run button and click on run
 
-- Make sure the RemoteBlazorWebViewTutorial.WppfApp is set as Startup Project
+- Make sure the RemoteBlazorWebViewTutorial.WpfApp is set as Startup Project
   
 - Next we will run the application remotely
 
