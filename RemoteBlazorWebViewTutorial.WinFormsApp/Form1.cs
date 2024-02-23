@@ -81,14 +81,17 @@ namespace BlazorWinFormsApp
 
             blazorWebView1.ServerUri = runString.ServerUrl;
             blazorWebView1.Id = runString.Id;
-            blazorWebView1.HostPage = @"wwwroot\index.html";
-            blazorWebView1.RootComponents.Add<App>("#app");
-            blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
 
             blazorWebView1.Refreshed += BlazorWebView1_Refreshed;
             blazorWebView1.Disconnected += BlazorWebView1_Disconnected;
             blazorWebView1.Connected += BlazorWebView1_Connected;
             blazorWebView1.ReadyToConnect += BlazorWebView1_ReadyToConnect;
+
+            blazorWebView1.RootComponents.Add<App>("#app");
+            blazorWebView1.RootComponents.Add<HeadOutlet>("head::after");
+
+            blazorWebView1.HostPage = @"wwwroot\index.html";
+              
         }
     }
 }
