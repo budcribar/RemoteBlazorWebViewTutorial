@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfBlazor", "WpfBlazor\WpfB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial", "RemoteBlazorWebViewTutorial\RemoteBlazorWebViewTutorial.csproj", "{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView", "..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj", "{ABA12E19-28B0-487B-96D2-262B30E2F303}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -224,6 +226,26 @@ Global
 		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|Any CPU.Build.0 = Release|x64
 		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|x64.ActiveCfg = Release|x64
 		{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}.Release|x64.Build.0 = Release|x64
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Debug|x64.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Developer|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Developer|Any CPU.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Developer|x64.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Developer|x64.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Embedded|Any CPU.ActiveCfg = Embedded|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Embedded|Any CPU.Build.0 = Embedded|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Embedded|x64.ActiveCfg = Embedded|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Embedded|x64.Build.0 = Embedded|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.NoAuthorization|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.NoAuthorization|Any CPU.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.NoAuthorization|x64.ActiveCfg = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.NoAuthorization|x64.Build.0 = Debug|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|x64.ActiveCfg = Release|Any CPU
+		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
