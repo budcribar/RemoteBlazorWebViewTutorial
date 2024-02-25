@@ -43,7 +43,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
 
         private void Rbwv_Connected(object? sender, ConnectedEventArgs e)
         {
-            RemoteBlazorWebView.WebViewManager.Navigate($"{e.Url}mirror/{e.Id}");
+            RemoteBlazorWebView.WebView.CoreWebView2.Navigate($"{e.Url}mirror/{e.Id}");
             var user = e.User.Length > 0 ? $"by user {e.User}" : "";
             Title += $" Controlled remotely {user} from ip address {e.IpAddress}";
         }
