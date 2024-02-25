@@ -6,8 +6,6 @@ using RemoteBlazorWebViewTutorial.Shared;
 using System.Net.Http;
 using System.Windows;
 using PeakSWC.RemoteBlazorWebView;
-using Microsoft.Web.WebView2.Core;
-using System.Threading.Tasks;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
