@@ -5,7 +5,7 @@
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
     <DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <IsShippingPackage>false</IsShippingPackage>
