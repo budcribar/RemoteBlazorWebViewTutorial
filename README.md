@@ -1,9 +1,9 @@
 # RemoteBlazorWebViewTutorial
 
-Microsoft is currently supporting two Blazor WebView Controls in .NET 8. One control (`Microsoft.AspNetCore.Components.WebView.Wpf`) targets Windows Presentation Foundation (WPF) apps and
+Microsoft is currently supporting two Blazor WebView Controls in .NET 9. One control (`Microsoft.AspNetCore.Components.WebView.Wpf`) targets Windows Presentation Foundation (WPF) apps and
 the other (`Microsoft.AspNetCore.Components.WebView.WindowsForms`) targets Windows Form (WinForms) apps. 
 These Microsoft controls enable developers to create user interfaces for desktop apps using Blazor web technology. 
-Desktop apps using Blazor have the full feature set and performance of .NET 8 and are not constrained like a Blazor WebAssembly app.
+Desktop apps using Blazor have the full feature set and performance of .NET 9 and are not constrained like a Blazor WebAssembly app.
 
 The Remote versions of the Blazor WebView Controls (`PeakSWC.RemoteBlazorWebView.Wpf` and `PeakSWC.RemoteBlazorWebView.WindowsForms`) serve as a drop-in replacements for the Microsoft controls, 
 with the added ability to access the user interface over a secure connection to a public server using a web browser. 
