@@ -1,4 +1,4 @@
-<Router AppAssembly="@typeof(App).Assembly" PreferExactMatches="@true">
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <PageTitle>@Environment.MachineName</PageTitle>
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
