@@ -5,7 +5,7 @@
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
 		<DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
-		<TargetFramework>net9.0</TargetFramework>  <!--Not windows-->
+		<TargetFramework>net8.0</TargetFramework>  <!--Not windows-->
 		<OutputType>WinExe</OutputType>
 		<UseWindowsForms>false</UseWindowsForms>
 		<IsShippingPackage>false</IsShippingPackage>
@@ -24,11 +24,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0-preview.7.24405.7" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.7.24405.7" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.0-preview.7.24405.7" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.0-preview.7.24406.2" />
-		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="9.0.0-preview7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.8" />
+		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="8.0.7" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
