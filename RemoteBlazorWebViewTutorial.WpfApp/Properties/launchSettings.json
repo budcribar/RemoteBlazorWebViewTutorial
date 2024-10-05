@@ -13,6 +13,13 @@
     "Cloud": {
       "commandName": "Project",
       "commandLineArgs": "-u=https://server.remoteblazorwebview.com:443"
+    },
+    "Profile 1": {
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://localhost:5001 -i=b2cbff06-cbbf-4f4c-b2f1-5a3d640537ba",
+      "environmentVariables": {
+        "Remote": "True"
+      }
     }
   }
 }
