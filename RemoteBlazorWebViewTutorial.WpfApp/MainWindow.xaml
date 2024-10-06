@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:shared="clr-namespace:RemoteBlazorWebViewTutorial.Shared;assembly=RemoteBlazorWebViewTutorial.Shared"
         xmlns:blazor="clr-namespace:PeakSWC.RemoteBlazorWebView.Wpf;assembly=PeakSWC.RemoteBlazorWebView.Wpf"
-        Name="TheMainWindow" Title="Blazor in Wpf Window" Initialized="Window_Initialized" Height="768" Width="1024" >
+        Name="TheMainWindow" Title="Blazor in Wpf Window" Initialized="Window_Initialized" Height="768" Width="1024" Closed="TheMainWindow_Closed" >
 
     <Grid>
         <Grid.RowDefinitions>

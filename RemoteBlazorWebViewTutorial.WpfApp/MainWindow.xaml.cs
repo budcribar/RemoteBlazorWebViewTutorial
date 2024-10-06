@@ -6,7 +6,7 @@ using RemoteBlazorWebViewTutorial.Shared;
 using System.Net.Http;
 using System.Windows;
 using PeakSWC.RemoteBlazorWebView;
-using Microsoft.Web.WebView2.Core;
+using System;
 
 namespace RemoteBlazorWebViewTutorial.WpfApp
 {
@@ -41,8 +41,7 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             Title += $" Controlled remotely {user} from ip address {e.IpAddress}";
         }
 
-        private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => 
-            Application.Current.Shutdown();
+        private void Rbwv_Disconnected(object? sender, DisconnectedEventArgs e) => Close();
 
         private async void Window_Initialized(object sender, System.EventArgs e)
         {
@@ -62,6 +61,11 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
             };
             RemoteBlazorWebView.HostPage = @"wwwroot\index.html";
 
+        }
+
+        private async void TheMainWindow_Closed(object sender, EventArgs e)
+        {
+            await RemoteBlazorWebView.DisposeAsync();
         }
     }
 }
