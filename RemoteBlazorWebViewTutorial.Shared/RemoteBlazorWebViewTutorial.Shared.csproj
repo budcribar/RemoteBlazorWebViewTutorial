@@ -26,9 +26,9 @@
 	
   <ItemGroup>
 	<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
-    <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.10" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.1" />
   </ItemGroup>
 
 </Project>
