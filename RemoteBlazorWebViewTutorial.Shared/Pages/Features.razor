@@ -99,8 +99,9 @@
         await base.OnAfterRenderAsync(firstRender);
 
         var type = this.GetType();
-        var path = $"./_content/{type.FullName?.Substring(0, type.Module.Name.Length - 4) + type.FullName?.Replace('.', '/').Substring(type.Module.Name.Length - 4)}.razor.js";
-
+        // Path cannot be calculated from type if published as single file
+        var path = $"/_content/RemoteBlazorWebViewTutorial.Shared/Pages/Features.razor.js";
+      
         if (firstRender)
             _module = jsRuntime.InvokeAsync<IJSObjectReference>("import", path).AsTask();
     }
