@@ -15,6 +15,9 @@ namespace BlazorWebView
         [STAThread]
         static void Main(string[] args)
         {
+            // Enable the switch for AppHostAddressAlways0000
+            AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+
             var switchMappings = new Dictionary<string, string>()
            {
                { "-u", "AppSettings:ServerUrl" },
