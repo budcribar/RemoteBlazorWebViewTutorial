@@ -26,7 +26,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
            
             InitializeComponent();
             RemoteBlazorWebView.Id = Command.Id;
-
         }
 
         private void Rbwv_ReadyToConnect(object? sender, ReadyToConnectEventArgs e)
@@ -60,7 +59,6 @@ namespace RemoteBlazorWebViewTutorial.WpfApp
                 Close();
             };
             RemoteBlazorWebView.HostPage = @"wwwroot\index.html";
-
         }
 
         private async void TheMainWindow_Closed(object sender, EventArgs e)
