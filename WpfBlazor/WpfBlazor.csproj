@@ -7,6 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
 	<RootNamespace>WpfBlazor</RootNamespace>
+	<Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
