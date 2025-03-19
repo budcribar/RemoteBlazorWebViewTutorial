@@ -25,10 +25,10 @@
   </ItemGroup>
 	
   <ItemGroup>
-	<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.0-preview.1.25120.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0-preview.1.25120.3" />
-    <PackageReference Include="System.Net.Http.Json" Version="10.0.0-preview.1.25080.5" />
+	<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.0-preview.2.25164.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0-preview.2.25164.1" />
+    <!--<PackageReference Include="System.Net.Http.Json" Version="10.0.0-preview.1.25080.5" />-->
   </ItemGroup>
 
 </Project>
