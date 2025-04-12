@@ -24,10 +24,10 @@
 
 	<ItemGroup>
 		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />-->
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0-preview.2.25163.2" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0-preview.2.25163.2" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="10.0.0-preview.2.25163.2" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.0-preview.2.25164.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0-preview.3.25171.5" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0-preview.3.25171.5" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="10.0.0-preview.3.25171.5" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.0-preview.3.25172.1" />
 		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="9.0.2" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
