@@ -5,14 +5,14 @@
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
 		<DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
-		<TargetFramework>net9.0</TargetFramework>  <!--Not windows-->
+		<TargetFramework>net9.0-windows</TargetFramework>  <!--Not windows-->
 		<OutputType>WinExe</OutputType>
 		<UseWindowsForms>false</UseWindowsForms>
 		<IsShippingPackage>false</IsShippingPackage>
 		<Nullable>enable</Nullable>
 		<PublishSingleFile>true</PublishSingleFile>
 		<Configurations>Debug;Release;Embedded;Developer</Configurations>
-		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Release</BuildMode>
+		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
 		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
 		<Platforms>x64</Platforms>
 		<EnableDefaultContentItems>false</EnableDefaultContentItems>
@@ -23,11 +23,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.2" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.2" />
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" />-->
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.4" />
 		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="9.0.2" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
