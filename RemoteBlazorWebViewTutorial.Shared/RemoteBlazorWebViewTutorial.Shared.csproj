@@ -25,9 +25,9 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.4" />
-    <PackageReference Include="System.Net.Http.Json" Version="9.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.5" />
+    <PackageReference Include="System.Net.Http.Json" Version="9.0.5" />
   </ItemGroup>
 
 </Project>
