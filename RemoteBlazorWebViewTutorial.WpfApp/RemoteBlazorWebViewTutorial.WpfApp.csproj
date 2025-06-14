@@ -54,9 +54,9 @@
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
 	<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />-->
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="10.0.0-preview.3.25171.5" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.0-preview.3.25172.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.0-preview.3.25171.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="10.0.0-preview.5.25277.114" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.0-preview.5.25277.114" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.0-preview.5.25277.114" />
    
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.0-preview1" />
    
