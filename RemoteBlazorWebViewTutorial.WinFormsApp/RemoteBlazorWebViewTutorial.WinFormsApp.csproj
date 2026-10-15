@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
     <GenerateEmbeddedFilesManifest Condition="'$(Configuration)' == 'Embedded'">true</GenerateEmbeddedFilesManifest>
@@ -58,9 +58,9 @@
     <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.WinForms\RemoteBlazorWebView.WindowsForms.csproj" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.21" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.21" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.21" />
     
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.WindowsForms" Version="9.0.2" />
   </ItemGroup>
