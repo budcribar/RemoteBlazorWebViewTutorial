@@ -30,7 +30,7 @@ Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to re
 
 
 # Demo Video
-![RemoteBlazorWebView](https://raw.githubusercontent.com/budcribar/RemoteBlazorWebView/net11/RemoteBlazorWebView.gif)
+![RemoteBlazorWebView](https://raw.githubusercontent.com/budcribar/RemoteBlazorWebView/net11/icons/RemoteBlazorWebView.gif)
 
 # Download and Run Demo
 - Download the latest Release.zip under the Assets folder from https://github.com/budcribar/RemoteBlazorWebViewTutorial/releases
@@ -57,14 +57,9 @@ Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to re
 
 # Build and Run Demo
 
-- Install the RemoteWebViewService
+- From the tutorial repo root, start RemoteWebViewService from the sibling RemoteBlazorWebView checkout. The solution includes that project. It is a server app, so run it from source rather than as a NuGet tool:
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 8.*-* 
-```
-
-- Start the server
-```console
-RemoteWebViewService
+dotnet run --project ../RemoteBlazorWebView/src/RemoteWebViewService/RemoteWebViewService.csproj
 ```
 
 - Open the RemoteBlazorWebViewTutorial.sln with Visual Studio
@@ -118,11 +113,7 @@ Create an appsettings.json file with the contents: (Replace 5002 with the desire
 
 ```
 
-- Copy the appsettings.json into the directory
-
-```
-cd %USERPROFILE%\.dotnet\tools
-```
+- Copy the appsettings.json into the RemoteWebViewService project directory, next to `RemoteWebViewService.csproj`, and start the server from there.
 
 
 # Convert To Remote

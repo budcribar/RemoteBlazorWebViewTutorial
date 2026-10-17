@@ -62,14 +62,9 @@
    ```
 
 
-- Install the RemoteWebViewService
+- From the tutorial repo root, start RemoteWebViewService from the sibling RemoteBlazorWebView checkout
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 7.*-* 
-```
-
-- Start the server in the background
-```console
-RemoteWebViewService &
+dotnet run --project ../RemoteBlazorWebView/src/RemoteWebViewService/RemoteWebViewService.csproj
 ```
 
 - Run the WPF Application. A hyperlink will be displayed, and when clicked, it will reveal the user interface.
