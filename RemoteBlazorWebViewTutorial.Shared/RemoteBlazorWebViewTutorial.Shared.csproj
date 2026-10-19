@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
   <PropertyGroup>
     <DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
@@ -25,9 +25,9 @@
   </ItemGroup>
 	
   <ItemGroup>
-	<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />-->
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.0-preview.5.25277.114" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0-preview.5.25277.114" />
+	<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.13" />
     <!--<PackageReference Include="System.Net.Http.Json" Version="10.0.0-preview.1.25080.5" />-->
   </ItemGroup>
 
