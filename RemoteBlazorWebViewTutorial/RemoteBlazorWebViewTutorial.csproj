@@ -28,7 +28,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="11.0.0-rc.2.26504.105" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="11.0.0-rc.2.26504.105" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="11.0.0-rc.2.26504.105" />
-		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="10.0.0-preview4" />
+		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="11.0.0-rc2" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 

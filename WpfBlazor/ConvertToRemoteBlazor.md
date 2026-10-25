@@ -8,7 +8,7 @@
    ```
    To PeakSWC
    ```
-   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />
+   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="11.0.0-rc2" />
    ```
 - Modify the `MainWindow.xaml` file
 
