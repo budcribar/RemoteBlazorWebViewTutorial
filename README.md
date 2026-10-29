@@ -49,13 +49,22 @@ Hosting the server (`RemotableWebViewService.exe`) in the cloud allows you to re
 
 - Finally, Run the sample program and use the secured cloud server 
     ```console
-    .\RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.com:443
+    .\RemoteBlazorWebViewTutorial.WpfApp.exe -u=https://server.remoteblazorwebview.com:34544
     ```
     - Click the link in the sample program
-    - Create a new user and sign in
 
 
 # Build and Run Demo
+
+- To build from the command line with the published PeakSWC NuGet packages instead of a sibling source checkout, add `-p:EnvBuildMode=Package`:
+```console
+dotnet build -p:EnvBuildMode=Package
+```
+
+- Run an app with a server URL and, optionally, a fixed Guid, then browse to `<server url>/app/<guid>`. Each Guid can only be opened by one browser: a second visit returns 409 "Locked" by design.
+```console
+dotnet run --project RemoteBlazorWebViewTutorial.WinFormsApp -- -u=https://localhost:5001 -i=<guid>
+```
 
 - From the tutorial repo root, start RemoteWebViewService from the sibling RemoteBlazorWebView checkout. The solution includes that project. It is a server app, so run it from source rather than as a NuGet tool:
 ```console
@@ -76,15 +85,19 @@ dotnet run --project ../RemoteBlazorWebView/src/RemoteWebViewService/RemoteWebVi
 
 - At this point the sample blazor app will be running in a web browser served from RemoteWebViewService!
 
-- Finally, we will run the application from a cloud server (https://server.remoteblazorwebview.com/)
+- Finally, we will run the application from a cloud server (https://server.remoteblazorwebview.com:34544)
 
 - Select the Cloud Profile from the dropdown next to the Run button and click on run
 
 - A main window will come up with a URL. Click on it
 
-- At this point the sample blazor app will be running in a web browser served from https://server.remoteblazorwebview.com. 
-Accessing the server will require that you set up a login. The server is setup for demo purposes only. Contact me at budcribar@msn.com if you would like
+- At this point the sample blazor app will be running in a web browser served from https://server.remoteblazorwebview.com:34544. 
+The server is setup for demo purposes only and has no login. Contact me at budcribar@msn.com if you would like
 help setting up a production server.
+
+# Using your own server
+
+The cloud server uses a Let's Encrypt certificate. If you host your own server with a self-signed certificate, the client machine must trust that certificate (for example by importing it into the Windows Trusted Root store).
 
 # Security
 
