@@ -157,6 +157,34 @@ With the generator, add `Mirror = true` to `[RemoteBlazor]`. By hand:
 
 This example demonstrates a read-only mirror accessible through a web browser, with the application being controlled locally. This scenario enables remote monitoring without the capacity for interaction with the application.
 
+How it works: the app still runs remotely, with mirrors enabled. A plain WebView2 control sits over the BlazorWebView and opens the app's own page on the server (`<server>/app/<id>`), so the person at the PC drives the app through the server and it looks like a local app. Once that WebView2 connects, the app opens the system browser on the read-only mirror (`<server>/mirror/<id>`), which is the view you share.
+
+**With the generator.** Add the WebView2 control to `MainWindow.xaml` (the generator can't add controls):
+
+```
+xmlns:webView2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+```
+```
+<Grid>
+    <blazor:BlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html" Services="{DynamicResource services}">
+        ...
+    </blazor:BlazorWebView>
+    <webView2:WebView2 x:Name="WebView" />
+</Grid>
+```
+
+Then name it in `[RemoteBlazor]`. The generator sets `EnableMirrors`, points the WebView2 at the app when the server is ready (instead of showing the link), and opens the mirror in the browser when it connects:
+
+```
+[RemoteBlazor(nameof(RemoteBlazorWebView), Mode = RemoteBlazorMode.Remote, ServerUri = "https://localhost:5001",
+    ReverseMirror = nameof(WebView))]
+public partial class MainWindow : Window
+```
+
+`ReverseMirror` can't be combined with `Mirror`. In WinForms, dock a `Microsoft.Web.WebView2.WinForms.WebView2` over the BlazorWebView and name that.
+
+**By hand.**
+
 - Modify MainWindow.xaml add the namespace and the WebView2 control. It should look like:
 
 ```
