@@ -143,3 +143,6 @@ cd %USERPROFILE%\.dotnet\tools
 # Convert To Remote
 [Converting a WPF Blazor Application to a Remote WPF Blazor Application](WpfBlazor/ConvertToRemoteBlazor.md)
 
+
+# Move a Component into Its Own Process
+[Moving a Blazor Component into Its Own Process](WpfBlazor/ConvertToRemoteComponent.md): when it's worth it, and how to do it with remote components
