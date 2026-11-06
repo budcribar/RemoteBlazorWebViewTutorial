@@ -4,11 +4,11 @@
    
    Change the reference from Microsoft
    ```
-   <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.59" />
+   <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="10.0.110" />
    ```
    To PeakSWC
    ```
-   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="7.0.3" />
+   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.14" />
    ```
 - Modify the `MainWindow.xaml` file
 
@@ -31,7 +31,58 @@
   <blazor:BlazorWebView x:Name="RemoteBlazorWebView" HostPage="wwwroot\index.html" Services="{DynamicResource services}">
   ```
 
-- Modify the `MainWindow.xaml.cs` file. Add the AddRemoteWpfBlazorWebView service, Set the Id to Empty so a new Id is generated each time, add the ReadyToConnect handler,  and finally set the Server Uri
+- Modify the `MainWindow.xaml.cs` file. Mark the window with `[RemoteBlazor]`, make it `partial` (it already is), switch to the AddRemoteWpfBlazorWebView service, and call the generated `InitializeRemoteBlazor()`
+
+   The `[RemoteBlazor]` source generator comes with the PeakSWC package. It writes the code that sets the Id, the Server Uri and the ReadyToConnect link handler for you.
+
+   Change:
+   ```
+   public partial class MainWindow : Window
+   {
+       public MainWindow()
+       {
+           InitializeComponent();
+           var serviceCollection = new ServiceCollection();
+           serviceCollection.AddWpfBlazorWebView();
+           Resources.Add("services", serviceCollection.BuildServiceProvider());
+       }
+   }
+   ```
+   To:
+   ```
+   [RemoteBlazor(nameof(RemoteBlazorWebView), Mode = RemoteBlazorMode.Remote, ServerUri = "https://localhost:5001")]
+   public partial class MainWindow : Window
+   {
+       public MainWindow()
+       {
+           InitializeComponent();
+           var serviceCollection = new ServiceCollection();
+           serviceCollection.AddRemoteWpfBlazorWebView();
+           Resources.Add("services", serviceCollection.BuildServiceProvider());
+           InitializeRemoteBlazor();
+       }
+   }
+   ```
+   Add the following using statement to MainWindow.xaml.cs to import the required namespace.
+   ```
+   using PeakSWC.RemoteBlazorWebView;
+   ```
+
+   That's the whole change. `-u=<server uri>` and `-i=<guid>` on the command line override `ServerUri` and the id. Other modes:
+
+   | You want | Use |
+   |---|---|
+   | Remote only when started with `-u=<server uri>`, local otherwise | `[RemoteBlazor(nameof(RemoteBlazorWebView))]` (the default mode, `Runtime`) |
+   | Always remote | `Mode = RemoteBlazorMode.Remote, ServerUri = "..."` |
+   | Back to local without touching the code | `dotnet build -p:RemoteBlazorMode=Local`, or `<RemoteBlazorMode>Local</RemoteBlazorMode>` in `WpfBlazor.csproj` |
+
+   The finished project is in [WpfBlazorRemote](../WpfBlazorRemote). The generator's options and error codes are in its
+   [README](https://github.com/budcribar/RemoteBlazorWebView/blob/net10/src/RemoteBlazorWebView.SourceGenerators/README.md).
+
+   <details>
+   <summary>The same thing by hand, without the generator</summary>
+
+   In `MainWindow.xaml.cs`, add the AddRemoteWpfBlazorWebView service, set the Id to Empty so a new Id is generated each time, add the ReadyToConnect handler,  and finally set the Server Uri
 
    Change:
    ```
@@ -61,10 +112,12 @@
     }
    ```
 
+   </details>
+
 
 - Install the RemoteWebViewService
 ```console
-dotnet tool update -g PeakSWC.RemoteWebViewService --version 7.*-* 
+dotnet tool update -g PeakSWC.RemoteWebViewService --version 10.*-* 
 ```
 
 - Start the server in the background
@@ -79,6 +132,8 @@ RemoteWebViewService &
 <h3>Mirroring</h3>
 
 A read-only version of the user interface can be "mirrored" in the WPF Application, enabling a user to monitor the application while another person operates it remotely. To set this up, handle the Connected event and navigate to a mirror URL within the BlazorWebView control.
+
+With the generator, add `Mirror = true` to `[RemoteBlazor]`. By hand:
 
 - Insert the following in the MainWindow.xaml.cs after the ReadyToConnect handler is set up.
 
@@ -157,7 +212,7 @@ public partial class MainWindow : Window
 
 <h3>Handling Browser Refresh</h3>
 
-A browser refresh typically resets a web server and re-loads the home page. To achieve equivalent functionality when refreshing an application with an embedded web browser control, you can restart the application. To do this, add the following event handler:
+A browser refresh typically resets a web server and re-loads the home page. To achieve equivalent functionality when refreshing an application with an embedded web browser control, you can restart the application. With the generator, add `RestartOnRefresh = true` to `[RemoteBlazor]`. By hand, add the following event handler:
 
 ```
 RemoteBlazorWebView.Refreshed += (_, _) =>
@@ -169,7 +224,7 @@ RemoteBlazorWebView.Refreshed += (_, _) =>
 
 <h3>Handling Browser Disconnect</h3>
 
-When a user disconnects from the application, a Disconnect event is triggered. Various circumstances can cause a disconnect, such as closing the browser or tab, or navigating away from the application. To gracefully shut down the application upon user disconnection, add the following event handler:
+When a user disconnects from the application, a Disconnect event is triggered. Various circumstances can cause a disconnect, such as closing the browser or tab, or navigating away from the application. To gracefully shut down the application upon user disconnection, add `ShutdownOnDisconnect = true` to `[RemoteBlazor]`, or by hand add the following event handler:
 ```csharp
  RemoteBlazorWebView.Disconnected += (_,_) => Application.Current.Shutdown();
 ```

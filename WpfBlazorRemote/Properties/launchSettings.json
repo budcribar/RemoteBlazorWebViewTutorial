@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Remote (localhost:5001)": {
+      "commandName": "Project"
+    },
+    "Cloud": {
+      "commandName": "Project",
+      "commandLineArgs": "-u=https://server.remoteblazorwebview.com:34544"
+    }
+  }
+}
