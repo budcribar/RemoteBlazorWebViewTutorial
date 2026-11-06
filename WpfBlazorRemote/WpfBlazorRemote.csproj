@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <!-- WpfBlazor after ConvertToRemoteBlazor.md: the PeakSWC control, set up for remote use by the [RemoteBlazor] source generator.
+       Flip it back to local with -p:RemoteBlazorMode=Local (or <RemoteBlazorMode>Local</RemoteBlazorMode> below). -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.17763.0</TargetFramework>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>WpfBlazorRemote</RootNamespace>
+    <Platforms>x64</Platforms>
+    <BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
+    <BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
+  </PropertyGroup>
+
+  <!-- Package mode (dotnet build -p:EnvBuildMode=Package): the generator comes with the package, nothing else to add. -->
+  <ItemGroup Condition="'$(BuildMode)' != 'Developer'">
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.14" />
+  </ItemGroup>
+
+  <!-- Developer mode: a sibling RemoteBlazorWebView checkout. A project reference doesn't bring the package's analyzer and props, so
+       reference the generator and import the props here. -->
+  <ItemGroup Condition="'$(BuildMode)' == 'Developer'">
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
+    <ProjectReference Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.SourceGenerators\RemoteBlazorWebView.SourceGenerators.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <Import Condition="'$(BuildMode)' == 'Developer'" Project="..\..\RemoteBlazorWebView\src\RemoteWebView\buildTransitive\PeakSWC.RemoteWebView.props" />
+
+</Project>
