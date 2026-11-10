@@ -1,7 +1,15 @@
 {
   "profiles": {
-    "Remote (localhost:5001)": {
+    "Shared (localhost:5001)": {
       "commandName": "Project"
+    },
+    "Shared, unattended": {
+      "commandName": "Project",
+      "commandLineArgs": "--unattended"
+    },
+    "Shared + voice": {
+      "commandName": "Project",
+      "commandLineArgs": "--voice"
     },
     "Cloud": {
       "commandName": "Project",

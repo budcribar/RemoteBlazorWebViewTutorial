@@ -8,7 +8,7 @@
    ```
    To PeakSWC
    ```
-   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.14" />
+   <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.15" />
    ```
 - Modify the `MainWindow.xaml` file
 
@@ -76,7 +76,7 @@
    | Always remote | `Mode = RemoteBlazorMode.Remote, ServerUri = "..."` |
    | Back to local without touching the code | `dotnet build -p:RemoteBlazorMode=Local`, or `<RemoteBlazorMode>Local</RemoteBlazorMode>` in `WpfBlazor.csproj` |
 
-   The finished project is in [WpfBlazorRemote](../WpfBlazorRemote). The generator's options and error codes are in its
+   The finished project is in [WpfBlazorRemote](../WpfBlazorRemote); it also has the next step, [Sharing Control](#sharing-control), switched on. The generator's options and error codes are in its
    [README](https://github.com/budcribar/RemoteBlazorWebView/blob/net10/src/RemoteBlazorWebView.SourceGenerators/README.md).
 
    <details>
@@ -127,7 +127,115 @@ RemoteWebViewService &
 
 - Run the WPF Application. A hyperlink will be displayed, and when clicked, it will reveal the user interface.
 
-<h2>Advanced Features</h2>
+That is the simplest remote app: it runs only in the browser, and the window shows the link. The next section is the recommended way to use it once that works.
+
+<h2 id="sharing-control">Sharing Control</h2>
+
+The person at the PC and a remote user use the same app and hand control back and forth (packages and server 10.0.15 or later). This is the recommended way to run a remote app.
+
+- The app's own window shows the app, with the person at the PC (the owner) in control.
+- A remote user opens the session's link in a browser and sees the same app, read-only at first.
+- The owner gives control to the remote user and can take it back at any time. Whoever does not have control sees the app but cannot use it.
+- A session has one owner, one remote user (the first to open the link) and any number of read-only viewers on the same link.
+
+With the generator, add `ShareControl = true` to `[RemoteBlazor]`:
+
+```
+[RemoteBlazor(nameof(RemoteBlazorWebView), Mode = RemoteBlazorMode.Remote, ServerUri = "https://localhost:5001",
+    ShareControl = true, RestartOnRefresh = true)]
+public partial class MainWindow : Window
+```
+
+<h3>The session bar</h3>
+
+Each browser draws a small session bar: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. Put an empty element in your layout where it should sit; without one the bar floats at the bottom right.
+
+```
+ <div id="rbwv-session-controls" data-share-link="true" data-restart="true"></div>
+```
+
+| On the placeholder | What it does |
+|---|---|
+| `data-share-link="true"` | Shows Copy link (owner only), which copies the link the remote user joins at (`<server>/mirror/<id>`) |
+| `data-restart="true"` | Shows Restart app for whoever has control, and for the owner at any time. See [Restarting the App](#restarting-the-app) |
+| `data-host-name`, `data-remote-name` | What to call the two parties in "... has control". The defaults are "The host" and "Remote user" |
+
+An app that does not opt in looks as it did before: there is no bar unless the app shares control or uses voice.
+
+- Run the app and press Copy link. Open the link in a browser: that is the remote user. Press Give control in the app window, and Take control to get it back.
+
+<h3>Unattended sessions</h3>
+
+When nobody is at the PC to hand control over, the remote user can be given control as soon as they join. The owner can still take it back. Use `Unattended = true` instead of `ShareControl = true`, or keep `ShareControl = true` and start the app with `--unattended` to choose it for one run.
+
+<h3>Voice</h3>
+
+A voice call between the person at the PC and the remote user, with its buttons in the session bar. It needs the WPF control and an https server. Add `Voice = true` to `[RemoteBlazor]`, or start the app with `--voice`.
+
+<h3>By hand</h3>
+
+Without the generator, replace the ReadyToConnect handler so the window opens the app's own page as the owner, and enable mirrors:
+
+```
+ RemoteBlazorWebView.EnableMirrors = true;
+ RemoteBlazorWebView.EnableVoice = true;   // optional
+ RemoteBlazorWebView.ReadyToConnect += (_, e) =>
+     RemoteBlazorWebView.NavigateToUrl(new Uri($"{e.Url}app/{e.Id}?role=owner"));
+```
+
+For an unattended session use `?role=owner&control=remote`.
+
+<h2 id="restarting-the-app">Restarting the App</h2>
+
+A remote app is restarted from the browser in two ways: Restart app in the session bar, or reloading the app's own page (a browser refresh). Either way the server tells the app, the app starts a fresh copy of itself on the same server and session id, and the old copy closes. Browser pages wait for the new copy and load again by themselves.
+
+With the generator, add `RestartOnRefresh = true` to `[RemoteBlazor]`. The generated code:
+
+- starts the new copy with this run's own command line, so switches such as `--voice` survive the restart;
+- uses the session id the server assigned, so the link keeps working;
+- still restarts when the window is not responding. The restart request is normally handled on the UI thread; if that thread has not picked it up within 5 seconds, the new copy is started from a background thread and the stuck process is ended.
+
+By hand, add the following event handler. `Restart()` starts a copy with only `-u=` and `-i=`.
+
+```
+RemoteBlazorWebView.Refreshed += (_, _) =>
+{
+    RemoteBlazorWebView.Restart();
+    Close();
+};
+```
+
+To cover a window that is not responding as well, set `RestartWhenUnresponsive`. It is called on a background thread, so it must not touch the window:
+
+```
+var server = RemoteBlazorWebView.ServerUri;
+var id = RemoteBlazorWebView.Id;
+RemoteBlazorWebView.ReadyToConnect += (_, e) => id = e.Id;
+RemoteBlazorWebView.RestartWhenUnresponsive = () =>
+{
+    Process.Start(new ProcessStartInfo(Environment.ProcessPath!) { ArgumentList = { $"-u={server}", $"-i={id}" } });
+    Environment.Exit(0);
+};
+```
+
+<h2>Settings From Your Own Configuration</h2>
+
+The generated code reads `-u=`, `-i=`, `--unattended` and `--voice` from the command line. An app that works its settings out from more than that (environment variables, a settings file, saved state) passes what it found, and anything left out still comes from the command line and the attribute:
+
+```
+InitializeRemoteBlazor(new RemoteBlazorStartup
+{
+    ServerUri = settings.Server,
+    Id = settings.SessionId,
+    Unattended = settings.Unattended,
+    Voice = settings.Voice,
+    RestartArguments = (server, id) => settings.ArgumentsFor(server, id),   // the command line of the restarted copy
+});
+```
+
+<h2>Other Modes</h2>
+
+Two older, one-way arrangements are still supported. In both, only one side can use the app.
 
 <h3>Mirroring</h3>
 
@@ -152,30 +260,6 @@ With the generator, add `Mirror = true` to `[RemoteBlazor]`. By hand:
             Title += $" Controlled remotely {user} from ip address {e.IpAddress}";
         }
 ```
-
-<h3>Sharing Control</h3>
-
-The person at the PC and a remote user can use the same app and hand control back and forth (packages and server 10.0.15 or later). The app's own window shows the app with the person at the PC, the owner, in control. The remote user opens a read-only link and is given control when the owner chooses; the owner can always take it back. A session has one owner, one remote user (the first to open the link) and any number of read-only viewers.
-
-With the generator, add `ShareControl = true` to `[RemoteBlazor]`. Use `Unattended = true` instead when the remote user should get control as soon as they join. By hand:
-
-- Replace the ReadyToConnect handler, so the window opens the app's own page as the owner, and enable mirrors:
-
-```
- RemoteBlazorWebView.EnableMirrors = true;
- RemoteBlazorWebView.ReadyToConnect += (_, e) =>
-     RemoteBlazorWebView.NavigateToUrl(new Uri($"{e.Url}app/{e.Id}?role=owner"));
-```
-
-For an unattended session use `?role=owner&control=remote`.
-
-- Each browser draws a small session bar: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. To place it in your layout, add an empty element where it should sit, for example in the header of MainLayout.razor. Without it the bar floats in the bottom-right corner. The bar calls the two parties "The host" and "Remote user"; add `data-host-name` and `data-remote-name` to the element to use your own names.
-
-```
- <div id="rbwv-session-controls" data-share-link="true"></div>
-```
-
-- Run the app and press Copy link. Open the link (`<server>/mirror/<id>`) in a browser: that is the remote user. Press Give control in the app window, and Take control to get it back.
 
 <h3>Reversing The Mirror</h3>
 
@@ -262,24 +346,16 @@ public partial class MainWindow : Window
     
 ```
 
-<h3>Handling Browser Refresh</h3>
-
-A browser refresh typically resets a web server and re-loads the home page. To achieve equivalent functionality when refreshing an application with an embedded web browser control, you can restart the application. With the generator, add `RestartOnRefresh = true` to `[RemoteBlazor]`. By hand, add the following event handler:
-
-```
-RemoteBlazorWebView.Refreshed += (_, _) =>
-{
-    RemoteBlazorWebView.Restart();
-    Close();
-};
-```
+<h2>More</h2>
 
 <h3>Handling Browser Disconnect</h3>
 
 When a user disconnects from the application, a Disconnect event is triggered. Various circumstances can cause a disconnect, such as closing the browser or tab, or navigating away from the application. To gracefully shut down the application upon user disconnection, add `ShutdownOnDisconnect = true` to `[RemoteBlazor]`, or by hand add the following event handler:
+With the generator, add `ShutdownOnDisconnect = true` to `[RemoteBlazor]`. By hand:
 ```csharp
  RemoteBlazorWebView.Disconnected += (_,_) => Application.Current.Shutdown();
 ```
+This suits the browser-only arrangement, where the app has no user once the browser is gone. In a shared session the person at the PC is still using the app, so leave it off there.
 
 This event handler ensures that the application is properly closed when the user disconnects, maintaining a smooth user experience.
 
@@ -299,7 +375,7 @@ Follow the following steps to embed the wwwroot directory and it's contents in o
 Insert the following statement within the first PropertyGroup of the .csproj file. This variable needs to be set at build time so we cannot rely on the variable being set when publishing.
 
 ```
-<PublishDir>bin\release\net7.0-windows\publish\win-x64</PublishDir>
+<PublishDir>bin\release\net10.0-windows\publish\win-x64</PublishDir>
 ```
 
 Next add the following ItemGroup which will map all of the contents of the wwwroot directory into the Embedded Resources

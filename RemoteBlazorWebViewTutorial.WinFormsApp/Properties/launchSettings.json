@@ -1,8 +1,5 @@
 {
   "profiles": {
-    "BlazorWinFormsApp": {
-      "commandName": "Project"
-    },
     "Local": {
       "commandName": "Project"
     },
@@ -13,11 +10,6 @@
     "Cloud": {
       "commandName": "Project",
       "commandLineArgs": "-u=https://server.remoteblazorwebview.com:34544"
-    },
-    "Publish": {
-      "commandName": "Executable",
-      "executablePath": "C:\\Users\\budcr\\source\\repos\\RemoteBlazorWebViewTutorial\\RemoteBlazorWebViewTutorial.WinFormsApp\\publish\\RemoteBlazorWebViewTutorial.WinFormsApp.exe",
-      "commandLineArgs": "-u=https://localhost:5001"
     }
   }
 }

@@ -17,7 +17,7 @@
 
   <!-- Package mode (dotnet build -p:EnvBuildMode=Package): the generator comes with the package, nothing else to add. -->
   <ItemGroup Condition="'$(BuildMode)' != 'Developer'">
-    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.14" />
+    <PackageReference Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.15" />
   </ItemGroup>
 
   <!-- Developer mode: a sibling RemoteBlazorWebView checkout. A project reference doesn't bring the package's analyzer and props, so

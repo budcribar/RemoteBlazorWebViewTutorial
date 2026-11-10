@@ -52,12 +52,12 @@
   <ItemGroup>
     <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteWebView\RemoteWebView.csproj" />
     <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.Wpf\RemoteBlazorWebView.Wpf.csproj" />
+    <!-- Developer mode: a project reference doesn't bring the package's [RemoteBlazor] generator, so reference it here. -->
+    <ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView.SourceGenerators\RemoteBlazorWebView.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 
 	<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />-->
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="10.0.14" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.14" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.14" />
    
     <PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView.Wpf" Version="10.0.14" />
    
@@ -80,4 +80,6 @@
     </Content>
   </ItemGroup>
   
+  <!-- Developer mode: the package also brings this props file, which lets the generator read <RemoteBlazorMode> from the project. -->
+  <Import Condition="'$(BuildMode)' == 'Developer'" Project="..\..\RemoteBlazorWebView\src\RemoteWebView\buildTransitive\PeakSWC.RemoteWebView.props" />
 </Project>
