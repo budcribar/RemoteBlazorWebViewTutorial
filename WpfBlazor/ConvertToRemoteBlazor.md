@@ -167,7 +167,7 @@ With the generator, add `ShareControl = true` to `[RemoteBlazor]`. Use `Unattend
      RemoteBlazorWebView.NavigateToUrl(new Uri($"{e.Url}app/{e.Id}?role=owner"));
 ```
 
-For an unattended session use `?role=owner&control=technician`.
+For an unattended session use `?role=owner&control=remote`.
 
 - Each browser draws a small session bar: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. To place it in your layout, add an empty element where it should sit, for example in the header of MainLayout.razor. Without it the bar floats in the bottom-right corner. The bar calls the two parties "The host" and "Remote user"; add `data-host-name` and `data-remote-name` to the element to use your own names.
 
