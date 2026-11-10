@@ -155,9 +155,9 @@ With the generator, add `Mirror = true` to `[RemoteBlazor]`. By hand:
 
 <h3>Sharing Control</h3>
 
-The person at the PC and a remote technician can use the same app and hand control back and forth (packages and server 10.0.15 or later). The app's own window shows the app with the person at the PC, the owner, in control. The technician opens a read-only link and is given control when the owner chooses; the owner can always take it back. A session has one owner, one technician (the first to open the link) and any number of read-only viewers.
+The person at the PC and a remote user can use the same app and hand control back and forth (packages and server 10.0.15 or later). The app's own window shows the app with the person at the PC, the owner, in control. The remote user opens a read-only link and is given control when the owner chooses; the owner can always take it back. A session has one owner, one remote user (the first to open the link) and any number of read-only viewers.
 
-With the generator, add `ShareControl = true` to `[RemoteBlazor]`. Use `Unattended = true` instead when the technician should get control as soon as they join. By hand:
+With the generator, add `ShareControl = true` to `[RemoteBlazor]`. Use `Unattended = true` instead when the remote user should get control as soon as they join. By hand:
 
 - Replace the ReadyToConnect handler, so the window opens the app's own page as the owner, and enable mirrors:
 
@@ -169,13 +169,13 @@ With the generator, add `ShareControl = true` to `[RemoteBlazor]`. Use `Unattend
 
 For an unattended session use `?role=owner&control=technician`.
 
-- Each browser draws a small session bar: who has control, Give control / Take control, and Copy link for the owner. To place it in your layout, add an empty element where it should sit, for example in the header of MainLayout.razor. Without it the bar floats in the bottom-right corner.
+- Each browser draws a small session bar: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. To place it in your layout, add an empty element where it should sit, for example in the header of MainLayout.razor. Without it the bar floats in the bottom-right corner. The bar calls the two parties "The host" and "Remote user"; add `data-host-name` and `data-remote-name` to the element to use your own names.
 
 ```
  <div id="rbwv-session-controls" data-share-link="true"></div>
 ```
 
-- Run the app and press Copy link. Open the link (`<server>/mirror/<id>`) in a browser: that is the technician. Press Give control in the app window, and Take control to get it back.
+- Run the app and press Copy link. Open the link (`<server>/mirror/<id>`) in a browser: that is the remote user. Press Give control in the app window, and Take control to get it back.
 
 <h3>Reversing The Mirror</h3>
 
