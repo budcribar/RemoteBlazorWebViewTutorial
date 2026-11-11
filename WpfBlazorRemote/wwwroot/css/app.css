@@ -46,3 +46,31 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+/* The app's own session bar (the template in Counter.razor). RemoteBlazorWebView copies the template into its bar
+   (.rbwv-control-custom), which sits over the placeholder; these rules style our parts. */
+.session-bar-slot {
+    margin-bottom: 1rem;
+}
+
+.rbwv-control-custom {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #1b2a41;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+    .rbwv-control-custom .session-btn {
+        border: 1px solid #5b7aa6;
+        border-radius: 999px;
+        padding: 2px 12px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .rbwv-control-custom .session-btn-take {
+        background: #e5484d;
+        border-color: #e5484d;
+    }
