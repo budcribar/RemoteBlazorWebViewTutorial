@@ -1,0 +1,76 @@
+﻿html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1:focus {
+    outline: none;
+}
+
+a, .btn-link {
+    color: #0071c1;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+/* The app's own session bar (the template in Counter.razor). RemoteBlazorWebView copies the template into its bar
+   (.rbwv-control-custom), which sits over the placeholder; these rules style our parts. */
+.session-bar-slot {
+    margin-bottom: 1rem;
+}
+
+.rbwv-control-custom {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #1b2a41;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+    .rbwv-control-custom .session-btn {
+        border: 1px solid #5b7aa6;
+        border-radius: 999px;
+        padding: 2px 12px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .rbwv-control-custom .session-btn-take {
+        background: #e5484d;
+        border-color: #e5484d;
+    }

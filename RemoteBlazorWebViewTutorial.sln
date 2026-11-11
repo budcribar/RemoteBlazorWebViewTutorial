@@ -9,7 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80F4D2D5-6824-4142-8D48-36A1A9FF53BA}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
 		..\RemoteBlazorWebView\Directory.Build.props = ..\RemoteBlazorWebView\Directory.Build.props
 		NuGet.config = NuGet.config
 		README.md = README.md
@@ -30,6 +29,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebViewTutorial", "RemoteBlazorWebViewTutorial\RemoteBlazorWebViewTutorial.csproj", "{D425168D-A349-4FB9-A1AB-BAF7FF52AC53}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteBlazorWebView", "..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj", "{ABA12E19-28B0-487B-96D2-262B30E2F303}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBlazorRemote", "WpfBlazorRemote\WpfBlazorRemote.csproj", "{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteBlazorWebView.SourceGenerators", "..\RemoteBlazorWebView\src\RemoteBlazorWebView.SourceGenerators\RemoteBlazorWebView.SourceGenerators.csproj", "{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +143,26 @@ Global
 		{ABA12E19-28B0-487B-96D2-262B30E2F303}.NoAuthorization|x64.Build.0 = Debug|x64
 		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|x64.ActiveCfg = Release|x64
 		{ABA12E19-28B0-487B-96D2-262B30E2F303}.Release|x64.Build.0 = Release|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Debug|x64.ActiveCfg = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Debug|x64.Build.0 = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Developer|x64.ActiveCfg = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Developer|x64.Build.0 = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Embedded|x64.ActiveCfg = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Embedded|x64.Build.0 = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.NoAuthorization|x64.ActiveCfg = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.NoAuthorization|x64.Build.0 = Debug|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Release|x64.ActiveCfg = Release|x64
+		{440AA1DC-B61E-434F-ABBE-6DF5E9F84A4B}.Release|x64.Build.0 = Release|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Debug|x64.ActiveCfg = Debug|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Debug|x64.Build.0 = Debug|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Developer|x64.ActiveCfg = Developer|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Developer|x64.Build.0 = Developer|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Embedded|x64.ActiveCfg = Embedded|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Embedded|x64.Build.0 = Embedded|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.NoAuthorization|x64.ActiveCfg = Debug|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.NoAuthorization|x64.Build.0 = Debug|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Release|x64.ActiveCfg = Release|x64
+		{8BBE9E2F-1F23-4EA4-AB10-720A85C2BAFD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
