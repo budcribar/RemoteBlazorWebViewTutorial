@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<Import Condition="Exists('$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/')" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)/../../RemoteBlazorWebView/'))" />
 	<PropertyGroup>
 		<GenerateEmbeddedFilesManifest Condition="'$(Configuration)' == 'Embedded'">true</GenerateEmbeddedFilesManifest>
@@ -6,13 +6,14 @@
 		<DebugType Condition="'$(Configuration)' != 'Debug'">None</DebugType>
 		<DebugSymbols Condition="'$(Configuration)' != 'Debug'">False</DebugSymbols>
 		<TargetFramework>net11.0-windows</TargetFramework>  <!--Not windows-->
+		<!-- Not a WPF project: drop the WebView2 package's WPF assembly (see Directory.Build.targets). -->
+		<RemoveWebView2WpfReference>true</RemoveWebView2WpfReference>
 		<OutputType>WinExe</OutputType>
 		<UseWindowsForms>false</UseWindowsForms>
 		<IsShippingPackage>false</IsShippingPackage>
 		<Nullable>enable</Nullable>
 		<PublishSingleFile>true</PublishSingleFile>
 		<Configurations>Debug;Release;Embedded;Developer</Configurations>
-		<!-- Default to the sibling RemoteBlazorWebView project references. Set EnvBuildMode to anything other than Developer (for example Release) to use the PeakSWC NuGet packages. -->
 		<BuildMode Condition=" '$(EnvBuildMode)' == '' ">Developer</BuildMode>
 		<BuildMode Condition=" '$(EnvBuildMode)' != '' ">$(EnvBuildMode)</BuildMode>
 		<Platforms>x64</Platforms>
@@ -24,11 +25,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />-->
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="11.0.0-rc.3.26522.148" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="11.0.0-rc.3.26522.148" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="11.0.0-rc.3.26522.148" />
-		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="11.0.0-rc2" />
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />-->
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="11.0.0" />
+		<PackageReference Condition="'$(BuildMode)' != 'Developer'" Include="PeakSWC.RemoteBlazorWebView" Version="11.0.0" />
 		<ProjectReference Condition="'$(BuildMode)' == 'Developer'" Include="..\..\RemoteBlazorWebView\src\RemoteBlazorWebView\RemoteBlazorWebView.csproj" />
 		<ProjectReference Include="..\RemoteBlazorWebViewTutorial.Shared\RemoteBlazorWebViewTutorial.Shared.csproj" />
 

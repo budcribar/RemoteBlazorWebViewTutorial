@@ -1,0 +1,36 @@
+@* The session bar. It is opt-in: RemoteBlazorWebView draws nothing unless this placeholder is on the page. An empty
+   placeholder gets the built-in bar:
+
+       <div id="rbwv-session-controls" data-share-link="true" data-restart="true"></div>
+
+   This one holds a template instead, so the bar is this app's own markup. Each browser gets its own copy with only the
+   parts (data-rbwv) that apply to it: the status is filled in and the buttons are wired. The wording, the classes and
+   the layout are ours (styled in wwwroot/css/app.css). In a local run the placeholder stays empty. *@
+<div id="rbwv-session-controls" class="session-bar-slot" data-remote-name="The helper">
+    <template>
+        <span data-rbwv="dot"></span>
+        <strong data-rbwv="status" data-text-you="You are in control" data-text-view-only="Watching"></strong>
+        <button class="session-btn" data-rbwv="give">Hand over</button>
+        <button class="session-btn session-btn-take" data-rbwv="take">Take back</button>
+        <button class="session-btn" data-rbwv="copy-link" data-copied-text="Link copied">Invite someone</button>
+        <button class="session-btn" data-rbwv="restart">Restart</button>
+        <span data-rbwv="restart-question">Restart the app for everyone?</span>
+        <button class="session-btn session-btn-take" data-rbwv="restart-confirm">Yes, restart</button>
+        <button class="session-btn" data-rbwv="restart-cancel">No</button>
+    </template>
+</div>
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
