@@ -4,7 +4,7 @@
    
    Change the reference from Microsoft
    ```
-   <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="10.0.110" />
+   <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="11.0.10" />
    ```
    To PeakSWC
    ```
