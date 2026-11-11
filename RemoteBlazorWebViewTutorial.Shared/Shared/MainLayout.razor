@@ -7,6 +7,10 @@
 
     <div class="main">
         <div class="top-row px-4">
+            @* The session bar's placeholder: RemoteBlazorWebView draws its built-in bar here in each browser (who has control,
+               Give control / Take control, Copy link) when the session shares control or has a voice call. Without this
+               element no bar is drawn. In the layout, so the bar is there on every page. *@
+            <div id="rbwv-session-controls" data-share-link="true"></div>
             <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
         </div>
 

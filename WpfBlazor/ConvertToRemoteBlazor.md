@@ -148,7 +148,11 @@ public partial class MainWindow : Window
 
 <h3>The session bar</h3>
 
-Each browser draws a small session bar: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. Put an empty element in your layout where it should sit; without one the bar floats at the bottom right.
+The session bar is where control is handed over: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. It is opt-in. RemoteBlazorWebView draws nothing on your pages unless you ask, and you choose one of three ways.
+
+**1. No bar.** Leave the placeholder out. Nothing is drawn. With `ShareControl` there are then no buttons to hand control over, so this suits an unattended session (below), or an app that draws its own controls from `window.RemoteControl`.
+
+**2. The built-in bar.** Put an empty element where the bar should sit. Each browser draws its own bar over it.
 
 ```
  <div id="rbwv-session-controls" data-share-link="true" data-restart="true"></div>
@@ -160,9 +164,43 @@ Each browser draws a small session bar: a dot that is lit while anyone is connec
 | `data-restart="true"` | Shows Restart app for whoever has control, and for the owner at any time. See [Restarting the App](#restarting-the-app) |
 | `data-host-name`, `data-remote-name` | What to call the two parties in "... has control". The defaults are "The host" and "Remote user" |
 
-An app that does not opt in looks as it did before: there is no bar unless the app shares control or uses voice.
+- Add the placeholder above the `<h1>` in `Counter.razor`, run the app and press Copy link. Open the link in a browser: that is the remote user. Press Give control in the app window, and Take control to get it back.
 
-- Run the app and press Copy link. Open the link in a browser: that is the remote user. Press Give control in the app window, and Take control to get it back.
+The tutorial's other sample apps do this in their layout (`RemoteBlazorWebViewTutorial.Shared/Shared/MainLayout.razor`), which is where it belongs in an app with more than one page: a placeholder on one page goes away when the user navigates.
+
+**3. Your own bar.** Put a `<template>` inside the placeholder and mark its elements with `data-rbwv`. Each browser gets its own copy of the template with only the parts that apply to it: the status is filled in and the buttons are wired. The layout, the wording, the classes and anything else in the template are yours.
+
+```
+ <div id="rbwv-session-controls" class="session-bar-slot" data-remote-name="The helper">
+     <template>
+         <span data-rbwv="dot"></span>
+         <strong data-rbwv="status" data-text-you="You are in control" data-text-view-only="Watching"></strong>
+         <button class="session-btn" data-rbwv="give">Hand over</button>
+         <button class="session-btn session-btn-take" data-rbwv="take">Take back</button>
+         <button class="session-btn" data-rbwv="copy-link" data-copied-text="Link copied">Invite someone</button>
+         <button class="session-btn" data-rbwv="restart">Restart</button>
+         <span data-rbwv="restart-question">Restart the app for everyone?</span>
+         <button class="session-btn session-btn-take" data-rbwv="restart-confirm">Yes, restart</button>
+         <button class="session-btn" data-rbwv="restart-cancel">No</button>
+     </template>
+ </div>
+```
+
+| `data-rbwv` | Shown to |
+|---|---|
+| `dot` | Everyone. Gets the class `rbwv-control-dot-on` while anyone is connected remotely |
+| `status` | Everyone. The text is filled in: "You have control", "Remote user has control", "View only"... `data-text-you`, `data-text-view-only`, `data-text-none`, `data-text-switching` and `data-text-restarting` replace the wording |
+| `give` | Whoever has control, when there is someone to give it to |
+| `take` | The owner, when someone else has control |
+| `copy-link` | The owner. `data-copied-text` is shown for a moment after the link is copied |
+| `restart` | Whoever has control, and the owner. With `restart-question`, `restart-confirm` and `restart-cancel` in the template the user is asked first; without them Restart restarts at once |
+| `voice-status`, `voice-act`, `voice-mute`, `voice-end` | The voice call's status and buttons (their wording follows the call) |
+
+- Replace the placeholder in `Counter.razor` with the template above and add the `.session-bar-slot`, `.rbwv-control-custom` and `.session-btn` rules from `WpfBlazorRemote/wwwroot/css/app.css` to your `app.css`. Run the app: the bar is now a dark pill with your wording. This is what `WpfBlazorRemote` contains.
+
+The bar is drawn by a script in each browser, not by Blazor: the app renders once and every browser shows that same render, so a bar made of Blazor components would say the same thing to everyone and could not be clicked by whoever does not have control. For anything a template cannot do, `window.RemoteControl` gives a script of your own the same state and actions.
+
+With a placeholder, the bar still only shows when there is something to control: the app shares control or uses voice.
 
 <h3>Unattended sessions</h3>
 

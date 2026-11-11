@@ -32,7 +32,7 @@ Hosting the server (`RemoteWebViewService`) in the cloud allows you to reach an 
 What a remote app can do:
 
 - **Sharing control.** The app shows in its own window with the person at the PC in control, and a remote user joins from a browser and is handed control. One owner, one remote user, any number of read-only viewers. This is the recommended arrangement.
-- **A session bar** in every browser: who has control, Give control / Take control, Copy link, and Restart app.
+- **A session bar** in every browser: who has control, Give control / Take control, Copy link, and Restart app. It is opt-in: the built-in bar where you put its placeholder, your own markup from a template, or no bar at all.
 - **Unattended sessions**, where the remote user gets control as soon as they join.
 - **A voice call** between the person at the PC and the remote user.
 - **Browser only**, the simplest arrangement: the app runs only in the browser and the window shows the link. The sample programs below start this way.
