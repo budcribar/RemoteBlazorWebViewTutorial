@@ -214,7 +214,7 @@ When nobody is at the PC to hand control over, the remote user can be given cont
 
 A voice call between the person at the PC and the remote user, with its buttons in the session bar. It needs the WPF control and an https server. Add `Voice = true` to `[RemoteBlazor]`, or start the app with `--voice`.
 
-Voice needs somewhere to show its buttons. There is no separate voice window: with the built-in bar they appear by themselves, a template of your own needs the four `voice-` parts, and with no placeholder at all nobody can start or answer a call unless your own script draws the controls from `window.RemoteVoice`.
+Voice needs somewhere to show its buttons. There is no separate voice window: with the built-in bar they appear by themselves, a template of your own needs the four `voice-` parts, and with no placeholder at all nobody can start or answer a call unless your own script draws the controls from `window.RemoteVoice`. In that last case the browser console says so about ten seconds after the page loads: "voice is on, but this page shows no voice controls". The warning comes with the packages after 10.0.15.1 and is a work in progress: it does not yet notice a template that leaves the `voice-` parts out.
 
 <h3>By hand</h3>
 
