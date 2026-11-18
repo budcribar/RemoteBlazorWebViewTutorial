@@ -150,7 +150,7 @@ public partial class MainWindow : Window
 
 The session bar is where control is handed over: a dot that is lit while anyone is connected remotely, who has control, Give control / Take control, and Copy link for the owner. It is opt-in. RemoteBlazorWebView draws nothing on your pages unless you ask, and you choose one of three ways.
 
-**1. No bar.** Leave the placeholder out. Nothing is drawn. With `ShareControl` there are then no buttons to hand control over, so this suits an unattended session (below), or an app that draws its own controls from `window.RemoteControl`.
+**1. No bar.** Leave the placeholder out. Nothing is drawn. With `ShareControl` there are then no buttons to hand control over, so this suits an unattended session (below), or an app that draws its own controls from `window.RemoteControl`. Voice is the same: without a placeholder a call has no buttons (see [Voice](#voice)).
 
 **2. The built-in bar.** Put an empty element where the bar should sit. Each browser draws its own bar over it.
 
@@ -182,6 +182,10 @@ The tutorial's other sample apps do this in their layout (`RemoteBlazorWebViewTu
          <span data-rbwv="restart-question">Restart the app for everyone?</span>
          <button class="session-btn session-btn-take" data-rbwv="restart-confirm">Yes, restart</button>
          <button class="session-btn" data-rbwv="restart-cancel">No</button>
+         <span data-rbwv="voice-status"></span>
+         <button class="session-btn" data-rbwv="voice-act"></button>
+         <button class="session-btn" data-rbwv="voice-mute"></button>
+         <button class="session-btn" data-rbwv="voice-end"></button>
      </template>
  </div>
 ```
@@ -194,7 +198,7 @@ The tutorial's other sample apps do this in their layout (`RemoteBlazorWebViewTu
 | `take` | The owner, when someone else has control |
 | `copy-link` | The owner. `data-copied-text` is shown for a moment after the link is copied |
 | `restart` | Whoever has control, and the owner. With `restart-question`, `restart-confirm` and `restart-cancel` in the template the user is asked first; without them Restart restarts at once |
-| `voice-status`, `voice-act`, `voice-mute`, `voice-end` | The voice call's status and buttons (their wording follows the call) |
+| `voice-status`, `voice-act`, `voice-mute`, `voice-end` | The voice call's status and buttons (their wording follows the call, so leave them empty). A template without them has no call buttons |
 
 - Replace the placeholder in `Counter.razor` with the template above and add the `.session-bar-slot`, `.rbwv-control-custom` and `.session-btn` rules from `WpfBlazorRemote/wwwroot/css/app.css` to your `app.css`. Run the app: the bar is now a dark pill with your wording. This is what `WpfBlazorRemote` contains.
 
@@ -209,6 +213,8 @@ When nobody is at the PC to hand control over, the remote user can be given cont
 <h3>Voice</h3>
 
 A voice call between the person at the PC and the remote user, with its buttons in the session bar. It needs the WPF control and an https server. Add `Voice = true` to `[RemoteBlazor]`, or start the app with `--voice`.
+
+Voice needs somewhere to show its buttons. There is no separate voice window: with the built-in bar they appear by themselves, a template of your own needs the four `voice-` parts, and with no placeholder at all nobody can start or answer a call unless your own script draws the controls from `window.RemoteVoice`.
 
 <h3>By hand</h3>
 

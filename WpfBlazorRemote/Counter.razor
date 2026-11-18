@@ -5,7 +5,8 @@
 
    This one holds a template instead, so the bar is this app's own markup. Each browser gets its own copy with only the
    parts (data-rbwv) that apply to it: the status is filled in and the buttons are wired. The wording, the classes and
-   the layout are ours (styled in wwwroot/css/app.css). In a local run the placeholder stays empty. *@
+   the layout are ours (styled in wwwroot/css/app.css). The voice parts are how a call (--voice) gets its buttons: their
+   wording follows the call, so they are left empty. In a local run the placeholder stays empty. *@
 <div id="rbwv-session-controls" class="session-bar-slot" data-remote-name="The helper">
     <template>
         <span data-rbwv="dot"></span>
@@ -17,6 +18,10 @@
         <span data-rbwv="restart-question">Restart the app for everyone?</span>
         <button class="session-btn session-btn-take" data-rbwv="restart-confirm">Yes, restart</button>
         <button class="session-btn" data-rbwv="restart-cancel">No</button>
+        <span data-rbwv="voice-status"></span>
+        <button class="session-btn" data-rbwv="voice-act"></button>
+        <button class="session-btn" data-rbwv="voice-mute"></button>
+        <button class="session-btn" data-rbwv="voice-end"></button>
     </template>
 </div>
 
